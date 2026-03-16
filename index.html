@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Deepika Thammireddy | Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #fdf8f2; --warm: #f5ede0; --peach: #f9d4b6;
+    --coral: #e8785a; --coral-dark: #c95c3f;
+    --teal: #3d9e8c; --teal-light: #d4f0eb;
+    --lavender: #e8e2f8; --lavender-dark: #7c6fc4;
+    --yellow: #fce97a; --yellow-dark: #b89d00;
+    --green-light: #e2f4e2; --green-dark: #3a7d44;
+    --blue-light: #ddeeff; --blue-dark: #2a5fa5;
+    --pink-light: #fde8f0; --pink-dark: #b5476b;
+    --text: #1a1208; --text-muted: #6b5b45; --border: rgba(26,18,8,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+  h1,h2,h3 { font-family: 'Fraunces', serif; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--coral); }
+  .nav-badge { background: var(--yellow); color: var(--yellow-dark); font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+  .hero-wrap { border-bottom: 1px solid var(--border); }
+  .hero { padding: 5rem 2.5rem 4rem; display: grid; grid-template-columns: 1fr 340px; gap: 3rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-light); color: var(--teal); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero-eyebrow::before { content: "✦"; font-size: 10px; }
+  .hero h1 { font-size: 52px; font-weight: 600; line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.25rem; }
+  .hero h1 em { font-style: italic; color: var(--coral); }
+  .hero-sub { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem; max-width: 420px; }
+  .hero-btns { display: flex; gap: 10px; }
+  .btn-coral { background: var(--coral); color: #fff; border: none; padding: 11px 24px; border-radius: 30px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; text-decoration: none; display: inline-block; }
+  .btn-coral:hover { background: var(--coral-dark); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); padding: 11px 24px; border-radius: 30px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s; text-decoration: none; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--text-muted); }
+  .hero-card { background: var(--warm); border-radius: 24px; padding: 2rem; border: 1px solid var(--border); }
+  .hero-card-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1.25rem; }
+  .hero-stat { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .hero-stat:last-child { border-bottom: none; }
+  .hero-stat-label { font-size: 13px; color: var(--text-muted); }
+  .hero-stat-val { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .pill-teal { background: var(--teal-light); color: var(--teal); }
+  .pill-coral { background: #fce5dc; color: var(--coral-dark); }
+  .marquee-wrap { background: var(--yellow); padding: 10px 0; overflow: hidden; border-top: 1px solid rgba(0,0,0,0.07); border-bottom: 1px solid rgba(0,0,0,0.07); margin: 2rem 0; }
+  .marquee-track { display: flex; gap: 2.5rem; white-space: nowrap; animation: marquee 22s linear infinite; width: max-content; }
+  .marquee-item { font-size: 13px; font-weight: 500; color: var(--yellow-dark); display: flex; align-items: center; gap: 10px; }
+  .marquee-item::after { content: "✦"; opacity: 0.5; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .section { padding: 4rem 2.5rem; max-width: 1000px; margin: 0 auto; }
+  .section-wrap { border-bottom: 1px solid var(--border); }
+  .section-wrap-warm { border-bottom: 1px solid var(--border); background: var(--warm); }
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; }
+  .section-num { font-family: 'Fraunces', serif; font-size: 13px; color: var(--coral); font-style: italic; }
+  .section-title { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; letter-spacing: -0.5px; }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: start; }
+  .about-text { font-size: 15px; line-height: 1.85; color: var(--text-muted); }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-cards { display: flex; flex-direction: column; gap: 12px; }
+  .acard { border-radius: 16px; padding: 1.25rem; }
+  .acard-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 6px; opacity: 0.65; font-weight: 500; }
+  .acard-val { font-size: 14px; font-weight: 500; line-height: 1.5; }
+  .acard-lav { background: var(--lavender); color: var(--lavender-dark); }
+  .acard-lav .acard-label { color: var(--lavender-dark); }
+  .acard-teal { background: var(--teal-light); color: var(--teal); }
+  .acard-teal .acard-label { color: var(--teal); }
+  .acard-peach { background: var(--peach); color: var(--coral-dark); }
+  .acard-peach .acard-label { color: var(--coral-dark); }
+  .skills-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .skill-box { border-radius: 18px; padding: 1.5rem; }
+  .skill-box-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 14px; opacity: 0.7; }
+  .skill-list { display: flex; flex-direction: column; gap: 6px; }
+  .skill-item { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+  .skill-item::before { content: ""; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .sb-lav { background: var(--lavender); color: var(--lavender-dark); }
+  .sb-lav .skill-item::before { background: var(--lavender-dark); }
+  .sb-teal { background: var(--teal-light); color: var(--teal); }
+  .sb-teal .skill-item::before { background: var(--teal); }
+  .sb-peach { background: var(--peach); color: var(--coral-dark); }
+  .sb-peach .skill-item::before { background: var(--coral-dark); }
+  .sb-yellow { background: var(--yellow); color: var(--yellow-dark); }
+  .sb-yellow .skill-item::before { background: var(--yellow-dark); }
+  .exp-list { display: flex; flex-direction: column; gap: 16px; }
+  .exp-card { border-radius: 20px; padding: 2rem; border: 1px solid var(--border); background: #fff; }
+  .exp-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+  .exp-role { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
+  .exp-badge { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+  .exp-org { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+  .exp-bullets { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 7px; }
+  .exp-bullets li { font-size: 14px; color: var(--text-muted); line-height: 1.65; padding-left: 18px; position: relative; }
+  .exp-bullets li::before { content: "→"; position: absolute; left: 0; color: var(--coral); font-size: 11px; top: 2px; }
+  .proj-category-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 500; color: var(--text-muted); margin-bottom: 14px; margin-top: 2rem; }
+  .proj-category-label:first-of-type { margin-top: 0; }
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 2rem; }
+  .proj-grid-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .proj-card { border-radius: 20px; padding: 1.5rem; position: relative; overflow: hidden; transition: transform 0.2s; }
+  .proj-card:hover { transform: translateY(-3px); }
+  .proj-card::after { content: attr(data-num); position: absolute; right: 1rem; top: 1rem; font-family: 'Fraunces', serif; font-size: 42px; font-weight: 600; opacity: 0.09; line-height: 1; pointer-events: none; }
+  .pc1 { background: var(--lavender); color: var(--lavender-dark); }
+  .pc2 { background: var(--teal-light); color: var(--teal); }
+  .pc3 { background: var(--peach); color: var(--coral-dark); }
+  .pc4 { background: var(--yellow); color: var(--yellow-dark); }
+  .pc5 { background: var(--green-light); color: var(--green-dark); }
+  .pc6 { background: var(--blue-light); color: var(--blue-dark); }
+  .pc7 { background: var(--pink-light); color: var(--pink-dark); }
+  .proj-type-badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; background: rgba(255,255,255,0.55); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .proj-name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+  .proj-desc { font-size: 13px; line-height: 1.65; opacity: 0.82; margin-bottom: 1rem; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .proj-tag { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,0.5); }
+  .proj-link { font-size: 12px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; opacity: 0.7; transition: opacity 0.15s; }
+  .proj-link:hover { opacity: 1; }
+  .pc1 .proj-link { color: var(--lavender-dark); }
+  .pc2 .proj-link { color: var(--teal); }
+  .pc3 .proj-link { color: var(--coral-dark); }
+  .pc4 .proj-link { color: var(--yellow-dark); }
+  .pc5 .proj-link { color: var(--green-dark); }
+  .pc6 .proj-link { color: var(--blue-dark); }
+  .pc7 .proj-link { color: var(--pink-dark); }
+  .contact-wrap { background: var(--text); border-radius: 28px; padding: 3rem; color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .contact-left h2 { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; line-height: 1.15; color: #fff; margin-bottom: 1rem; }
+  .contact-left h2 em { font-style: italic; color: var(--yellow); }
+  .contact-left p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; }
+  .contact-items { display: flex; flex-direction: column; gap: 14px; }
+  .contact-row { display: flex; align-items: center; gap: 14px; }
+  .contact-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-icon svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 1.5; }
+  .c-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 2px; }
+  .c-val { font-size: 14px; font-weight: 500; color: #fff; }
+  .c-val a { color: #fff; text-decoration: none; }
+  .c-val a:hover { text-decoration: underline; }
+  .footer { text-align: center; padding: 2.5rem; font-size: 12px; color: var(--text-muted); }
+  .footer span { color: var(--coral); }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-bento { grid-template-columns: repeat(2, 1fr); }
+    .proj-grid, .proj-grid-2 { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .nav-links { gap: 1rem; }
+    .nav-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Sai <span>Deepika</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <span class="nav-badge">Open to work</span>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Data Analyst · App Analyst · Denver, CO</div>
+    <h1>Data that <em>tells</em><br>a story.</h1>
+    <p class="hero-sub">Hi, I'm Sai Deepika, an IT professional who loves turning messy data into clear answers. MS candidate at the University of Denver, graduating 2025.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-coral">Say hello ✉</a>
+      <a href="#projects" class="btn-ghost">See my work</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">Quick stats</div>
+    <div class="hero-stat"><span class="hero-stat-label">GPA</span><span class="hero-stat-val">3.6 / 4.0</span></div>
+    <div class="hero-stat"><span class="hero-stat-label">Experience</span><span class="hero-stat-val">3+ years</span></div>
+    <div class="hero-stat">
+      <span class="hero-stat-label">Core stack</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;"><span class="pill pill-teal">SQL</span><span class="pill pill-coral">Power BI</span></div>
+    </div>
+    <div class="hero-stat"><span class="hero-stat-label">Status</span><span class="pill pill-teal">✦ Available</span></div>
+  </div>
+</div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">SQL &amp; Data Analytics</span><span class="marquee-item">Business Requirements</span><span class="marquee-item">Power BI Dashboards</span><span class="marquee-item">ERP Systems</span><span class="marquee-item">Python &amp; Web Dev</span><span class="marquee-item">Process Mapping</span><span class="marquee-item">UAT &amp; Testing</span><span class="marquee-item">Data Validation</span>
+    <span class="marquee-item">SQL &amp; Data Analytics</span><span class="marquee-item">Business Requirements</span><span class="marquee-item">Power BI Dashboards</span><span class="marquee-item">ERP Systems</span><span class="marquee-item">Python &amp; Web Dev</span><span class="marquee-item">Process Mapping</span><span class="marquee-item">UAT &amp; Testing</span><span class="marquee-item">Data Validation</span>
+  </div>
+</div>
+
+<div id="about" class="section-wrap">
+<div class="section">
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">About me</h2><div class="section-line"></div></div>
+  <div class="about-grid">
+    <div class="about-text">
+      I'm a data-focused IT professional with a knack for making information <strong>actually useful</strong>. My path has taken me from maritime data systems in India to higher-education IT in Denver, and I've loved every step of bridging the gap between technical teams and the people who need the data most.
+      <br><br>
+      Whether it's writing SQL queries, mapping business processes, or sitting in a requirements meeting and translating "we need a report" into something buildable, <strong>that's my sweet spot</strong>.
+      <br><br>
+      When I'm not deep in data, I'm building portfolio projects, exploring web development, and working toward my next certification.
+    </div>
+    <div class="about-cards">
+      <div class="acard acard-lav"><div class="acard-label">Education</div><div class="acard-val">MS, Information Technology<br>University of Denver, 2025</div></div>
+      <div class="acard acard-teal"><div class="acard-label">Based in</div><div class="acard-val">Denver, Colorado</div></div>
+      <div class="acard acard-peach"><div class="acard-label">Looking for</div><div class="acard-val">Data Analyst · App Analyst · IT Analyst roles</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="skills" class="section-wrap-warm">
+<div class="section">
+  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Skills</h2><div class="section-line"></div></div>
+  <div class="skills-bento">
+    <div class="skill-box sb-lav"><div class="skill-box-label">Data &amp; SQL</div><div class="skill-list"><div class="skill-item">SQL</div><div class="skill-item">Power BI</div><div class="skill-item">Data validation</div><div class="skill-item">Ad hoc reporting</div><div class="skill-item">Relational DBs</div></div></div>
+    <div class="skill-box sb-teal"><div class="skill-box-label">Business Analysis</div><div class="skill-list"><div class="skill-item">Requirements</div><div class="skill-item">Process mapping</div><div class="skill-item">UAT</div><div class="skill-item">Documentation</div><div class="skill-item">SDLC</div></div></div>
+    <div class="skill-box sb-peach"><div class="skill-box-label">Development</div><div class="skill-list"><div class="skill-item">Python</div><div class="skill-item">HTML/CSS/JS</div><div class="skill-item">React</div><div class="skill-item">PHP</div><div class="skill-item">Git</div></div></div>
+    <div class="skill-box sb-yellow"><div class="skill-box-label">Systems &amp; Tools</div><div class="skill-list"><div class="skill-item">ERP/SIS concepts</div><div class="skill-item">WordPress</div><div class="skill-item">Drupal</div><div class="skill-item">Change mgmt</div><div class="skill-item">Data quality</div></div></div>
+  </div>
+</div>
+</div>
+
+<div id="experience" class="section-wrap">
+<div class="section">
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Experience</h2><div class="section-line"></div></div>
+  <div class="exp-list">
+    <div class="exp-card">
+      <div class="exp-card-top">
+        <div><div class="exp-role">Campus Intern</div><div class="exp-org">University of Denver · Denver, CO</div></div>
+        <span class="exp-badge pill-teal pill">2024 to Present</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Gathered and documented functional requirements from academic and administrative stakeholders to support system enhancements and reporting needs.</li>
+        <li>Developed and validated SQL queries to generate operational and compliance-related reports.</li>
+        <li>Assisted with system testing, troubleshooting data inconsistencies, and post-implementation support.</li>
+        <li>Collaborated with IT teams to document workflows, business rules, and data definitions.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="exp-card-top">
+        <div><div class="exp-role">Data Analyst</div><div class="exp-org">Centre of Excellence in Maritime and Shipbuilding · Remote</div></div>
+        <span class="exp-badge pill-coral pill">Jan 2022 to Jul 2023</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Supported business reporting by extracting and validating data from relational databases using SQL.</li>
+        <li>Assisted in maintaining report logic, tables, and views to ensure data accuracy.</li>
+        <li>Participated in testing and quality checks for automated reporting workflows.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="exp-card-top">
+        <div><div class="exp-role">SQL Analyst Intern</div><div class="exp-org">Centre of Excellence in Maritime and Shipbuilding · Remote</div></div>
+        <span class="exp-badge" style="background:var(--lavender);color:var(--lavender-dark);font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;">Mar to Nov 2021</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Designed and executed SQL queries for maritime data systems and operational reporting.</li>
+        <li>Validated and reconciled data across structured datasets to ensure report reliability.</li>
+        <li>Documented query logic and data definitions to support team knowledge sharing.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="projects" class="section-wrap-warm">
+<div class="section">
+  <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
+
+  <div class="proj-category-label">GitHub Portfolio</div>
+  <div class="proj-grid">
+    <div class="proj-card pc1" data-num="01">
+      <div class="proj-type-badge">Web app</div>
+      <div class="proj-name">Personal Budget Tracker</div>
+      <div class="proj-desc">Full-stack app for tracking income and expenses with category breakdowns, monthly summaries, and visual spending trends.</div>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">SQL</span><span class="proj-tag">Data viz</span></div>
+      <a href="https://github.com/saideepikathammireddy" class="proj-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="proj-card pc2" data-num="02">
+      <div class="proj-type-badge">Dashboard</div>
+      <div class="proj-name">Job Application Tracker</div>
+      <div class="proj-desc">Dashboard tracking application status, response rates, and pipeline metrics across industries and role types.</div>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">SQL</span><span class="proj-tag">Power BI</span></div>
+      <a href="https://github.com/saideepikathammireddy" class="proj-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="proj-card pc3" data-num="03">
+      <div class="proj-type-badge">Analytics</div>
+      <div class="proj-name">Sales Analytics Dashboard</div>
+      <div class="proj-desc">Interactive Power BI dashboard analyzing sales performance, regional trends, and product-level KPIs.</div>
+      <div class="proj-tags"><span class="proj-tag">Power BI</span><span class="proj-tag">SQL</span><span class="proj-tag">DAX</span></div>
+      <a href="https://github.com/saideepikathammireddy" class="proj-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="proj-card pc4" data-num="04">
+      <div class="proj-type-badge">Full stack</div>
+      <div class="proj-name">E-Commerce Customer Analysis</div>
+      <div class="proj-desc">End-to-end customer analytics using Django, MySQL, and Power BI to explore purchase behavior and retention.</div>
+      <div class="proj-tags"><span class="proj-tag">Django</span><span class="proj-tag">MySQL</span><span class="proj-tag">Power BI</span><span class="proj-tag">Python</span></div>
+      <a href="https://github.com/saideepikathammireddy" class="proj-link" target="_blank">View on GitHub →</a>
+    </div>
+  </div>
+
+  <div class="proj-category-label">Selected Academic and Professional Work</div>
+  <div class="proj-grid-2">
+    <div class="proj-card pc5" data-num="05">
+      <div class="proj-type-badge">Reporting</div>
+      <div class="proj-name">Enterprise Reporting Automation</div>
+      <div class="proj-desc">Designed SQL queries to load and transform structured data for reporting workflows, with audit checks and end-user documentation.</div>
+      <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Data validation</span><span class="proj-tag">Documentation</span></div>
+    </div>
+    <div class="proj-card pc6" data-num="06">
+      <div class="proj-type-badge">Analysis</div>
+      <div class="proj-name">Business Process Documentation</div>
+      <div class="proj-desc">Mapped administrative workflows, identified automation opportunities, and created functional documentation to support system design.</div>
+      <div class="proj-tags"><span class="proj-tag">Process mapping</span><span class="proj-tag">Business analysis</span><span class="proj-tag">SDLC</span></div>
+    </div>
+    <div class="proj-card pc7" data-num="07">
+      <div class="proj-type-badge">Integration</div>
+      <div class="proj-name">System Integration Simulation</div>
+      <div class="proj-desc">Simulated ERP-style data transfers using SQL, tested data integrity across exchanges, and documented integration and error-handling steps.</div>
+      <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">ERP</span><span class="proj-tag">Data integrity</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="contact">
+<div class="section">
+  <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Let's connect</h2><div class="section-line"></div></div>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h2>Ready to work on something <em>great?</em></h2>
+      <p>I'm actively looking for data analyst, application analyst, and IT analyst roles. Drop me a line. I'd love to chat.</p>
+    </div>
+    <div class="contact-items">
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="c-label">Email</div><div class="c-val"><a href="mailto:saideepika.thammireddy@du.edu">saideepika.thammireddy@du.edu</a></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.34 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.41 6.41l.97-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="c-label">Phone</div><div class="c-val"><a href="tel:7204216387">720-421-6387</a></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div><div class="c-label">LinkedIn</div><div class="c-val"><a href="https://linkedin.com/in/saideepikathammireddy" target="_blank">linkedin.com/in/saideepikathammireddy</a></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        <div><div class="c-label">GitHub</div><div class="c-val"><a href="https://github.com/saideepikathammireddy" target="_blank">github.com/saideepikathammireddy</a></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="footer"> Sai Deepika Thammireddy · Denver, CO · 2025</div>
+
+</body>
+</html>
