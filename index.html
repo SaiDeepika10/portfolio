@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sai Deepika Thammireddy | Web Developer</title>
+<title>Sai Deepika Thammireddy | Webmaster &amp; Frontend Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -50,14 +50,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .stat-val{font-size:22px;font-weight:900;color:var(--text);margin-top:2px;}
 .stat-sub{font-size:12px;color:var(--text-muted);}
 
-/* FLOATING BLOBS - decorative bg shapes */
 .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.12;pointer-events:none;z-index:-1;}
 .blob-1{width:400px;height:400px;background:var(--purple);top:-80px;right:-100px;}
 .blob-2{width:300px;height:300px;background:var(--pink);bottom:80px;right:60px;}
 
 /* TICKER */
 .ticker-wrap{overflow:hidden;background:var(--text);padding:13px 0;}
-.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 30s linear infinite;}
+.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 36s linear infinite;}
 .ticker span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 2rem;}
 .ticker span.hi{color:white;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
@@ -128,32 +127,38 @@ hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin
 .pc-teal{background:var(--teal-light);border:2px solid #99F6E4;}
 .pc-coral{background:var(--coral-light);border:2px solid #FDBA74;}
 .pc-blue{background:var(--blue-light);border:2px solid #BFDBFE;}
+.pc-green{background:var(--green-light);border:2px solid #6EE7B7;}
 .proj-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:.7rem;}
 .pc-purple .proj-label{color:#6D28D9;}
 .pc-teal .proj-label{color:#0F6E56;}
 .pc-coral .proj-label{color:#C2410C;}
 .pc-blue .proj-label{color:#1D4ED8;}
+.pc-green .proj-label{color:#047857;}
 .proj-card h3{font-size:15px;font-weight:800;margin-bottom:.5rem;}
 .pc-purple h3{color:#3730A3;}
 .pc-teal h3{color:#134E4A;}
 .pc-coral h3{color:#7C2D12;}
 .pc-blue h3{color:#1E3A8A;}
+.pc-green h3{color:#064E3B;}
 .proj-card p{font-size:13px;line-height:1.7;flex:1;margin-bottom:1rem;}
 .pc-purple p{color:#4C1D95;}
 .pc-teal p{color:#134E4A;}
 .pc-coral p{color:#7C2D12;}
 .pc-blue p{color:#1E3A8A;}
+.pc-green p{color:#064E3B;}
 .proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
 .proj-tech{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.7);}
 .pc-purple .proj-tech{color:#4C1D95;}
 .pc-teal .proj-tech{color:#134E4A;}
 .pc-coral .proj-tech{color:#7C2D12;}
 .pc-blue .proj-tech{color:#1E3A8A;}
+.pc-green .proj-tech{color:#064E3B;}
 .proj-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;text-decoration:none;margin-top:12px;}
 .pc-purple .proj-link{color:var(--purple);}
 .pc-teal .proj-link{color:var(--teal);}
 .pc-coral .proj-link{color:var(--coral);}
 .pc-blue .proj-link{color:var(--blue);}
+.pc-green .proj-link{color:var(--green);}
 
 /* FEATURED PROJECT */
 .proj-card.featured{grid-column:1/-1;flex-direction:row;gap:2rem;align-items:flex-start;background:linear-gradient(135deg,#EDE9FE,#FCE7F3);border:2px solid #DDD6FE;}
@@ -175,10 +180,8 @@ hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin
 .btn-contact{background:white;color:var(--purple);font-size:15px;padding:13px 30px;border-radius:10px;font-weight:800;position:relative;z-index:1;}
 .btn-contact:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
 
-/* FOOTER */
 footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-soft);}
 
-/* RESPONSIVE */
 @media(max-width:640px){
   nav{padding:0 1.2rem;}
   .nav-links{display:none;}
@@ -211,14 +214,14 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-dot"></span>
-      Web Developer &amp; Digital Content Specialist
+      Webmaster &amp; Frontend Web Developer
     </div>
     <h1>
       Websites that<br>
-      <span class="line-italic">work for people.</span>
+      <span class="line-italic">work for everyone.</span>
     </h1>
     <p class="hero-sub">
-      Hi, I'm Sai Deepika, A front-end web developer specializing in higher education digital experiences. I build accessible, responsive, and beautifully crafted websites that help students navigate the most important decisions of their lives.
+      Hi, I'm Sai Deepika. I build accessible, ADA/WCAG-compliant web experiences for public-facing digital portfolios. I specialize in making sure every user , regardless of ability, device, or background , can navigate and use the web the way it was meant to be used.
     </p>
     <div class="hero-btns">
       <a href="#contact" class="btn btn-primary">Say hello ✉</a>
@@ -228,11 +231,11 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
       <div>
         <div class="stat-label">Experience</div>
         <div class="stat-val">2+</div>
-        <div class="stat-sub">Years in higher ed web</div>
+        <div class="stat-sub">Years web operations</div>
       </div>
       <div>
         <div class="stat-label">Core stack</div>
-        <div class="stat-val" style="font-size:13px;margin-top:6px;line-height:1.5;">WordPress · HTML<br>CSS · JavaScript</div>
+        <div class="stat-val" style="font-size:13px;margin-top:6px;line-height:1.5;">HTML · CSS · JS<br>React · WordPress</div>
       </div>
       <div>
         <div class="stat-label">Accessibility</div>
@@ -252,42 +255,48 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
     <span class="hi">HTML5</span><span>·</span>
     <span class="hi">CSS3</span><span>·</span>
     <span class="hi">JavaScript</span><span>·</span>
-    <span class="hi">WordPress</span><span>·</span>
+    <span class="hi">React</span><span>·</span>
     <span class="hi">WCAG 2.1</span><span>·</span>
-    <span class="hi">Google Analytics</span><span>·</span>
-    <span class="hi">Google Tag Manager</span><span>·</span>
-    <span class="hi">Figma</span><span>·</span>
-    <span class="hi">Slate CRM</span><span>·</span>
-    <span class="hi">Git</span><span>·</span>
-    <span class="hi">Responsive Design</span><span>·</span>
     <span class="hi">ADA Compliance</span><span>·</span>
-    <span class="hi">PHP</span><span>·</span>
-    <span class="hi">Adobe XD</span><span>·</span>
+    <span class="hi">USWDS</span><span>·</span>
+    <span class="hi">WordPress</span><span>·</span>
+    <span class="hi">Drupal</span><span>·</span>
+    <span class="hi">Mobile-First</span><span>·</span>
+    <span class="hi">JIRA</span><span>·</span>
+    <span class="hi">Confluence</span><span>·</span>
+    <span class="hi">CI/CD</span><span>·</span>
+    <span class="hi">Agile/Scrum</span><span>·</span>
+    <span class="hi">Green Digital</span><span>·</span>
+    <span class="hi">Git</span><span>·</span>
+    <span class="hi">SSO Integration</span><span>·</span>
     <span class="hi">HTML5</span><span>·</span>
     <span class="hi">CSS3</span><span>·</span>
     <span class="hi">JavaScript</span><span>·</span>
-    <span class="hi">WordPress</span><span>·</span>
+    <span class="hi">React</span><span>·</span>
     <span class="hi">WCAG 2.1</span><span>·</span>
-    <span class="hi">Google Analytics</span><span>·</span>
-    <span class="hi">Google Tag Manager</span><span>·</span>
-    <span class="hi">Figma</span><span>·</span>
-    <span class="hi">Slate CRM</span><span>·</span>
-    <span class="hi">Git</span><span>·</span>
-    <span class="hi">Responsive Design</span><span>·</span>
     <span class="hi">ADA Compliance</span><span>·</span>
-    <span class="hi">PHP</span><span>·</span>
-    <span class="hi">Adobe XD</span><span>·</span>
+    <span class="hi">USWDS</span><span>·</span>
+    <span class="hi">WordPress</span><span>·</span>
+    <span class="hi">Drupal</span><span>·</span>
+    <span class="hi">Mobile-First</span><span>·</span>
+    <span class="hi">JIRA</span><span>·</span>
+    <span class="hi">Confluence</span><span>·</span>
+    <span class="hi">CI/CD</span><span>·</span>
+    <span class="hi">Agile/Scrum</span><span>·</span>
+    <span class="hi">Green Digital</span><span>·</span>
+    <span class="hi">Git</span><span>·</span>
+    <span class="hi">SSO Integration</span><span>·</span>
   </div>
 </div>
 
 <section id="about">
   <div class="sec-tag">01  About</div>
   <div class="sec-title">Front-end developer &amp;<br>accessibility advocate</div>
-  <div class="sec-sub">Passionate about higher education digital experiences</div>
+  <div class="sec-sub">Building digital portfolios that serve everyone</div>
   <p class="about-text">
-    I'm a web developer and digital content specialist with 2+ years of experience maintaining and enhancing content-driven websites in higher education environments. My path has taken me from web development in India to higher-education IT in Denver — and I've loved every step of bridging the gap between technical teams and the students who depend on these websites most.
+    I'm a frontend web developer and webmaster with experience maintaining accessible, responsive digital portfolios for diverse end users. My work spans WCAG compliance, CMS operations, Agile web workflows, and mobile-first design , all focused on keeping web experiences available, navigable, and inclusive for every person who needs them.
     <br><br>
-    Whether it's implementing a Figma design in WordPress, remediating pages for WCAG compliance, or collaborating with a marketing team on enrollment landing pages — <strong>that's my sweet spot.</strong>
+    Whether it's remediating a site for WCAG 2.1 AA compliance, consolidating a multi-site digital portfolio, or building a dashboard that works on any device , <strong>that's where I do my best work.</strong>
   </p>
   <div class="about-cards">
     <div class="about-card ac-purple">
@@ -298,16 +307,16 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
     <div class="about-card ac-teal">
       <h3>Looking for</h3>
       <ul>
-        <li>Web Developer roles</li>
+        <li>Webmaster roles</li>
+        <li>Government / Public Sector</li>
+        <li>Frontend Web Developer</li>
         <li>Digital Content Specialist</li>
-        <li>Higher Education environments</li>
-        <li>Front-end focused positions</li>
       </ul>
     </div>
     <div class="about-card ac-amber">
       <h3>Based in</h3>
       <p>Denver, Colorado</p>
-      <p style="margin-top:.4rem;">Open to relocation</p>
+      <p style="margin-top:.4rem;">Colorado Resident</p>
       <p style="margin-top:.4rem;font-weight:700;">GPA 3.6 / 4.0</p>
     </div>
   </div>
@@ -324,59 +333,64 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
       <h3>Front-End Development</h3>
       <div class="pills">
         <span class="pill p-purple">HTML5</span>
-        <span class="pill p-purple">CSS3</span>
+        <span class="pill p-purple">CSS3 / SCSS</span>
         <span class="pill p-purple">JavaScript ES6+</span>
-        <span class="pill p-purple">PHP</span>
-        <span class="pill p-purple">Sass / SCSS</span>
+        <span class="pill p-purple">React</span>
+        <span class="pill p-purple">TypeScript</span>
         <span class="pill p-gray">Responsive Design</span>
+        <span class="pill p-gray">Mobile-First</span>
         <span class="pill p-gray">Cross-browser Testing</span>
-        <span class="pill p-gray">Flexbox &amp; Grid</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <h3>Accessibility &amp; Compliance</h3>
+      <div class="pills">
+        <span class="pill p-teal">WCAG 2.1 AA</span>
+        <span class="pill p-teal">ADA Compliance</span>
+        <span class="pill p-teal">USWDS</span>
+        <span class="pill p-teal">ARIA</span>
+        <span class="pill p-green">Keyboard Navigation</span>
+        <span class="pill p-green">Screen Reader Testing</span>
+        <span class="pill p-green">Color Contrast</span>
+        <span class="pill p-green">Lighthouse / axe DevTools</span>
       </div>
     </div>
     <div class="skill-row">
       <h3>CMS &amp; Platforms</h3>
       <div class="pills">
         <span class="pill p-blue">WordPress</span>
-        <span class="pill p-blue">Modern Campus CMS</span>
-        <span class="pill p-blue">Slate CRM</span>
-        <span class="pill p-gray">Theme Customization</span>
-        <span class="pill p-gray">Plugin Management</span>
-        <span class="pill p-gray">Child Themes</span>
+        <span class="pill p-blue">Drupal</span>
+        <span class="pill p-blue">Google Sites</span>
+        <span class="pill p-blue">Squarespace</span>
+        <span class="pill p-blue">Salesforce</span>
+        <span class="pill p-gray">Enterprise SaaS / CMS</span>
+        <span class="pill p-gray">LMS / CRM / HCM</span>
       </div>
     </div>
     <div class="skill-row">
-      <h3>Accessibility &amp; Usability</h3>
+      <h3>Tools &amp; DevOps</h3>
       <div class="pills">
-        <span class="pill p-teal">WCAG 2.1</span>
-        <span class="pill p-teal">ADA Compliance</span>
-        <span class="pill p-teal">Lighthouse Audits</span>
-        <span class="pill p-teal">axe DevTools</span>
-        <span class="pill p-green">Keyboard Navigation</span>
-        <span class="pill p-green">Screen Reader Testing</span>
-        <span class="pill p-green">Color Contrast</span>
+        <span class="pill p-coral">Git / GitHub</span>
+        <span class="pill p-coral">CI/CD Pipelines</span>
+        <span class="pill p-coral">JIRA</span>
+        <span class="pill p-coral">Confluence</span>
+        <span class="pill p-coral">npm / Webpack / Vite</span>
+        <span class="pill p-pink">Jest</span>
+        <span class="pill p-pink">React Testing Library</span>
+        <span class="pill p-pink">Google Analytics</span>
       </div>
     </div>
     <div class="skill-row">
-      <h3>Analytics &amp; Design</h3>
+      <h3>Practices &amp; Methodologies</h3>
       <div class="pills">
-        <span class="pill p-coral">Google Analytics</span>
-        <span class="pill p-coral">Google Tag Manager</span>
-        <span class="pill p-coral">UTM Tracking</span>
-        <span class="pill p-pink">Figma</span>
-        <span class="pill p-pink">Adobe XD</span>
-        <span class="pill p-pink">Image Optimization</span>
-        <span class="pill p-pink">Digital Asset Management</span>
-      </div>
-    </div>
-    <div class="skill-row">
-      <h3>Workflow &amp; Collaboration</h3>
-      <div class="pills">
-        <span class="pill p-amber">Git &amp; GitHub</span>
-        <span class="pill p-amber">Staging Environments</span>
-        <span class="pill p-amber">Technical Documentation</span>
-        <span class="pill p-gray">Google Workspace</span>
-        <span class="pill p-gray">Microsoft Office</span>
-        <span class="pill p-gray">Content Governance</span>
+        <span class="pill p-amber">Agile / Scrum</span>
+        <span class="pill p-amber">Backlog Management</span>
+        <span class="pill p-amber">Sprint Planning</span>
+        <span class="pill p-amber">PI Planning</span>
+        <span class="pill p-amber">UI/UX Metrics</span>
+        <span class="pill p-gray">Stakeholder Reporting</span>
+        <span class="pill p-gray">Green Digital Design</span>
+        <span class="pill p-gray">SSO Integration</span>
       </div>
     </div>
   </div>
@@ -387,51 +401,52 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
 <section id="experience">
   <div class="sec-tag">03 Experience</div>
   <div class="sec-title">Where I've built things</div>
-  <div class="sec-sub">Professional experience in higher education web environments</div>
+  <div class="sec-sub">Professional experience in web operations and accessibility</div>
   <div class="exp-list">
     <div class="exp-item">
       <div>
-        <div class="exp-date">Oct 2023 – Present</div>
+        <div class="exp-date">Jan 2024 to Present</div>
         <div class="exp-co-badge badge-purple">University of Denver</div>
         <div class="exp-loc">Denver, CO · Sodexo</div>
       </div>
       <div>
         <div class="exp-role">Campus Web &amp; Digital Systems Intern</div>
         <ul class="exp-bullets">
-          <li>Maintain and enhance multiple content-rich websites ensuring accuracy, accessibility compliance, and visual consistency aligned with institutional branding standards.</li>
-          <li>Remediate existing content to meet WCAG 2.1 and ADA standards — improving heading structure, color contrast, alt text, and keyboard navigation.</li>
-          <li>Collaborate with marketing and communications teams to implement user-centered content updates and page improvements.</li>
-          <li>Use Google Analytics to monitor user behavior and recommend data-driven improvements to site structure and content hierarchy.</li>
-          <li>Serve as point of contact for campus content creators on CMS usage, content strategy, and website best practices.</li>
+          <li>Maintain and enhance multiple content-rich websites ensuring availability, navigability, and WCAG 2.1 / ADA compliance across all digital assets.</li>
+          <li>Remediate existing content to meet ADA and WCAG 2.1 standards, covering heading structure, color contrast, ARIA labels, alt text, and keyboard navigation.</li>
+          <li>Monitor UI/UX web metrics including uptime and engagement, identify performance issues, and implement fixes to keep all digital assets accessible and available.</li>
+          <li>Participate in Agile ceremonies including sprint planning, backlog grooming, daily scrums, and PI planning; author and distribute release notes for all web updates.</li>
+          <li>Collaborate with UX designers, backend engineers, and product teams to deliver mobile-first, device-responsive interfaces aligned with USWDS design principles.</li>
         </ul>
         <div class="exp-tags">
           <span class="exp-tag">WordPress</span>
-          <span class="exp-tag">HTML / CSS</span>
+          <span class="exp-tag">React</span>
           <span class="exp-tag">WCAG 2.1</span>
-          <span class="exp-tag">Google Analytics</span>
-          <span class="exp-tag">Content Strategy</span>
+          <span class="exp-tag">USWDS</span>
+          <span class="exp-tag">Agile / JIRA</span>
+          <span class="exp-tag">CI/CD</span>
         </div>
       </div>
     </div>
     <div class="exp-item">
       <div>
-        <div class="exp-date">2022 – 2023</div>
+        <div class="exp-date">Sep 2022 to May 2023</div>
         <div class="exp-co-badge badge-teal">CEMS</div>
         <div class="exp-loc">Remote · India</div>
       </div>
       <div>
         <div class="exp-role">Web Developer Intern</div>
         <ul class="exp-bullets">
-          <li>Developed and maintained responsive websites using HTML, CSS, JavaScript, and PHP.</li>
-          <li>Assisted with WordPress site customization, theme configuration, and content updates in collaboration with cross-functional teams.</li>
-          <li>Identified, documented, and resolved bugs related to functionality, design, and performance.</li>
-          <li>Used Git for version control and collaborated with team members through structured development workflows.</li>
+          <li>Developed and maintained mobile-forward, responsive web interfaces using HTML, CSS, JavaScript, and PHP for internal enterprise applications.</li>
+          <li>Managed deployments using Git and CI/CD pipelines in collaboration with cross-functional development and QA teams.</li>
+          <li>Maintained a web backlog using user stories, resolving issues iteratively to meet operational requirements.</li>
         </ul>
         <div class="exp-tags">
           <span class="exp-tag">HTML / CSS / JS</span>
           <span class="exp-tag">PHP</span>
           <span class="exp-tag">WordPress</span>
           <span class="exp-tag">Git</span>
+          <span class="exp-tag">CI/CD</span>
         </div>
       </div>
     </div>
@@ -443,61 +458,82 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
 <section id="projects">
   <div class="sec-tag">04  Projects</div>
   <div class="sec-title">Selected work</div>
-  <div class="sec-sub">Academic and professional projects</div>
+  <div class="sec-sub">Five examples featuring WCAG, USWDS, mobile-first, green digital, and responsive design</div>
   <div class="proj-grid">
 
     <div class="proj-card featured">
       <div class="featured-content">
-        <span class="featured-badge">Featured project</span>
-        <div class="proj-label" style="color:#6D28D9;">Higher Education</div>
-        <h3>Higher Education Website Redesign</h3>
-        <p>Redesigned and maintained content-heavy academic web pages to improve usability, accessibility, and visual consistency. Applied WCAG 2.1 and ADA-compliant design practices — improving keyboard navigation, color contrast, heading structure, and screen reader support throughout.</p>
+        <span class="featured-badge">Featured · WCAG + USWDS</span>
+        <div class="proj-label" style="color:#6D28D9;">Accessibility</div>
+        <h3>Campus Dining Portal: WCAG 2.1 AA Remediation</h3>
+        <p>Led a full WCAG 2.1 AA audit of the campus dining web portal, identifying and remediating accessibility violations including missing ARIA labels, insufficient color contrast, broken keyboard navigation, and non-descriptive link text. Rebuilt non-compliant UI components in React using USWDS-aligned accessible design patterns. Validated fixes across device breakpoints and delivered a compliance report to the operations team. Managed the effort through a JIRA backlog as the operational accessibility lead.</p>
         <div class="proj-techs" style="margin-top:.8rem;">
-          <span class="proj-tech" style="color:#4C1D95;">WordPress</span>
-          <span class="proj-tech" style="color:#4C1D95;">HTML5</span>
-          <span class="proj-tech" style="color:#4C1D95;">CSS3</span>
-          <span class="proj-tech" style="color:#4C1D95;">WCAG 2.1</span>
-          <span class="proj-tech" style="color:#4C1D95;">Figma</span>
+          <span class="proj-tech" style="color:#4C1D95;">React</span>
+          <span class="proj-tech" style="color:#4C1D95;">HTML5 / CSS3</span>
+          <span class="proj-tech" style="color:#4C1D95;">WCAG 2.1 AA</span>
+          <span class="proj-tech" style="color:#4C1D95;">USWDS</span>
+          <span class="proj-tech" style="color:#4C1D95;">ARIA</span>
+          <span class="proj-tech" style="color:#4C1D95;">JIRA</span>
         </div>
-        <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link" style="color:var(--purple);">View on GitHub →</a>
+        <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link" style="color:var(--purple);">View GitHub Profile →</a>
       </div>
     </div>
 
     <div class="proj-card pc-teal">
-      <div class="proj-label">Analytics</div>
-      <h3>Enrollment Marketing Pages</h3>
-      <p>Responsive marketing web pages for enrollment outreach. Integrated Google Analytics and UTM tracking to measure user behavior and campaign performance.</p>
+      <div class="proj-label">Green Digital · Lightweight</div>
+      <h3>Multi-Site Web Portfolio Unification</h3>
+      <p>Consolidated three campus web properties (WordPress, Google Sites, legacy static site) into a unified, standards-aligned digital portfolio. Applied green digital design principles, reducing redundant page assets, optimizing image weight, and improving Core Web Vitals (LCP, CLS). Maintained a Confluence backlog and distributed release notes each sprint cycle.</p>
       <div class="proj-techs">
-        <span class="proj-tech">HTML / CSS / JS</span>
-        <span class="proj-tech">Google Analytics</span>
-        <span class="proj-tech">Tag Manager</span>
+        <span class="proj-tech">WordPress</span>
+        <span class="proj-tech">Google Sites</span>
+        <span class="proj-tech">Green Digital</span>
+        <span class="proj-tech">Core Web Vitals</span>
+        <span class="proj-tech">Confluence</span>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View on GitHub →</a>
+      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
     </div>
 
     <div class="proj-card pc-coral">
-      <div class="proj-label">Accessibility</div>
-      <h3>Content Audit &amp; Accessibility Remediation</h3>
-      <p>Audited a 50+ page simulated university site for WCAG 2.1 violations. Remediated in HTML and CMS, then delivered a training guide for campus content creators.</p>
+      <div class="proj-label">Mobile-First · Responsive</div>
+      <h3>Internal Operations Web Dashboard</h3>
+      <p>Built a responsive internal web dashboard in JavaScript, HTML5, and CSS3 with interactive charts, filterable tables, and real-time status indicators. Designed mobile-first so non-technical staff could access operational data on any device. Integrated with internal REST APIs and maintained a live issue backlog resolved through user feedback.</p>
       <div class="proj-techs">
-        <span class="proj-tech">HTML</span>
-        <span class="proj-tech">WCAG 2.1</span>
-        <span class="proj-tech">ADA</span>
-        <span class="proj-tech">CMS</span>
+        <span class="proj-tech">JavaScript ES6+</span>
+        <span class="proj-tech">HTML5 / CSS3</span>
+        <span class="proj-tech">Mobile-First</span>
+        <span class="proj-tech">REST API</span>
+        <span class="proj-tech">CI/CD</span>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View on GitHub →</a>
+      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
     </div>
 
     <div class="proj-card pc-blue">
-      <div class="proj-label">Digital Strategy</div>
-      <h3>Digital Asset Management Optimization</h3>
-      <p>Organized and cataloged digital assets across multiple web properties. Established metadata standards and naming conventions to improve retrieval and team efficiency.</p>
+      <div class="proj-label">Responsive · ADA</div>
+      <h3>Higher Education Website Redesign</h3>
+      <p>Redesigned and maintained content-heavy academic web pages to improve usability, accessibility, and visual consistency. Applied WCAG 2.1 and ADA-compliant design practices , improving keyboard navigation, color contrast, heading structure, and screen reader support throughout all pages.</p>
       <div class="proj-techs">
-        <span class="proj-tech">CMS</span>
-        <span class="proj-tech">Metadata</span>
-        <span class="proj-tech">Workflow Design</span>
+        <span class="proj-tech">WordPress</span>
+        <span class="proj-tech">HTML5 / CSS3</span>
+        <span class="proj-tech">WCAG 2.1</span>
+        <span class="proj-tech">ADA</span>
+        <span class="proj-tech">Figma</span>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View on GitHub →</a>
+      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
+    </div>
+
+    <div class="proj-card pc-green" style="grid-column:1/-1;">
+      <div class="proj-label">WCAG · Content Governance</div>
+      <h3>Content Audit &amp; Accessibility Remediation</h3>
+      <p>Audited a 50+ page university site for WCAG 2.1 violations across color contrast, heading structure, link text, alt attributes, and keyboard accessibility. Remediated issues in HTML and CMS, validated with Lighthouse and axe DevTools, then delivered a training guide for campus content creators to maintain compliance going forward. Demonstrated that accessibility is a continuous operational responsibility, not a one-time fix.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">HTML5</span>
+        <span class="proj-tech">WCAG 2.1</span>
+        <span class="proj-tech">ADA</span>
+        <span class="proj-tech">Lighthouse</span>
+        <span class="proj-tech">axe DevTools</span>
+        <span class="proj-tech">CMS</span>
+      </div>
+      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
     </div>
 
   </div>
@@ -506,10 +542,9 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-si
 <section id="contact" style="padding-bottom:5rem;">
   <div class="contact-wrap">
     <h2>Ready to build something <em>great?</em></h2>
-    <p>I'm actively looking for web developer and digital content roles in higher education.<br>Drop me a line — I'd love to chat.</p>
+    <p>I'm actively looking for Webmaster and Frontend Web Developer roles in government and public sector.<br>Drop me a line , I'd love to chat.</p>
     <div class="contact-items">
       <a href="mailto:saideepika.thammireddy@du.edu" class="contact-item">✉ saideepika.thammireddy@du.edu</a>
-      
       <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" class="contact-item">💼 LinkedIn</a>
       <a href="https://github.com/saideepikathammireddy" target="_blank" class="contact-item">💻 GitHub</a>
     </div>
