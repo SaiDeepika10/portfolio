@@ -4,555 +4,1313 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sai Deepika Thammireddy | Webmaster &amp; Frontend Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --purple:#7C3AED;--purple-mid:#9D60F8;--purple-light:#EDE9FE;--purple-dark:#5B21B6;
-  --pink:#EC4899;--pink-light:#FCE7F3;
-  --teal:#0D9488;--teal-light:#CCFBF1;
-  --amber:#F59E0B;--amber-light:#FEF3C7;
-  --coral:#F97316;--coral-light:#FFEDD5;
-  --blue:#3B82F6;--blue-light:#DBEAFE;
-  --green:#10B981;--green-light:#D1FAE5;
-  --text:#111827;--text-muted:#6B7280;--text-soft:#9CA3AF;
-  --bg:#FFFFFF;--bg-soft:#F9FAFB;--border:#E5E7EB;
-  --radius:14px;--radius-sm:8px;
+  --green:#1B4332;--green-mid:#2D6A4F;--green-light:#B7E4C7;--green-xlight:#F0FFF4;
+  --white:#FFFFFF;--off:#F8F9FA;--border:#E2E8F0;--border-d:#CBD5E1;
+  --ink:#1A202C;--muted:#4A5568;--soft:#718096;
+  --amber:#D97706;--amber-bg:#FFFBEB;--amber-border:#FDE68A;
+  --sky:#0369A1;--sky-bg:#E0F2FE;--sky-border:#7DD3FC;
+  --coral:#C2410C;--coral-bg:#FFF7ED;--coral-border:#FED7AA;
+  --lav:#6D28D9;--lav-bg:#EDE9FE;--lav-border:#C4B5FD;
+  --pink:#BE185D;--pink-bg:#FDF2F8;--pink-border:#F9A8D4;
+  --teal:#0F766E;--teal-bg:#CCFBF1;--teal-border:#99F6E4;
+  --r:12px;
 }
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px;overflow-x:hidden;}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:16px;overflow-x:hidden;}
+a{color:var(--green-mid);text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:3px;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px;}
-.nav-logo{font-weight:800;font-size:17px;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text-muted);transition:color .2s;}
-.nav-links a:hover{color:var(--purple);}
-.nav-badge{background:linear-gradient(135deg,var(--teal),var(--green));color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;}
+/* SKIP LINK */
+.skip{position:absolute;top:-60px;left:1rem;background:var(--green);color:white;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:700;font-size:14px;z-index:999;transition:top .2s;}
+.skip:focus{top:0;}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2.5rem 4rem;max-width:900px;margin:0 auto;position:relative;}
-.hero-content{flex:1;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--purple-light);color:var(--purple-dark);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:1.4rem;}
-.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;letter-spacing:-1.5px;color:var(--text);}
-.hero h1 .line-italic{font-family:'Playfair Display',serif;font-style:italic;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:16px;color:var(--text-muted);max-width:540px;margin-bottom:2.2rem;line-height:1.85;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:3rem;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:inherit;}
-.btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple-mid));color:white;box-shadow:0 4px 14px rgba(124,58,237,.3);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.4);}
-.btn-secondary{background:white;color:var(--text);border:2px solid var(--border);}
-.btn-secondary:hover{border-color:var(--purple);color:var(--purple);}
-.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--border);}
-.stat-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-soft);}
-.stat-val{font-size:22px;font-weight:900;color:var(--text);margin-top:2px;}
-.stat-sub{font-size:12px;color:var(--text-muted);}
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal-left.visible{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal-right.visible{opacity:1;transform:none;}
+.delay-1{transition-delay:.1s!important;}
+.delay-2{transition-delay:.2s!important;}
+.delay-3{transition-delay:.3s!important;}
+.delay-4{transition-delay:.4s!important;}
 
-.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.12;pointer-events:none;z-index:-1;}
-.blob-1{width:400px;height:400px;background:var(--purple);top:-80px;right:-100px;}
-.blob-2{width:300px;height:300px;background:var(--pink);bottom:80px;right:60px;}
+/* ── TOP BAR ── */
+.topbar{background:var(--green);padding:.45rem 1.5rem;display:flex;align-items:center;justify-content:flex-end;gap:1.5rem;flex-wrap:wrap;}
+.topbar a{color:rgba(255,255,255,.75);font-size:12px;font-weight:500;transition:color .15s;}
+.topbar a:hover{color:white;text-decoration:none;}
+.topbar-cta{background:rgba(255,255,255,.15);padding:3px 12px;border-radius:4px;color:white!important;font-weight:600!important;}
 
-/* TICKER */
-.ticker-wrap{overflow:hidden;background:var(--text);padding:13px 0;}
-.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 36s linear infinite;}
-.ticker span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 2rem;}
-.ticker span.hi{color:white;}
-@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* ── NAV ── */
+nav{background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;}
+.nav-logo:hover{text-decoration:none;}
+.logo-mark{width:38px;height:38px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:13px;flex-shrink:0;transition:transform .2s;}
+.nav-logo:hover .logo-mark{transform:rotate(-5deg);}
+.logo-text{font-size:14px;font-weight:700;color:var(--ink);line-height:1.2;}
+.logo-text span{display:block;font-size:11px;font-weight:500;color:var(--soft);}
+.nav-links{display:flex;gap:.15rem;list-style:none;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;display:block;}
+.nav-links a:hover{background:var(--green-xlight);color:var(--green);text-decoration:none;}
+.nav-links a.active{color:var(--green);font-weight:600;}
+.nav-cta{background:var(--green)!important;color:white!important;font-weight:600!important;}
+.nav-cta:hover{background:var(--green-mid)!important;color:white!important;}
+.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;cursor:pointer;font-size:18px;color:var(--ink);transition:background .15s;}
+.hamburger:hover{background:var(--off);}
+.mobile-nav{display:none;background:white;border-top:1px solid var(--border);padding:.75rem 1.5rem 1rem;}
+.mobile-nav.open{display:block;}
+.mobile-nav a{display:block;padding:.65rem 0;font-size:15px;font-weight:500;color:var(--muted);border-bottom:1px solid var(--border);}
+.mobile-nav a:last-child{border-bottom:none;color:var(--green);font-weight:600;}
 
-/* SECTIONS */
-section{padding:5.5rem 2.5rem;max-width:900px;margin:0 auto;}
-.sec-tag{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--purple);background:var(--purple-light);padding:4px 12px;border-radius:20px;margin-bottom:.8rem;}
-.sec-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--text);margin-bottom:.5rem;letter-spacing:-1px;}
-.sec-sub{font-size:15px;color:var(--text-muted);margin-bottom:3rem;}
-hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+/* ── HERO ── */
+.hero{background:var(--green);position:relative;overflow:hidden;}
+/* animated circles */
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hbg-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,.04);animation:float 8s ease-in-out infinite;}
+.hbg-circle:nth-child(1){width:400px;height:400px;top:-100px;right:-80px;animation-delay:0s;}
+.hbg-circle:nth-child(2){width:260px;height:260px;bottom:-60px;left:10%;animation-delay:2s;}
+.hbg-circle:nth-child(3){width:160px;height:160px;top:40%;left:30%;animation-delay:4s;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.04);}}
+/* doodles in hero */
+.hero-doodles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 
-/* ABOUT */
-.about-text{font-size:16px;color:var(--text-muted);line-height:1.9;max-width:660px;margin-bottom:2rem;}
-.about-text strong{color:var(--text);}
-.about-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
-.about-card{border-radius:var(--radius);padding:1.4rem;border:2px solid transparent;}
-.ac-purple{background:var(--purple-light);border-color:#DDD6FE;}
-.ac-teal{background:var(--teal-light);border-color:#99F6E4;}
-.ac-amber{background:var(--amber-light);border-color:#FDE68A;}
-.about-card h3{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.7rem;}
-.ac-purple h3{color:var(--purple-dark);}
-.ac-teal h3{color:#0F6E56;}
-.ac-amber h3{color:#92400E;}
-.about-card p,.about-card li{font-size:13px;line-height:1.7;}
-.ac-purple p,.ac-purple li{color:#3730A3;}
-.ac-teal p,.ac-teal li{color:#134E4A;}
-.ac-amber p,.ac-amber li{color:#78350F;}
-.about-card ul{list-style:none;}
-.about-card li{padding:2px 0;}
-.about-card li::before{content:'→ ';font-weight:800;}
+.hero-inner{max-width:1100px;margin:0 auto;padding:5.5rem 2rem 5rem;position:relative;z-index:1;display:grid;grid-template-columns:1fr 360px;gap:3.5rem;align-items:center;}
+.hero-kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:.4rem 1rem;border-radius:20px;margin-bottom:1.2rem;}
+.kicker-dot{width:7px;height:7px;border-radius:50%;background:#86EFAC;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.6);}}
+.hero h1{font-size:clamp(2.1rem,4.8vw,3.4rem);font-weight:800;line-height:1.1;color:white;margin-bottom:1.2rem;letter-spacing:-.5px;}
+.hero h1 .hl{color:#86EFAC;position:relative;display:inline-block;}
+.hero h1 .hl::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;background:rgba(134,239,172,.4);border-radius:2px;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:500px;margin-bottom:2rem;line-height:1.8;}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-w{background:white;color:var(--green);font-size:14px;font-weight:700;padding:.75rem 1.75rem;border-radius:10px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:transform .15s,box-shadow .15s;}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2);text-decoration:none;color:var(--green);}
+.btn-ow{background:transparent;color:white;font-size:14px;font-weight:600;padding:.75rem 1.75rem;border-radius:10px;border:2px solid rgba(255,255,255,.4);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .15s;}
+.btn-ow:hover{border-color:white;background:rgba(255,255,255,.1);text-decoration:none;color:white;}
+.hero-stat-strip{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;}
+.hstat{padding:1rem;text-align:center;position:relative;}
+.hstat+.hstat::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.15);}
+.hstat-n{font-size:1.5rem;font-weight:800;color:white;line-height:1;}
+.hstat-l{font-size:11px;color:rgba(255,255,255,.55);margin-top:.25rem;}
+/* hero card */
+.hero-card{background:white;border-radius:16px;padding:1.75rem;box-shadow:0 24px 48px rgba(0,0,0,.28);position:relative;}
+.hero-card::before{content:'';position:absolute;inset:-1px;border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(255,255,255,.05));pointer-events:none;}
+.hc-name{font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:.15rem;}
+.hc-role{font-size:11px;color:var(--soft);font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem;}
+.hc-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;}
+.hchip{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
+.hchip-g{background:var(--green-light);color:var(--green);}
+.hchip-a{background:#FEF3C7;color:#78350F;}
+.hchip-s{background:var(--sky-bg);color:var(--sky);}
+.hc-divider{height:1px;background:var(--border);margin:.85rem 0;}
+.hc-row{display:flex;align-items:center;gap:.5rem;font-size:13px;color:var(--muted);margin-bottom:.4rem;}
+.hc-status{display:flex;align-items:center;gap:.5rem;font-size:13px;font-weight:700;color:var(--green-mid);}
+.sdot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:blink 2s infinite;}
 
-/* SKILLS */
-.skills-grid{display:flex;flex-direction:column;gap:2rem;}
-.skill-row h3{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--text-soft);margin-bottom:.8rem;}
-.pills{display:flex;flex-wrap:wrap;gap:8px;}
-.pill{font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:transform .15s;}
-.pill:hover{transform:scale(1.04);}
-.p-purple{background:var(--purple-light);color:#4C1D95;}
-.p-teal{background:var(--teal-light);color:#134E4A;}
-.p-coral{background:var(--coral-light);color:#7C2D12;}
-.p-pink{background:var(--pink-light);color:#831843;}
-.p-blue{background:var(--blue-light);color:#1E3A8A;}
-.p-amber{background:var(--amber-light);color:#78350F;}
-.p-green{background:var(--green-light);color:#064E3B;}
-.p-gray{background:#F3F4F6;color:#374151;}
+/* ── IMPACT STRIP ── */
+.impact{background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.impact-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);}
+.icard{padding:1.75rem 1.5rem;text-align:center;position:relative;transition:background .2s;}
+.icard:hover{background:var(--green-xlight);}
+.icard+.icard::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--border-d);}
+.icard-n{font-size:2.1rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:.3rem;}
+.icard-l{font-size:13px;color:var(--muted);}
 
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:0;}
-.exp-item{display:grid;grid-template-columns:170px 1fr;gap:0 2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border);}
-.exp-item:first-child{padding-top:0;}
-.exp-date{font-size:12px;color:var(--text-soft);font-weight:600;margin-bottom:4px;}
-.exp-co-badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:6px;margin-bottom:4px;}
-.badge-purple{background:var(--purple-light);color:#4C1D95;}
-.badge-teal{background:var(--teal-light);color:#134E4A;}
-.exp-loc{font-size:12px;color:var(--text-soft);}
-.exp-role{font-size:18px;font-weight:800;margin-bottom:.8rem;color:var(--text);}
-.exp-bullets{list-style:none;}
-.exp-bullets li{font-size:13.5px;color:var(--text-muted);line-height:1.75;padding:3px 0 3px 18px;position:relative;}
-.exp-bullets li::before{content:'';position:absolute;left:0;top:12px;width:8px;height:2px;border-radius:2px;background:var(--purple);}
-.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.exp-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px;background:#F3F4F6;color:#374151;border:1px solid var(--border);}
+/* ── SECTION WRAPPER ── */
+.sec{padding:5rem 2rem;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.sec-light{background:var(--off);}
+.sec-green{background:var(--green);}
+.sec-head{margin-bottom:2.75rem;}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green-mid);margin-bottom:.5rem;}
+.eyebrow-w{color:#86EFAC;}
+.sec-title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;color:var(--ink);letter-spacing:-.4px;line-height:1.15;margin-bottom:.5rem;}
+.sec-title-w{color:white;}
+.sec-sub{font-size:15px;color:var(--muted);max-width:540px;}
+.sec-sub-w{color:rgba(255,255,255,.65);}
 
-/* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.proj-card{border-radius:var(--radius);padding:1.6rem;transition:transform .2s;cursor:default;display:flex;flex-direction:column;}
-.proj-card:hover{transform:translateY(-3px);}
-.pc-purple{background:var(--purple-light);border:2px solid #DDD6FE;}
-.pc-teal{background:var(--teal-light);border:2px solid #99F6E4;}
-.pc-coral{background:var(--coral-light);border:2px solid #FDBA74;}
-.pc-blue{background:var(--blue-light);border:2px solid #BFDBFE;}
-.pc-green{background:var(--green-light);border:2px solid #6EE7B7;}
-.proj-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:.7rem;}
-.pc-purple .proj-label{color:#6D28D9;}
-.pc-teal .proj-label{color:#0F6E56;}
-.pc-coral .proj-label{color:#C2410C;}
-.pc-blue .proj-label{color:#1D4ED8;}
-.pc-green .proj-label{color:#047857;}
-.proj-card h3{font-size:15px;font-weight:800;margin-bottom:.5rem;}
-.pc-purple h3{color:#3730A3;}
-.pc-teal h3{color:#134E4A;}
-.pc-coral h3{color:#7C2D12;}
-.pc-blue h3{color:#1E3A8A;}
-.pc-green h3{color:#064E3B;}
-.proj-card p{font-size:13px;line-height:1.7;flex:1;margin-bottom:1rem;}
-.pc-purple p{color:#4C1D95;}
-.pc-teal p{color:#134E4A;}
-.pc-coral p{color:#7C2D12;}
-.pc-blue p{color:#1E3A8A;}
-.pc-green p{color:#064E3B;}
-.proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
-.proj-tech{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.7);}
-.pc-purple .proj-tech{color:#4C1D95;}
-.pc-teal .proj-tech{color:#134E4A;}
-.pc-coral .proj-tech{color:#7C2D12;}
-.pc-blue .proj-tech{color:#1E3A8A;}
-.pc-green .proj-tech{color:#064E3B;}
-.proj-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;text-decoration:none;margin-top:12px;}
-.pc-purple .proj-link{color:var(--purple);}
-.pc-teal .proj-link{color:var(--teal);}
-.pc-coral .proj-link{color:var(--coral);}
-.pc-blue .proj-link{color:var(--blue);}
-.pc-green .proj-link{color:var(--green);}
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-body p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
+.about-body strong{color:var(--ink);}
+.about-cards{display:flex;flex-direction:column;gap:.85rem;}
+.acard{background:white;border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.acard::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.acard-green::after{background:var(--green-mid);}
+.acard-amber::after{background:var(--amber);}
+.acard-sky::after{background:var(--sky);}
+.acard:hover{transform:translateX(3px);box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.acard-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ai-green{background:var(--green-light);}
+.ai-amber{background:#FEF3C7;}
+.ai-sky{background:var(--sky-bg);}
+.acard h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:.3rem;}
+.acard p,.acard li{font-size:13px;color:var(--muted);line-height:1.65;}
+.acard ul{list-style:none;}
+.acard li::before{content:'• ';color:var(--green-mid);font-weight:700;}
 
-/* FEATURED PROJECT */
-.proj-card.featured{grid-column:1/-1;flex-direction:row;gap:2rem;align-items:flex-start;background:linear-gradient(135deg,#EDE9FE,#FCE7F3);border:2px solid #DDD6FE;}
-.featured-badge{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--pink));color:white;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:1rem;}
-.featured-content{flex:1;}
-.featured-content h3{font-size:20px;font-weight:900;color:#3730A3;margin-bottom:.6rem;}
-.featured-content p{font-size:14px;color:#4C1D95;line-height:1.8;}
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.sgroup{background:white;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:box-shadow .2s;}
+.sgroup:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.sgroup-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.sgroup-title .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sg-green .dot{background:var(--green-mid);}
+.sg-amber .dot{background:var(--amber);}
+.sg-sky .dot{background:var(--sky);}
+.sg-lav .dot{background:var(--lav);}
+.pills{display:flex;flex-wrap:wrap;gap:.45rem;}
 
-/* CONTACT */
-.contact-wrap{background:linear-gradient(135deg,#1E1B4B,#312E81,#4C1D95);border-radius:20px;padding:3.5rem;text-align:center;position:relative;overflow:hidden;}
-.contact-wrap::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(236,72,153,.2);border-radius:50%;pointer-events:none;}
-.contact-wrap::after{content:'';position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;background:rgba(13,148,136,.2);border-radius:50%;pointer-events:none;}
-.contact-wrap h2{font-size:2.2rem;font-weight:900;color:white;margin-bottom:.8rem;letter-spacing:-1px;}
-.contact-wrap h2 em{font-family:'Playfair Display',serif;font-style:italic;color:#C4B5FD;}
-.contact-wrap p{color:rgba(255,255,255,.7);margin-bottom:2rem;font-size:15px;}
-.contact-items{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;position:relative;z-index:1;}
-.contact-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);border-radius:10px;padding:12px 20px;text-decoration:none;color:white;font-size:13px;font-weight:600;transition:all .2s;}
-.contact-item:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);}
-.btn-contact{background:white;color:var(--purple);font-size:15px;padding:13px 30px;border-radius:10px;font-weight:800;position:relative;z-index:1;}
-.btn-contact:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+/* ── PILL SYSTEM: readable on every background ── */
+.pill{font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;border:1.5px solid;transition:transform .15s,box-shadow .15s;cursor:default;line-height:1.4;}
+.pill:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,.12);}
+/* green pills: dark bg, white text */
+.pill-g{background:var(--green);color:#ffffff;border-color:var(--green);}
+/* amber pills: amber bg, very dark text */
+.pill-a{background:#78350F;color:#FEF3C7;border-color:#78350F;}
+/* sky pills: dark sky bg, white text */
+.pill-s{background:var(--sky);color:#ffffff;border-color:var(--sky);}
+/* lavender pills: dark lav bg, white text */
+.pill-l{background:var(--lav);color:#ffffff;border-color:var(--lav);}
+/* gray pills: dark bg on off-white */
+.pill-gray{background:#374151;color:#F9FAFB;border-color:#374151;}
 
-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-soft);}
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;gap:1.4rem;}
+.ecard{background:white;border:1px solid var(--border);border-radius:var(--r);padding:2rem;position:relative;transition:box-shadow .2s;}
+.ecard:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);}
+.ecard-bar{position:absolute;left:0;top:1.25rem;bottom:1.25rem;width:4px;border-radius:0 4px 4px 0;}
+.eb-green{background:var(--green-mid);}
+.eb-sky{background:var(--sky);}
+.ecard-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
+.ecard-co{font-size:15px;font-weight:700;color:var(--ink);}
+.ecard-loc{font-size:12px;color:var(--soft);margin-top:.15rem;}
+.ebadge{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.eb-badge-green{background:var(--green-light);color:var(--green);}
+.eb-badge-sky{background:var(--sky-bg);color:var(--sky);}
+.ecard-role{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:.85rem;}
+.ecard-bullets{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
+.ecard-bullets li{font-size:14px;color:var(--muted);line-height:1.7;padding-left:1.1rem;position:relative;}
+.ecard-bullets li::before{content:'';position:absolute;left:0;top:.65rem;width:6px;height:6px;border-radius:50%;background:var(--border-d);}
+.etags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.etag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;background:var(--off);color:var(--soft);border:1px solid var(--border);}
 
-@media(max-width:640px){
-  nav{padding:0 1.2rem;}
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.pcard{background:white;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;position:relative;}
+.pcard:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-3px);}
+.pcard-accent{height:4px;width:100%;}
+.pac-green{background:var(--green-mid);}
+.pac-teal{background:var(--teal);}
+.pac-coral{background:var(--coral);}
+.pac-sky{background:var(--sky);}
+.pac-amber{background:var(--amber);}
+.pac-pink{background:var(--pink);}
+.pac-lav{background:var(--lav);}
+.pcard-body{padding:1.4rem 1.4rem .75rem;flex:1;}
+.pcard-eye{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.4rem;}
+.eye-green{color:var(--green-mid);}
+.eye-teal{color:var(--teal);}
+.eye-coral{color:var(--coral);}
+.eye-sky{color:var(--sky);}
+.eye-amber{color:var(--amber);}
+.eye-pink{color:var(--pink);}
+.eye-lav{color:var(--lav);}
+.pcard-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:.45rem;line-height:1.35;}
+.pcard-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:.8rem;}
+.pcard-stats{display:flex;gap:1rem;margin-bottom:.8rem;flex-wrap:wrap;}
+.pstat-n{font-size:1.1rem;font-weight:800;line-height:1;color:var(--ink);}
+.pstat-l{font-size:10px;color:var(--soft);margin-top:.1rem;}
+.ptags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.ptag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--off);color:var(--soft);border:1px solid var(--border);}
+.pcard-foot{padding:.85rem 1.4rem;border-top:1px solid var(--border);background:var(--off);}
+.pbtn{font-size:13px;font-weight:600;color:var(--green-mid);background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.35rem;transition:gap .15s;}
+.pbtn:hover{gap:.6rem;}
+.pbtn:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:3px;}
+/* featured */
+.pcard.feat{grid-column:1/-1;flex-direction:row;}
+.feat .pcard-accent{width:4px;height:auto;}
+.feat .pcard-body{padding:2rem;}
+.feat .pcard-title{font-size:18px;}
+.feat .pcard-foot{border-top:none;border-left:1px solid var(--border);min-width:200px;display:flex;flex-direction:column;justify-content:center;}
+.feat-badge{display:inline-block;background:var(--green);color:white;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:4px;margin-bottom:.75rem;}
+/* live badge */
+.live-badge{display:inline-flex;align-items:center;gap:.4rem;background:#FEF3C7;color:#78350F;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;border:1px solid var(--amber-border);margin-bottom:.6rem;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:blink 1.5s infinite;}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-title{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:white;line-height:1.2;margin-bottom:1rem;letter-spacing:-.3px;}
+.contact-title span{color:#86EFAC;}
+.contact-sub{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:1.75rem;line-height:1.75;}
+.clinks{display:flex;flex-direction:column;gap:.6rem;}
+.clink{display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:.85rem 1.2rem;text-decoration:none;color:white;font-size:14px;font-weight:500;transition:background .15s,transform .15s;}
+.clink:hover{background:rgba(255,255,255,.18);transform:translateX(4px);text-decoration:none;color:white;}
+.clink svg{flex-shrink:0;opacity:.7;}
+.contact-card{background:white;border-radius:14px;padding:2rem;box-shadow:0 12px 40px rgba(0,0,0,.22);}
+.contact-card h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.contact-card p{font-size:13px;color:var(--muted);margin-bottom:1.25rem;}
+.cta-p{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--green);color:white;font-size:14px;font-weight:700;padding:.85rem 1.75rem;border-radius:10px;text-decoration:none;transition:background .15s,transform .15s;width:100%;}
+.cta-p:hover{background:var(--green-mid);transform:translateY(-1px);text-decoration:none;color:white;}
+.cta-s{display:flex;align-items:center;justify-content:center;gap:.5rem;background:transparent;color:var(--green-mid);font-size:14px;font-weight:600;padding:.75rem 1.75rem;border-radius:10px;text-decoration:none;border:2px solid var(--green-mid);transition:background .15s;width:100%;margin-top:.6rem;}
+.cta-s:hover{background:var(--green-xlight);text-decoration:none;}
+.cta-extra{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--border);font-size:12px;color:var(--soft);}
+.cta-extra strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:.35rem;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;overflow-y:auto;padding:2rem 1rem;backdrop-filter:blur(3px);}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+.modal{background:white;border-radius:16px;max-width:780px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.22);overflow:hidden;animation:modalIn .25s ease;}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.mhead{padding:1.75rem 2rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
+.meyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.35rem;}
+.mtitle{font-size:1.4rem;font-weight:800;color:var(--ink);line-height:1.2;letter-spacing:-.3px;}
+.mclose{background:var(--off);border:1px solid var(--border);border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex-shrink:0;color:var(--muted);font-weight:700;transition:background .15s;}
+.mclose:hover{background:var(--border);}
+.mmeta{display:flex;flex-wrap:wrap;gap:.75rem;padding:.65rem 2rem;background:var(--off);border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);}
+.mtags{display:flex;flex-wrap:wrap;gap:.4rem;padding:.8rem 2rem;border-bottom:1px solid var(--border);}
+.mbadge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;}
+.mbadge-g{background:var(--green-light);color:var(--green);}
+.mbadge-gray{background:var(--off);color:var(--muted);border:1px solid var(--border);}
+.mbody{padding:2rem;}
+.mbody h2{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;margin-top:1.4rem;}
+.mbody h2:first-child{margin-top:0;}
+.mbody p{font-size:14px;color:var(--muted);margin-bottom:.85rem;line-height:1.8;}
+.mstats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1.1rem 0;}
+.mstat{background:white;padding:1rem;text-align:center;}
+.mstat-n{font-size:1.5rem;font-weight:800;color:var(--green);line-height:1;}
+.mstat-l{font-size:11px;color:var(--soft);margin-top:.2rem;}
+.mtable{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1rem 0;}
+.mrow{display:grid;padding:.65rem 1rem;font-size:13px;gap:.75rem;border-bottom:1px solid var(--border);background:white;align-items:center;}
+.mrow:last-child{border-bottom:none;}
+.mrow.hdr{background:var(--off);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);}
+.mrow3{grid-template-columns:1.5fr 1.5fr 70px;}
+.mrow2{grid-template-columns:2fr 1fr 80px;}
+.bok{background:var(--green-light);color:var(--green);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}
+.mprocess{display:flex;flex-direction:column;margin:1rem 0;}
+.mstep{display:flex;gap:1rem;padding-bottom:1.4rem;position:relative;}
+.mstep:not(:last-child)::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--border);}
+.mstep-n{width:28px;height:28px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;border:2px solid var(--green-mid);}
+.mstep h3{font-size:.875rem;font-weight:700;margin-bottom:.2rem;color:var(--ink);}
+.mstep p{font-size:.8rem;color:var(--muted);margin:0;}
+.mcompare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1rem 0;}
+.mcol{background:white;padding:1.1rem;}
+.mcol h3{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.7rem;}
+.mcol-b h3{color:#DC2626;}
+.mcol-a h3{color:var(--green-mid);}
+.mcol ul{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+.mcol li{font-size:12px;color:var(--muted);display:flex;gap:.4rem;}
+.mcol-b li::before{content:'x';color:#DC2626;font-weight:700;flex-shrink:0;}
+.mcol-a li::before{content:'v';color:var(--green-mid);font-weight:700;flex-shrink:0;}
+.mvitals{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1rem 0;}
+.mvital{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.85rem;text-align:center;}
+.mvital-m{font-size:1.4rem;font-weight:800;color:var(--green);}
+.mvital-n{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin-top:.15rem;}
+.mvital-c{font-size:11px;color:var(--green-mid);margin-top:.25rem;font-weight:600;}
+.mcode{background:#1E293B;border-radius:8px;padding:1rem 1.25rem;font-family:'Courier New',monospace;font-size:12px;overflow-x:auto;margin:.75rem 0;line-height:1.6;}
+.mcode .cm{color:#64748B;}.mcode .ca{color:#A78BFA;}.mcode .cv{color:#86EFAC;}.mcode .ct{color:#FCD34D;}
+blockquote{border-left:4px solid var(--green-mid);padding:.85rem 1.25rem;background:var(--green-xlight);border-radius:0 8px 8px 0;margin:1.1rem 0;font-size:14px;color:var(--muted);font-style:italic;}
+.mcheck-list{display:flex;flex-direction:column;gap:.45rem;margin:1rem 0;}
+.mcheck{display:flex;gap:.75rem;align-items:flex-start;padding:.8rem 1rem;background:var(--off);border:1px solid var(--border);border-radius:8px;}
+.mcheck h3{font-size:.85rem;font-weight:700;margin-bottom:.15rem;color:var(--ink);}
+.mcheck p{font-size:.78rem;color:var(--muted);margin:0;}
+.mguide{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:1.1rem;margin:1rem 0;}
+.mguide h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin-bottom:.65rem;}
+.mguide-item{display:flex;gap:.6rem;font-size:13px;color:var(--muted);padding:.2rem 0;}
+.mguide-item::before{content:'→';color:var(--green-mid);font-weight:700;flex-shrink:0;}
+
+/* ── LIVE TOOLS ── */
+.tool-lbl{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:.4rem;}
+.tool-inp{width:100%;padding:.6rem .9rem;border:1px solid var(--border-d);border-radius:8px;font-size:13px;font-family:'Courier New',monospace;color:var(--ink);background:white;transition:border-color .15s,box-shadow .15s;}
+.tool-inp:focus{outline:none;border-color:var(--green-mid);box-shadow:0 0 0 3px rgba(45,106,79,.15);}
+.tool-clr-row{display:flex;gap:.5rem;align-items:center;}
+.tool-picker{width:42px;height:38px;border:1px solid var(--border-d);border-radius:6px;padding:2px;cursor:pointer;background:white;}
+.tresult-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0;}
+.trc{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.9rem;text-align:center;transition:background .2s,border-color .2s;}
+.trc-n{font-size:1.45rem;font-weight:800;color:var(--ink);line-height:1;}
+.trc-l{font-size:11px;color:var(--soft);margin-top:.2rem;}
+.t-preview{border-radius:8px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border);transition:background .2s,color .2s;}
+.t-prev-lg{font-size:15px;font-weight:600;margin-bottom:.25rem;}
+.t-prev-sm{font-size:12px;}
+.t-tip{font-size:12px;padding:.65rem 1rem;border-radius:6px;font-weight:500;}
+.presets-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem;}
+.preset-btn{font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:white;cursor:pointer;color:var(--muted);transition:border-color .15s,color .15s;font-family:'Inter',sans-serif;}
+.preset-btn:hover{border-color:var(--green-mid);color:var(--green-mid);}
+/* checklist */
+.score-wrap{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:.85rem 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.score-circle{text-align:center;min-width:52px;}
+.score-n{font-size:1.8rem;font-weight:800;color:var(--green);line-height:1;}
+.score-l{font-size:10px;color:var(--soft);}
+.score-track{flex:1;min-width:100px;}
+.score-bg{height:8px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:.35rem;}
+.score-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green-mid),#22C55E);transition:width .3s;}
+.score-cnt{font-size:11px;color:var(--muted);}
+.copy-btn{padding:.45rem .9rem;background:var(--green-light);color:var(--green);border:1px solid #6EE7B7;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:background .15s;}
+.copy-btn:hover{background:var(--green);color:white;}
+.wl-cat{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:.4rem .85rem;border-radius:6px;margin-top:.5rem;background:var(--green-light);color:var(--green);}
+.wl-row{display:flex;gap:.75rem;align-items:flex-start;padding:.6rem .85rem;background:white;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:background .15s,border-color .15s;margin-top:.3rem;}
+.wl-row:hover{border-color:var(--green-mid);background:var(--green-xlight);}
+.wl-cb{width:15px;height:15px;flex-shrink:0;margin-top:.2rem;cursor:pointer;accent-color:var(--green-mid);}
+.wl-cr{font-size:10px;font-weight:700;color:var(--soft);}
+.wl-lbl{font-size:13px;font-weight:600;color:var(--ink);}
+.wl-desc{font-size:11px;color:var(--muted);margin-top:.1rem;}
+.tool-btn-row{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap;}
+.tsm-btn{font-size:12px;font-weight:500;padding:5px 14px;border-radius:6px;border:1px solid var(--border);background:white;cursor:pointer;color:var(--muted);font-family:'Inter',sans-serif;transition:border-color .15s;}
+.tsm-btn:hover{border-color:var(--green-mid);color:var(--green-mid);}
+
+/* ── FOOTER ── */
+footer{background:#0A1F13;padding:3.5rem 2rem 2rem;}
+.foot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;}
+.foot-brand{color:rgba(255,255,255,.45);font-size:13px;line-height:1.75;}
+.foot-brand strong{display:block;color:white;font-size:15px;font-weight:700;margin-bottom:.5rem;}
+.foot-col h4{color:rgba(255,255,255,.4);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.85rem;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.foot-col a{color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;transition:color .15s;}
+.foot-col a:hover{color:white;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+.foot-bottom p{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* ── DOODLE ORNAMENTS ── */
+.doodle-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;}.hero-card{display:none;}
+  .proj-grid{grid-template-columns:1fr 1fr;}
+  .pcard.feat{flex-direction:column;}.feat .pcard-accent{width:100%;height:4px;}.feat .pcard-foot{border-left:none;border-top:1px solid var(--border);min-width:auto;}
+  .foot-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .topbar{display:none;}
   .nav-links{display:none;}
-  section{padding:3.5rem 1.2rem;}
-  .exp-item{grid-template-columns:1fr;}
+  .hamburger{display:block;}
+  .hero-inner{padding:4rem 1.5rem 3.5rem;}
+  .impact-inner .icard-wrap{grid-template-columns:1fr 1fr!important;}
+  .about-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr;}
   .proj-grid{grid-template-columns:1fr;}
-  .proj-card.featured{flex-direction:column;}
-  .contact-wrap{padding:2rem 1.4rem;}
-  .hero{padding:90px 1.2rem 3rem;}
+  .contact-grid{grid-template-columns:1fr;}
+  .modal-overlay{padding:0;}
+  .modal{border-radius:16px 16px 0 0;margin-top:auto;}
+  .mrow3,.mrow2{grid-template-columns:1fr 1fr;}
+  .mcompare{grid-template-columns:1fr;}
+  .mvitals{grid-template-columns:1fr 1fr;}
+  .tresult-grid{grid-template-columns:1fr 1fr;}
+  .foot-inner{grid-template-columns:1fr 1fr;}
+  .sec{padding:3.5rem 1.25rem;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2rem;}
+  .hero-stat-strip{grid-template-columns:1fr 1fr 1fr;}
+  .hstat-n{font-size:1.1rem;}
+  .proj-grid{grid-template-columns:1fr;}
+  .tresult-grid{grid-template-columns:1fr;}
+  .foot-inner{grid-template-columns:1fr;}
+  .foot-bottom{flex-direction:column;text-align:center;}
 }
 </style>
 </head>
 <body>
+<a href="#main" class="skip">Skip to main content</a>
 
-<nav>
-  <div class="nav-logo">Sai Deepika</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <span class="nav-badge">Open to work</span>
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="mailto:saideepika.thammireddy@du.edu">saideepika.thammireddy@du.edu</a>
+  <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://github.com/saideepika10" target="_blank" rel="noopener">GitHub</a>
+  <a href="#contact" class="topbar-cta">Get in touch</a>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Sai Deepika homepage">
+      <div class="logo-mark" aria-hidden="true">SD</div>
+      <div class="logo-text">Sai Deepika Thammireddy<span>Webmaster &amp; Frontend Developer</span></div>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger" onclick="toggleNav()">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#about" onclick="closeNav()">About</a>
+    <a href="#skills" onclick="closeNav()">Skills</a>
+    <a href="#experience" onclick="closeNav()">Experience</a>
+    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="#contact" onclick="closeNav()">Contact →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-dot"></span>
-      Webmaster &amp; Frontend Web Developer
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hbg-circle"></div>
+    <div class="hbg-circle"></div>
+    <div class="hbg-circle"></div>
+  </div>
+  <!-- Doodle SVGs -->
+  <div class="hero-doodles" aria-hidden="true">
+    <svg style="position:absolute;top:60px;right:420px;width:70px;opacity:.18" viewBox="0 0 70 70"><path d="M10 35 Q22 10 35 22 Q48 34 60 10" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="10" cy="35" r="3" fill="white"/><circle cx="60" cy="10" r="3" fill="white"/></svg>
+    <svg style="position:absolute;bottom:80px;left:60px;width:55px;opacity:.15" viewBox="0 0 55 55"><path d="M27 5 L31 20 L47 20 L34 30 L39 46 L27 37 L15 46 L20 30 L7 20 L23 20 Z" stroke="white" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+    <svg style="position:absolute;top:100px;left:40px;width:48px;opacity:.12" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" stroke="white" stroke-width="2" fill="none" stroke-dasharray="4 3"/></svg>
+    <svg style="position:absolute;bottom:100px;right:50px;width:60px;opacity:.13" viewBox="0 0 60 60"><path d="M5 50 Q30 5 55 50" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M15 38 Q30 18 45 38" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="reveal">
+      <div class="hero-kicker"><span class="kicker-dot"></span>Colorado Resident · Available for Work</div>
+      <h1>Building websites that<br><span class="hl">work for everyone.</span></h1>
+      <p class="hero-sub">Frontend web developer and webmaster specializing in accessible, ADA/WCAG-compliant digital portfolios — helping public-sector organizations build web experiences that are inclusive, fast, and built to last.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-w">See my work →</a>
+        <a href="#contact" class="btn-ow">Get in touch</a>
+      </div>
+      <div class="hero-stat-strip">
+        <div class="hstat"><div class="hstat-n">WCAG 2.1</div><div class="hstat-l">AA Certified</div></div>
+        <div class="hstat"><div class="hstat-n">2+</div><div class="hstat-l">Years experience</div></div>
+        <div class="hstat"><div class="hstat-n">MS</div><div class="hstat-l">Univ. of Denver</div></div>
+      </div>
     </div>
-    <h1>
-      Websites that<br>
-      <span class="line-italic">work for everyone.</span>
-    </h1>
-    <p class="hero-sub">
-      Hi, I'm Sai Deepika. I build accessible, ADA/WCAG-compliant web experiences for public-facing digital portfolios. I specialize in making sure every user , regardless of ability, device, or background , can navigate and use the web the way it was meant to be used.
-    </p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">Say hello ✉</a>
-      <a href="#projects" class="btn btn-secondary">See my work →</a>
+    <div class="hero-card reveal reveal-right delay-2">
+      <div class="hc-name">Sai Deepika Thammireddy</div>
+      <div class="hc-role">Webmaster · Frontend Developer</div>
+      <div class="hc-chips">
+        <span class="hchip hchip-g">WCAG 2.1 AA</span>
+        <span class="hchip hchip-g">USWDS</span>
+        <span class="hchip hchip-a">React</span>
+        <span class="hchip hchip-s">WordPress</span>
+        <span class="hchip hchip-a">Agile</span>
+        <span class="hchip hchip-g">ADA</span>
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-row">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Denver, Colorado
+      </div>
+      <div class="hc-row">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        saideepika.thammireddy@du.edu
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-status"><span class="sdot"></span>Open to full-time roles</div>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-label">Experience</div>
-        <div class="stat-val">2+</div>
-        <div class="stat-sub">Years web operations</div>
+  </div>
+</div>
+
+<!-- IMPACT STRIP -->
+<div class="impact" role="region" aria-label="Key numbers">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);">
+      <div class="icard reveal delay-1"><div class="icard-n">38</div><div class="icard-l">WCAG violations remediated</div></div>
+      <div class="icard reveal delay-2"><div class="icard-n">50+</div><div class="icard-l">Pages audited for compliance</div></div>
+      <div class="icard reveal delay-3"><div class="icard-n">100</div><div class="icard-l">Lighthouse accessibility score</div></div>
+      <div class="icard reveal delay-4"><div class="icard-n">3</div><div class="icard-l">CMS platforms mastered</div></div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ABOUT -->
+<div class="sec" id="about" style="position:relative;overflow:hidden;">
+  <!-- doodle -->
+  <svg style="position:absolute;top:30px;right:40px;width:90px;opacity:.06;pointer-events:none" viewBox="0 0 90 90" aria-hidden="true"><path d="M45 10 Q80 20 80 45 Q80 75 45 80 Q10 75 10 45 Q10 20 45 10Z" stroke="var(--green)" stroke-width="3" fill="none" stroke-dasharray="6 4"/><circle cx="45" cy="45" r="18" stroke="var(--green)" stroke-width="2" fill="none"/></svg>
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <div class="eyebrow">About me</div>
+      <div class="sec-title">Developer &amp; accessibility advocate</div>
+      <div class="sec-sub">Building digital portfolios that serve everyone</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-body reveal-left">
+        <p>I'm a frontend web developer and webmaster with hands-on experience building accessible, ADA/WCAG-compliant digital portfolios for higher education and enterprise organizations. My work sits at the intersection of technical precision, accessibility advocacy, and iterative delivery.</p>
+        <p>I specialize in making sure every user, regardless of ability, device, or background, can navigate the web the way it was meant to be used. Whether it's leading a WCAG 2.1 AA audit, consolidating a fragmented multi-site portfolio, or building a mobile-first dashboard that staff can actually use, <strong>that's where I do my best work.</strong></p>
+        <p style="margin-top:.75rem;"><strong>MS, Information Technology</strong> — University of Denver, 2025 · GPA 3.6<br><span style="color:var(--soft);font-size:14px;">Website Design &amp; Management</span></p>
       </div>
-      <div>
-        <div class="stat-label">Core stack</div>
-        <div class="stat-val" style="font-size:13px;margin-top:6px;line-height:1.5;">HTML · CSS · JS<br>React · WordPress</div>
-      </div>
-      <div>
-        <div class="stat-label">Accessibility</div>
-        <div class="stat-val">WCAG 2.1</div>
-        <div class="stat-sub">ADA compliant</div>
-      </div>
-      <div>
-        <div class="stat-label">Status</div>
-        <div class="stat-val" style="font-size:14px;color:var(--teal);margin-top:6px;">✦ Available</div>
+      <div class="about-cards reveal-right">
+        <div class="acard acard-green"><div class="acard-icon ai-green">♿</div><div><h3>Accessibility &amp; WCAG</h3><p>WCAG 2.1 AA/AAA, ADA compliance, USWDS, ARIA, screen reader testing, keyboard navigation</p></div></div>
+        <div class="acard acard-sky delay-1"><div class="acard-icon ai-sky">📦</div><div><h3>CMS &amp; Platforms</h3><ul><li>WordPress, Drupal, Google Sites</li><li>Salesforce, LMS, CRM, HCM</li><li>Enterprise SaaS and SSO</li></ul></div></div>
+        <div class="acard acard-amber delay-2"><div class="acard-icon ai-amber">⚡</div><div><h3>Agile Delivery</h3><p>Sprint planning, backlog management, PI planning, JIRA, Confluence, CI/CD</p></div></div>
+        <div class="acard acard-green delay-3"><div class="acard-icon ai-green">📍</div><div><h3>Location &amp; Status</h3><p>Denver, Colorado · Open to hybrid and full-time roles in government and public sector</p></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="ticker-wrap">
-  <div class="ticker">
-    <span class="hi">HTML5</span><span>·</span>
-    <span class="hi">CSS3</span><span>·</span>
-    <span class="hi">JavaScript</span><span>·</span>
-    <span class="hi">React</span><span>·</span>
-    <span class="hi">WCAG 2.1</span><span>·</span>
-    <span class="hi">ADA Compliance</span><span>·</span>
-    <span class="hi">USWDS</span><span>·</span>
-    <span class="hi">WordPress</span><span>·</span>
-    <span class="hi">Drupal</span><span>·</span>
-    <span class="hi">Mobile-First</span><span>·</span>
-    <span class="hi">JIRA</span><span>·</span>
-    <span class="hi">Confluence</span><span>·</span>
-    <span class="hi">CI/CD</span><span>·</span>
-    <span class="hi">Agile/Scrum</span><span>·</span>
-    <span class="hi">Green Digital</span><span>·</span>
-    <span class="hi">Git</span><span>·</span>
-    <span class="hi">SSO Integration</span><span>·</span>
-    <span class="hi">HTML5</span><span>·</span>
-    <span class="hi">CSS3</span><span>·</span>
-    <span class="hi">JavaScript</span><span>·</span>
-    <span class="hi">React</span><span>·</span>
-    <span class="hi">WCAG 2.1</span><span>·</span>
-    <span class="hi">ADA Compliance</span><span>·</span>
-    <span class="hi">USWDS</span><span>·</span>
-    <span class="hi">WordPress</span><span>·</span>
-    <span class="hi">Drupal</span><span>·</span>
-    <span class="hi">Mobile-First</span><span>·</span>
-    <span class="hi">JIRA</span><span>·</span>
-    <span class="hi">Confluence</span><span>·</span>
-    <span class="hi">CI/CD</span><span>·</span>
-    <span class="hi">Agile/Scrum</span><span>·</span>
-    <span class="hi">Green Digital</span><span>·</span>
-    <span class="hi">Git</span><span>·</span>
-    <span class="hi">SSO Integration</span><span>·</span>
-  </div>
-</div>
-
-<section id="about">
-  <div class="sec-tag">01  About</div>
-  <div class="sec-title">Front-end developer &amp;<br>accessibility advocate</div>
-  <div class="sec-sub">Building digital portfolios that serve everyone</div>
-  <p class="about-text">
-    I'm a frontend web developer and webmaster with experience maintaining accessible, responsive digital portfolios for diverse end users. My work spans WCAG compliance, CMS operations, Agile web workflows, and mobile-first design , all focused on keeping web experiences available, navigable, and inclusive for every person who needs them.
-    <br><br>
-    Whether it's remediating a site for WCAG 2.1 AA compliance, consolidating a multi-site digital portfolio, or building a dashboard that works on any device , <strong>that's where I do my best work.</strong>
-  </p>
-  <div class="about-cards">
-    <div class="about-card ac-purple">
-      <h3>Education</h3>
-      <p><strong>MS, Information Technology</strong><br>University of Denver, 2025<br>Website Design &amp; Management</p>
-      <p style="margin-top:.6rem;"><strong>BS, Computer Science</strong><br>Sri Padmavathi Women's University</p>
+<!-- SKILLS -->
+<div class="sec sec-light" id="skills" style="position:relative;overflow:hidden;">
+  <svg style="position:absolute;bottom:30px;left:30px;width:75px;opacity:.06;pointer-events:none" viewBox="0 0 75 75" aria-hidden="true"><path d="M10 65 L37 10 L64 65 Z" stroke="var(--green)" stroke-width="3" fill="none"/><path d="M24 44 L50 44" stroke="var(--green)" stroke-width="2"/></svg>
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Technical skills</div>
+      <div class="sec-title">What I build with</div>
+      <div class="sec-sub">A full-stack of front-end, accessibility, CMS, and DevOps skills</div>
     </div>
-    <div class="about-card ac-teal">
-      <h3>Looking for</h3>
-      <ul>
-        <li>Webmaster roles</li>
-        <li>Government / Public Sector</li>
-        <li>Frontend Web Developer</li>
-        <li>Digital Content Specialist</li>
-      </ul>
-    </div>
-    <div class="about-card ac-amber">
-      <h3>Based in</h3>
-      <p>Denver, Colorado</p>
-      <p style="margin-top:.4rem;">Colorado Resident</p>
-      <p style="margin-top:.4rem;font-weight:700;">GPA 3.6 / 4.0</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<section id="skills">
-  <div class="sec-tag">02  Skills</div>
-  <div class="sec-title">Technologies &amp; tools</div>
-  <div class="sec-sub">Everything I work with to build great web experiences</div>
-  <div class="skills-grid">
-    <div class="skill-row">
-      <h3>Front-End Development</h3>
-      <div class="pills">
-        <span class="pill p-purple">HTML5</span>
-        <span class="pill p-purple">CSS3 / SCSS</span>
-        <span class="pill p-purple">JavaScript ES6+</span>
-        <span class="pill p-purple">React</span>
-        <span class="pill p-purple">TypeScript</span>
-        <span class="pill p-gray">Responsive Design</span>
-        <span class="pill p-gray">Mobile-First</span>
-        <span class="pill p-gray">Cross-browser Testing</span>
+    <div class="skills-grid">
+      <div class="sgroup sg-green reveal delay-1">
+        <div class="sgroup-title"><span class="dot"></span>Front-End Development</div>
+        <div class="pills">
+          <span class="pill pill-g">HTML5</span>
+          <span class="pill pill-g">CSS3 / SCSS</span>
+          <span class="pill pill-g">JavaScript ES6+</span>
+          <span class="pill pill-g">React</span>
+          <span class="pill pill-g">TypeScript</span>
+          <span class="pill pill-gray">Responsive Design</span>
+          <span class="pill pill-gray">Mobile-First</span>
+          <span class="pill pill-gray">Cross-browser Testing</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-row">
-      <h3>Accessibility &amp; Compliance</h3>
-      <div class="pills">
-        <span class="pill p-teal">WCAG 2.1 AA</span>
-        <span class="pill p-teal">ADA Compliance</span>
-        <span class="pill p-teal">USWDS</span>
-        <span class="pill p-teal">ARIA</span>
-        <span class="pill p-green">Keyboard Navigation</span>
-        <span class="pill p-green">Screen Reader Testing</span>
-        <span class="pill p-green">Color Contrast</span>
-        <span class="pill p-green">Lighthouse / axe DevTools</span>
+      <div class="sgroup sg-amber reveal delay-2">
+        <div class="sgroup-title"><span class="dot"></span>Accessibility &amp; Compliance</div>
+        <div class="pills">
+          <span class="pill pill-a">WCAG 2.1 AA</span>
+          <span class="pill pill-a">ADA Compliance</span>
+          <span class="pill pill-a">USWDS</span>
+          <span class="pill pill-a">ARIA</span>
+          <span class="pill pill-a">Keyboard Navigation</span>
+          <span class="pill pill-a">Screen Reader Testing</span>
+          <span class="pill pill-a">Lighthouse / axe</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-row">
-      <h3>CMS &amp; Platforms</h3>
-      <div class="pills">
-        <span class="pill p-blue">WordPress</span>
-        <span class="pill p-blue">Drupal</span>
-        <span class="pill p-blue">Google Sites</span>
-        <span class="pill p-blue">Squarespace</span>
-        <span class="pill p-blue">Salesforce</span>
-        <span class="pill p-gray">Enterprise SaaS / CMS</span>
-        <span class="pill p-gray">LMS / CRM / HCM</span>
+      <div class="sgroup sg-sky reveal delay-1">
+        <div class="sgroup-title"><span class="dot"></span>CMS &amp; Platforms</div>
+        <div class="pills">
+          <span class="pill pill-s">WordPress</span>
+          <span class="pill pill-s">Drupal</span>
+          <span class="pill pill-s">Google Sites</span>
+          <span class="pill pill-s">Squarespace</span>
+          <span class="pill pill-s">Salesforce</span>
+          <span class="pill pill-gray">Enterprise SaaS</span>
+          <span class="pill pill-gray">LMS / CRM / HCM</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-row">
-      <h3>Tools &amp; DevOps</h3>
-      <div class="pills">
-        <span class="pill p-coral">Git / GitHub</span>
-        <span class="pill p-coral">CI/CD Pipelines</span>
-        <span class="pill p-coral">JIRA</span>
-        <span class="pill p-coral">Confluence</span>
-        <span class="pill p-coral">npm / Webpack / Vite</span>
-        <span class="pill p-pink">Jest</span>
-        <span class="pill p-pink">React Testing Library</span>
-        <span class="pill p-pink">Google Analytics</span>
-      </div>
-    </div>
-    <div class="skill-row">
-      <h3>Practices &amp; Methodologies</h3>
-      <div class="pills">
-        <span class="pill p-amber">Agile / Scrum</span>
-        <span class="pill p-amber">Backlog Management</span>
-        <span class="pill p-amber">Sprint Planning</span>
-        <span class="pill p-amber">PI Planning</span>
-        <span class="pill p-amber">UI/UX Metrics</span>
-        <span class="pill p-gray">Stakeholder Reporting</span>
-        <span class="pill p-gray">Green Digital Design</span>
-        <span class="pill p-gray">SSO Integration</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<section id="experience">
-  <div class="sec-tag">03 Experience</div>
-  <div class="sec-title">Where I've built things</div>
-  <div class="sec-sub">Professional experience in web operations and accessibility</div>
-  <div class="exp-list">
-    <div class="exp-item">
-      <div>
-        <div class="exp-date">Jan 2024 to Present</div>
-        <div class="exp-co-badge badge-purple">University of Denver</div>
-        <div class="exp-loc">Denver, CO · Sodexo</div>
-      </div>
-      <div>
-        <div class="exp-role">Campus Web &amp; Digital Systems Intern</div>
-        <ul class="exp-bullets">
-          <li>Maintain and enhance multiple content-rich websites ensuring availability, navigability, and WCAG 2.1 / ADA compliance across all digital assets.</li>
-          <li>Remediate existing content to meet ADA and WCAG 2.1 standards, covering heading structure, color contrast, ARIA labels, alt text, and keyboard navigation.</li>
-          <li>Monitor UI/UX web metrics including uptime and engagement, identify performance issues, and implement fixes to keep all digital assets accessible and available.</li>
-          <li>Participate in Agile ceremonies including sprint planning, backlog grooming, daily scrums, and PI planning; author and distribute release notes for all web updates.</li>
-          <li>Collaborate with UX designers, backend engineers, and product teams to deliver mobile-first, device-responsive interfaces aligned with USWDS design principles.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">WordPress</span>
-          <span class="exp-tag">React</span>
-          <span class="exp-tag">WCAG 2.1</span>
-          <span class="exp-tag">USWDS</span>
-          <span class="exp-tag">Agile / JIRA</span>
-          <span class="exp-tag">CI/CD</span>
+      <div class="sgroup sg-lav reveal delay-2">
+        <div class="sgroup-title"><span class="dot"></span>Tools &amp; Practices</div>
+        <div class="pills">
+          <span class="pill pill-l">Git / GitHub</span>
+          <span class="pill pill-l">CI/CD Pipelines</span>
+          <span class="pill pill-l">JIRA</span>
+          <span class="pill pill-l">Confluence</span>
+          <span class="pill pill-l">npm / Webpack</span>
+          <span class="pill pill-gray">Agile / Scrum</span>
+          <span class="pill pill-gray">Green Digital</span>
+          <span class="pill pill-gray">SSO Integration</span>
         </div>
       </div>
     </div>
-    <div class="exp-item">
-      <div>
-        <div class="exp-date">Sep 2022 to May 2023</div>
-        <div class="exp-co-badge badge-teal">CEMS</div>
-        <div class="exp-loc">Remote · India</div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec" id="experience" style="position:relative;overflow:hidden;">
+  <svg style="position:absolute;top:40px;right:50px;width:65px;opacity:.06;pointer-events:none" viewBox="0 0 65 65" aria-hidden="true"><circle cx="32" cy="32" r="28" stroke="var(--green)" stroke-width="2.5" fill="none" stroke-dasharray="5 4"/><circle cx="32" cy="32" r="14" stroke="var(--green)" stroke-width="1.5" fill="none"/></svg>
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Work experience</div>
+      <div class="sec-title">Where I've built things</div>
+      <div class="sec-sub">Professional web operations and accessibility roles</div>
+    </div>
+    <div class="exp-list">
+      <div class="ecard reveal">
+        <div class="ecard-bar eb-green"></div>
+        <div class="ecard-head">
+          <div><div class="ecard-co">University of Denver · Sodexo</div><div class="ecard-loc">Denver, CO · Internship</div></div>
+          <span class="ebadge eb-badge-green">Jan 2024 – Present</span>
+        </div>
+        <div class="ecard-role">Campus Web &amp; Digital Systems Intern</div>
+        <ul class="ecard-bullets">
+          <li>Maintain and enhance multiple content-rich websites ensuring WCAG 2.1 / ADA compliance across all digital assets.</li>
+          <li>Remediate existing content covering heading structure, color contrast, ARIA labels, alt text, and keyboard navigation.</li>
+          <li>Monitor UI/UX web metrics including uptime and engagement; identify and resolve front-end performance issues.</li>
+          <li>Participate in full Agile ceremonies including sprint planning, backlog grooming, daily scrums, and PI planning.</li>
+          <li>Collaborate with UX designers and backend engineers to deliver mobile-first interfaces aligned with USWDS principles.</li>
+        </ul>
+        <div class="etags"><span class="etag">WordPress</span><span class="etag">React</span><span class="etag">WCAG 2.1</span><span class="etag">USWDS</span><span class="etag">JIRA</span><span class="etag">CI/CD</span></div>
       </div>
-      <div>
-        <div class="exp-role">Web Developer Intern</div>
-        <ul class="exp-bullets">
-          <li>Developed and maintained mobile-forward, responsive web interfaces using HTML, CSS, JavaScript, and PHP for internal enterprise applications.</li>
-          <li>Managed deployments using Git and CI/CD pipelines in collaboration with cross-functional development and QA teams.</li>
+      <div class="ecard reveal delay-1">
+        <div class="ecard-bar eb-sky"></div>
+        <div class="ecard-head">
+          <div><div class="ecard-co">Center of Excellence in Maritime &amp; Shipbuilding</div><div class="ecard-loc">Remote · India</div></div>
+          <span class="ebadge eb-badge-sky">Sep 2022 – May 2023</span>
+        </div>
+        <div class="ecard-role">Web Developer Intern</div>
+        <ul class="ecard-bullets">
+          <li>Built mobile-forward, responsive web interfaces in HTML, CSS, JavaScript, and PHP for internal enterprise applications.</li>
+          <li>Managed deployments using Git and CI/CD pipelines with cross-functional development and QA teams.</li>
           <li>Maintained a web backlog using user stories, resolving issues iteratively to meet operational requirements.</li>
         </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">HTML / CSS / JS</span>
-          <span class="exp-tag">PHP</span>
-          <span class="exp-tag">WordPress</span>
-          <span class="exp-tag">Git</span>
-          <span class="exp-tag">CI/CD</span>
+        <div class="etags"><span class="etag">HTML / CSS / JS</span><span class="etag">PHP</span><span class="etag">WordPress</span><span class="etag">Git</span><span class="etag">CI/CD</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="sec sec-light" id="projects" style="position:relative;overflow:hidden;">
+  <svg style="position:absolute;bottom:40px;right:40px;width:80px;opacity:.06;pointer-events:none" viewBox="0 0 80 80" aria-hidden="true"><path d="M8 72 Q40 8 72 72" stroke="var(--green)" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M20 52 Q40 24 60 52" stroke="var(--green)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Selected work</div>
+      <div class="sec-title">Projects</div>
+      <div class="sec-sub">Five case studies and two live interactive tools you can use right now</div>
+    </div>
+    <div class="proj-grid">
+
+      <div class="pcard feat reveal">
+        <div class="pcard-accent pac-green"></div>
+        <div class="pcard-body">
+          <span class="feat-badge">Featured</span>
+          <div class="pcard-eye eye-green">WCAG 2.1 AA · USWDS · Accessibility</div>
+          <div class="pcard-title">Campus Dining Portal: WCAG 2.1 AA Remediation</div>
+          <div class="pcard-desc">Initiated and led a full WCAG 2.1 AA audit of the campus dining portal. Found 38 violations, rebuilt every non-compliant React component using USWDS-aligned patterns, and validated with NVDA and VoiceOver. Lighthouse score went from 61 to 100.</div>
+          <div class="pcard-stats">
+            <div><div class="pstat-n" style="color:var(--green-mid);">38</div><div class="pstat-l">violations fixed</div></div>
+            <div><div class="pstat-n" style="color:var(--green-mid);">100</div><div class="pstat-l">Lighthouse score</div></div>
+            <div><div class="pstat-n" style="color:var(--green-mid);">6 wk</div><div class="pstat-l">delivery</div></div>
+          </div>
+          <div class="ptags"><span class="ptag">React</span><span class="ptag">WCAG 2.1 AA</span><span class="ptag">USWDS</span><span class="ptag">ARIA</span><span class="ptag">JIRA</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m1')" style="color:var(--green-mid);">View case study →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-1">
+        <div class="pcard-accent pac-teal"></div>
+        <div class="pcard-body">
+          <div class="pcard-eye eye-teal">Green Digital · Lightweight</div>
+          <div class="pcard-title">3-Site Digital Portfolio Unification</div>
+          <div class="pcard-desc">Consolidated three disconnected campus web properties into one unified portfolio. Cut page weight 40% and moved Core Web Vitals from "Poor" to "Good".</div>
+          <div class="pcard-stats"><div><div class="pstat-n" style="color:var(--teal);">3 to 1</div><div class="pstat-l">sites merged</div></div><div><div class="pstat-n" style="color:var(--teal);">40%</div><div class="pstat-l">weight cut</div></div></div>
+          <div class="ptags"><span class="ptag">WordPress</span><span class="ptag">Google Sites</span><span class="ptag">Core Web Vitals</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m2')" style="color:var(--teal);">View case study →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-2">
+        <div class="pcard-accent pac-coral"></div>
+        <div class="pcard-body">
+          <div class="pcard-eye eye-coral">Mobile-First · Responsive</div>
+          <div class="pcard-title">Internal Operations Web Dashboard</div>
+          <div class="pcard-desc">Built a mobile-first dashboard in vanilla JS for non-technical floor staff. Three REST API integrations, GitHub Actions CI/CD, zero training required.</div>
+          <div class="pcard-stats"><div><div class="pstat-n" style="color:var(--coral);">3</div><div class="pstat-l">API integrations</div></div><div><div class="pstat-n" style="color:var(--coral);">0</div><div class="pstat-l">training needed</div></div></div>
+          <div class="ptags"><span class="ptag">JavaScript ES6+</span><span class="ptag">Mobile-First</span><span class="ptag">REST API</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m3')" style="color:var(--coral);">View case study →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-1">
+        <div class="pcard-accent pac-sky"></div>
+        <div class="pcard-body">
+          <div class="pcard-eye eye-sky">Responsive · ADA</div>
+          <div class="pcard-title">Higher Education Website Redesign</div>
+          <div class="pcard-desc">Redesigned 15+ content-heavy academic pages. Fixed 12 contrast failures, rebuilt keyboard navigation, validated with screen readers before every release.</div>
+          <div class="pcard-stats"><div><div class="pstat-n" style="color:var(--sky);">15+</div><div class="pstat-l">pages redesigned</div></div><div><div class="pstat-n" style="color:var(--sky);">AA</div><div class="pstat-l">contrast met</div></div></div>
+          <div class="ptags"><span class="ptag">WordPress</span><span class="ptag">WCAG 2.1</span><span class="ptag">Figma</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m4')" style="color:var(--sky);">View case study →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-2">
+        <div class="pcard-accent pac-amber"></div>
+        <div class="pcard-body">
+          <div class="pcard-eye eye-amber">WCAG · Content Governance</div>
+          <div class="pcard-title">50-Page Content Audit &amp; Remediation</div>
+          <div class="pcard-desc">Audited 50+ pages for WCAG 2.1 violations. Remediated every issue in HTML and WordPress CMS, then wrote a training guide for content authors.</div>
+          <div class="pcard-stats"><div><div class="pstat-n" style="color:var(--amber);">50+</div><div class="pstat-l">pages audited</div></div><div><div class="pstat-n" style="color:var(--amber);">0</div><div class="pstat-l">violations left</div></div></div>
+          <div class="ptags"><span class="ptag">WCAG 2.1</span><span class="ptag">Lighthouse</span><span class="ptag">axe DevTools</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m5')" style="color:var(--amber);">View case study →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-1">
+        <div class="pcard-accent pac-pink"></div>
+        <div class="pcard-body">
+          <div class="live-badge"><span class="live-dot"></span>Live Tool</div>
+          <div class="pcard-eye eye-pink">JavaScript · WCAG</div>
+          <div class="pcard-title">WCAG Color Contrast Checker</div>
+          <div class="pcard-desc">Real-time contrast ratio calculator using the WCAG relative luminance formula. Instantly shows AA and AAA pass/fail status. Try it right now.</div>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1</span><span class="ptag">ARIA</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m6')" style="color:var(--pink);">Try the tool →</button></div>
+      </div>
+
+      <div class="pcard reveal delay-2">
+        <div class="pcard-accent pac-lav"></div>
+        <div class="pcard-body">
+          <div class="live-badge" style="background:var(--lav-bg);color:var(--lav);border-color:var(--lav-border);"><span class="live-dot" style="background:var(--lav);"></span>Live Tool</div>
+          <div class="pcard-eye eye-lav">JavaScript · WCAG 2.1</div>
+          <div class="pcard-title">WCAG 2.1 AA Compliance Checklist</div>
+          <div class="pcard-desc">Interactive checklist of all 30 WCAG 2.1 AA criteria. Check off items as you audit, watch your score update live, and copy a report to share.</div>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1 AA</span><span class="ptag">ARIA</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m7')" style="color:var(--lav);">Try the tool →</button></div>
+      </div>
+
+      <!-- P8: Pomodoro Timer -->
+      <div class="pcard reveal delay-1" style="grid-column:1/-1;">
+        <div class="pcard-accent" style="background:linear-gradient(90deg,#E11D48,#F97316);"></div>
+        <div class="pcard-body">
+          <div class="live-badge" style="background:#FFF1F2;color:#E11D48;border-color:#FECDD3;"><span class="live-dot" style="background:#E11D48;"></span>Live Tool</div>
+          <div class="pcard-eye" style="color:#E11D48;">JavaScript · Productivity · Everyday Use</div>
+          <div class="pcard-title">Pomodoro Focus Timer</div>
+          <div class="pcard-desc">A beautiful, fully functional focus timer built with vanilla JavaScript. Work in 25-minute sessions, take short and long breaks, track tasks, and watch your daily progress build up — all without leaving the page.</div>
+          <div class="pcard-stats">
+            <div><div class="pstat-n" style="color:#E11D48;">25 min</div><div class="pstat-l">focus sessions</div></div>
+            <div><div class="pstat-n" style="color:#E11D48;">Tasks</div><div class="pstat-l">built-in tracker</div></div>
+            <div><div class="pstat-n" style="color:#E11D48;">Live</div><div class="pstat-l">no page reload</div></div>
+          </div>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">CSS Animations</span><span class="ptag">localStorage</span><span class="ptag">Accessible</span></div>
+        </div>
+        <div class="pcard-foot"><button class="pbtn" onclick="openModal('m8')" style="color:#E11D48;">Try the timer →</button></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="sec sec-green" id="contact" style="position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+    <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);top:-80px;right:-60px;"></div>
+    <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-50px;left:10%;"></div>
+    <svg style="position:absolute;top:50px;left:50px;width:60px;opacity:.12" viewBox="0 0 60 60"><path d="M5 55 Q30 5 55 55" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <svg style="position:absolute;bottom:60px;right:80px;width:50px;opacity:.1" viewBox="0 0 50 50"><path d="M25 5 L28 20 L43 20 L31 29 L36 44 L25 36 L14 44 L19 29 L7 20 L22 20 Z" stroke="white" stroke-width="2" fill="none"/></svg>
+  </div>
+  <div class="sec-inner" style="position:relative;z-index:1;">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="eyebrow eyebrow-w">Get in touch</div>
+        <div class="contact-title">Let's build something <span>great</span> together</div>
+        <div class="contact-sub">I'm actively looking for Webmaster and Frontend Web Developer roles in government and public sector. Open to hybrid and full-time positions in Colorado.</div>
+        <div class="clinks">
+          <a href="mailto:saideepika.thammireddy@du.edu" class="clink">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            saideepika.thammireddy@du.edu
+          </a>
+          <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener" class="clink">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            linkedin.com/in/saideepikathammireddy
+          </a>
+          <a href="https://github.com/saideepika10" target="_blank" rel="noopener" class="clink">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+            github.com/saideepika10
+          </a>
         </div>
       </div>
+      <div class="contact-card reveal-right">
+        <h3>Ready to connect?</h3>
+        <p>Send me an email or reach out on LinkedIn. I typically respond within 24 hours.</p>
+        <a href="mailto:saideepika.thammireddy@du.edu" class="cta-p">Send me an email →</a>
+        <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener" class="cta-s">Connect on LinkedIn</a>
+        <div class="cta-extra"><strong>Portfolio URL</strong>saideepika10.github.io/portfolio</div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<hr class="divider"/>
+</main>
 
-<section id="projects">
-  <div class="sec-tag">04  Projects</div>
-  <div class="sec-title">Selected work</div>
-  <div class="sec-sub">Five examples featuring WCAG, USWDS, mobile-first, green digital, and responsive design</div>
-  <div class="proj-grid">
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand"><strong>Sai Deepika Thammireddy</strong>Webmaster &amp; Frontend Web Developer<br>Denver, Colorado · Colorado Resident<br><br>Specializing in accessible, ADA/WCAG-compliant web experiences for public-sector digital portfolios.</div>
+    <div class="foot-col"><h4>Navigation</h4><ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="foot-col"><h4>Skills</h4><ul><li><a href="#skills">WCAG 2.1 AA</a></li><li><a href="#skills">USWDS</a></li><li><a href="#skills">WordPress / Drupal</a></li><li><a href="#skills">React / JavaScript</a></li><li><a href="#skills">Agile / JIRA</a></li></ul></div>
+    <div class="foot-col"><h4>Connect</h4><ul><li><a href="mailto:saideepika.thammireddy@du.edu">Email</a></li><li><a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://github.com/saideepika10" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 Sai Deepika Thammireddy · Denver, CO · Built with HTML, CSS &amp; JavaScript</p>
+    <p>Designed to meet WCAG 2.1 AA accessibility standards</p>
+  </div>
+</footer>
 
-    <div class="proj-card featured">
-      <div class="featured-content">
-        <span class="featured-badge">Featured · WCAG + USWDS</span>
-        <div class="proj-label" style="color:#6D28D9;">Accessibility</div>
-        <h3>Campus Dining Portal: WCAG 2.1 AA Remediation</h3>
-        <p>Led a full WCAG 2.1 AA audit of the campus dining web portal, identifying and remediating accessibility violations including missing ARIA labels, insufficient color contrast, broken keyboard navigation, and non-descriptive link text. Rebuilt non-compliant UI components in React using USWDS-aligned accessible design patterns. Validated fixes across device breakpoints and delivered a compliance report to the operations team. Managed the effort through a JIRA backlog as the operational accessibility lead.</p>
-        <div class="proj-techs" style="margin-top:.8rem;">
-          <span class="proj-tech" style="color:#4C1D95;">React</span>
-          <span class="proj-tech" style="color:#4C1D95;">HTML5 / CSS3</span>
-          <span class="proj-tech" style="color:#4C1D95;">WCAG 2.1 AA</span>
-          <span class="proj-tech" style="color:#4C1D95;">USWDS</span>
-          <span class="proj-tech" style="color:#4C1D95;">ARIA</span>
-          <span class="proj-tech" style="color:#4C1D95;">JIRA</span>
+<!-- MODALS -->
+<div id="m1" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m1t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--green-mid);">Case Study 01</div><h2 class="mtitle" id="m1t">Campus Dining Portal: WCAG 2.1 AA Remediation</h2></div><button class="mclose" onclick="closeModal('m1')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>📍 University of Denver · Sodexo</span><span>📅 2024</span><span>⏱ 6-week sprint</span></div>
+  <div class="mtags"><span class="mbadge mbadge-g">WCAG 2.1 AA</span><span class="mbadge mbadge-g">USWDS</span><span class="mbadge mbadge-gray">React</span><span class="mbadge mbadge-gray">ARIA</span><span class="mbadge mbadge-gray">JIRA</span></div>
+  <div class="mbody">
+    <h2>The problem</h2><p>The campus dining portal served thousands of daily users but had never been audited for accessibility. Screen reader and keyboard-only users were locked out of core features. I initiated and led the full remediation.</p>
+    <div class="mstats-row"><div class="mstat"><div class="mstat-n">38</div><div class="mstat-l">violations found</div></div><div class="mstat"><div class="mstat-n">38</div><div class="mstat-l">violations fixed</div></div><div class="mstat"><div class="mstat-n">100</div><div class="mstat-l">Lighthouse score</div></div><div class="mstat"><div class="mstat-n">6 wk</div><div class="mstat-l">delivery</div></div></div>
+    <h2>What the audit found</h2>
+    <div class="mtable"><div class="mrow mrow3 hdr"><div>Issue</div><div>WCAG Criterion</div><div>Status</div></div><div class="mrow mrow3"><div>Missing ARIA labels on icon buttons</div><div>4.1.2 Name, Role, Value</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow3"><div>Insufficient color contrast</div><div>1.4.3 Contrast Minimum</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow3"><div>Broken keyboard navigation</div><div>2.1.1 Keyboard</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow3"><div>Non-descriptive link text</div><div>2.4.4 Link Purpose</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow3"><div>Images missing alt attributes</div><div>1.1.1 Non-text Content</div><div><span class="bok">Fixed</span></div></div></div>
+    <h2>Process</h2>
+    <div class="mprocess"><div class="mstep"><div class="mstep-n">1</div><div><h3>Automated and manual audit</h3><p>Lighthouse and axe DevTools plus keyboard-only and NVDA walkthroughs of every user flow.</p></div></div><div class="mstep"><div class="mstep-n">2</div><div><h3>JIRA backlog with user stories</h3><p>Converted every violation into a user story tied to its WCAG success criterion. Prioritized by user impact.</p></div></div><div class="mstep"><div class="mstep-n">3</div><div><h3>Remediation in React</h3><p>Rebuilt non-compliant components using USWDS-aligned patterns. Added ARIA roles, labels, and focus management.</p></div></div><div class="mstep"><div class="mstep-n">4</div><div><h3>Validation and release notes</h3><p>Tested with NVDA, VoiceOver on iOS, keyboard-only across Chrome, Firefox, and Safari before shipping.</p></div></div></div>
+    <div class="mcode"><span class="cm">// Before: screen reader says "button"</span><br>&lt;<span class="ct">button</span> <span class="ca">onClick</span>=<span class="cv">{handleFilter}</span>&gt;&lt;<span class="ct">FilterIcon</span>/&gt;&lt;/<span class="ct">button</span>&gt;<br><br><span class="cm">// After: WCAG 4.1.2 compliant</span><br>&lt;<span class="ct">button</span> <span class="ca">aria-label</span>=<span class="cv">"Filter by dietary preference"</span> <span class="ca">aria-expanded</span>=<span class="cv">{isOpen}</span>&gt;<br>&nbsp;&nbsp;&lt;<span class="ct">FilterIcon</span> <span class="ca">aria-hidden</span>=<span class="cv">"true"</span>/&gt;&lt;/<span class="ct">button</span>&gt;</div>
+    <blockquote>I didn't treat this as a compliance checklist. I treated it as part of building something that actually works for everyone.</blockquote>
+  </div></div>
+</div>
+
+<div id="m2" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m2t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--teal);">Case Study 02</div><h2 class="mtitle" id="m2t">3-Site Digital Portfolio Unification</h2></div><button class="mclose" onclick="closeModal('m2')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>📍 University of Denver · Sodexo</span><span>📅 2024</span><span>⏱ 3 sprint cycles</span></div>
+  <div class="mtags"><span class="mbadge" style="background:var(--teal-bg);color:var(--teal);">Green Digital</span><span class="mbadge" style="background:var(--teal-bg);color:var(--teal);">Core Web Vitals</span><span class="mbadge mbadge-gray">WordPress</span><span class="mbadge mbadge-gray">Confluence</span></div>
+  <div class="mbody">
+    <h2>Three sites. One broken experience.</h2><p>The campus digital presence was spread across a WordPress site, a Google Sites page, and a legacy static HTML site with no shared navigation and duplicate content. I led the consolidation into a single unified portfolio.</p>
+    <div class="mstats-row"><div class="mstat"><div class="mstat-n" style="color:var(--teal);">3 to 1</div><div class="mstat-l">sites merged</div></div><div class="mstat"><div class="mstat-n" style="color:var(--teal);">40%</div><div class="mstat-l">page weight cut</div></div><div class="mstat"><div class="mstat-n" style="color:var(--teal);">3</div><div class="mstat-l">sprint cycles</div></div></div>
+    <h2>Before and after</h2>
+    <div class="mcompare"><div class="mcol mcol-b"><h3>Before</h3><ul><li>3 separate sites, no shared nav</li><li>Inconsistent branding</li><li>Duplicate content everywhere</li><li>Heavy unoptimized images</li><li>Core Web Vitals: Poor</li></ul></div><div class="mcol mcol-a"><h3>After</h3><ul><li>Single unified WordPress site</li><li>Consistent design system</li><li>Content audited and deduped</li><li>Images compressed to WebP</li><li>Core Web Vitals: Good</li></ul></div></div>
+    <h2>Core Web Vitals improvement</h2>
+    <div class="mvitals"><div class="mvital"><div class="mvital-m" style="color:var(--teal);">1.8s</div><div class="mvital-n">LCP</div><div class="mvital-c">from 4.2s</div></div><div class="mvital"><div class="mvital-m" style="color:var(--teal);">0.04</div><div class="mvital-n">CLS</div><div class="mvital-c">from 0.18</div></div><div class="mvital"><div class="mvital-m" style="color:var(--teal);">62ms</div><div class="mvital-n">FID</div><div class="mvital-c">from 180ms</div></div></div>
+    <blockquote>Getting the standards documented and the team aligned matters as much as the code.</blockquote>
+  </div></div>
+</div>
+
+<div id="m3" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m3t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--coral);">Case Study 03</div><h2 class="mtitle" id="m3t">Internal Operations Web Dashboard</h2></div><button class="mclose" onclick="closeModal('m3')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>📍 Center of Excellence in Maritime and Shipbuilding</span><span>📅 2023</span></div>
+  <div class="mtags"><span class="mbadge" style="background:var(--coral-bg);color:var(--coral);">Mobile-First</span><span class="mbadge" style="background:var(--coral-bg);color:var(--coral);">Responsive</span><span class="mbadge mbadge-gray">JavaScript ES6+</span><span class="mbadge mbadge-gray">REST API</span></div>
+  <div class="mbody">
+    <h2>Operations data on any device</h2><p>Non-technical floor staff needed real-time data access but the existing system required desktop and technical knowledge. I built a mobile-first dashboard accessible on any device without training.</p>
+    <div class="mstats-row"><div class="mstat"><div class="mstat-n" style="color:var(--coral);">100%</div><div class="mstat-l">mobile accessible</div></div><div class="mstat"><div class="mstat-n" style="color:var(--coral);">3</div><div class="mstat-l">API integrations</div></div><div class="mstat"><div class="mstat-n" style="color:var(--coral);">0</div><div class="mstat-l">training required</div></div></div>
+    <div class="mprocess"><div class="mstep"><div class="mstep-n" style="background:var(--coral-bg);color:var(--coral);border-color:var(--coral);">1</div><div><h3>User research with floor staff</h3><p>Understood their devices, workflows, and what data they needed before writing a line of code.</p></div></div><div class="mstep"><div class="mstep-n" style="background:var(--coral-bg);color:var(--coral);border-color:var(--coral);">2</div><div><h3>Mobile-first layout</h3><p>Designed for the smallest screen first, progressively enhanced for tablet and desktop.</p></div></div><div class="mstep"><div class="mstep-n" style="background:var(--coral-bg);color:var(--coral);border-color:var(--coral);">3</div><div><h3>REST API integration</h3><p>Lightweight fetch wrappers for three internal APIs with proper loading and error states.</p></div></div><div class="mstep"><div class="mstep-n" style="background:var(--coral-bg);color:var(--coral);border-color:var(--coral);">4</div><div><h3>CI/CD via GitHub Actions</h3><p>Automated deployment so fixes went live within minutes of a merge.</p></div></div></div>
+    <blockquote>Mobile-first is a forcing function. It makes you decide what actually matters and build for that first.</blockquote>
+  </div></div>
+</div>
+
+<div id="m4" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m4t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--sky);">Case Study 04</div><h2 class="mtitle" id="m4t">Higher Education Website Redesign</h2></div><button class="mclose" onclick="closeModal('m4')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>📍 University of Denver · Sodexo</span><span>📅 2024</span></div>
+  <div class="mtags"><span class="mbadge" style="background:var(--sky-bg);color:var(--sky);">Responsive</span><span class="mbadge" style="background:var(--sky-bg);color:var(--sky);">ADA Compliant</span><span class="mbadge mbadge-gray">WordPress</span><span class="mbadge mbadge-gray">Figma</span></div>
+  <div class="mbody">
+    <h2>Content-heavy pages nobody could use</h2><p>Academic pages had inconsistent heading structures, mixed visual styles, and no navigation pattern. Failed basic accessibility checks on every device.</p>
+    <div class="mstats-row"><div class="mstat"><div class="mstat-n" style="color:var(--sky);">15+</div><div class="mstat-l">pages redesigned</div></div><div class="mstat"><div class="mstat-n" style="color:var(--sky);">12</div><div class="mstat-l">contrast failures fixed</div></div><div class="mstat"><div class="mstat-n" style="color:var(--sky);">100%</div><div class="mstat-l">WCAG 2.1 AA</div></div></div>
+    <div class="mcheck-list"><div class="mcheck"><div>⌨️</div><div><h3>Keyboard navigation rebuilt</h3><p>All interactive elements rebuilt for full keyboard operability with visible focus indicators.</p></div></div><div class="mcheck"><div>🎨</div><div><h3>Color contrast corrected</h3><p>12 pairings failing 4.5:1 minimum. Updated design system tokens for all text.</p></div></div><div class="mcheck"><div>🏗️</div><div><h3>Heading structure normalized</h3><p>Multiple H1s and skipped heading levels rebuilt on every page for screen reader navigation.</p></div></div><div class="mcheck"><div>📱</div><div><h3>Responsive from 320px</h3><p>Rebuilt fully responsive. Tested across iOS, Android, and all major browsers before release.</p></div></div></div>
+    <blockquote>Fix the heading structure and the page becomes easier to scan for everyone. Fix contrast and it becomes easier to read for everyone.</blockquote>
+  </div></div>
+</div>
+
+<div id="m5" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m5t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--amber);">Case Study 05</div><h2 class="mtitle" id="m5t">50-Page Content Audit &amp; Accessibility Remediation</h2></div><button class="mclose" onclick="closeModal('m5')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>📍 University of Denver · Sodexo</span><span>📅 2024</span><span>⏱ 50+ pages audited</span></div>
+  <div class="mtags"><span class="mbadge" style="background:var(--amber-bg);color:var(--amber);">WCAG 2.1</span><span class="mbadge" style="background:var(--amber-bg);color:var(--amber);">Content Governance</span><span class="mbadge mbadge-gray">Lighthouse</span><span class="mbadge mbadge-gray">axe DevTools</span></div>
+  <div class="mbody">
+    <h2>50+ pages. Zero accessibility standards.</h2><p>The university site had grown to over 50 pages with no content governance and no accessibility review process. I ran a full audit, remediated every violation, and built a training guide so the team could maintain compliance without a developer.</p>
+    <div class="mstats-row"><div class="mstat"><div class="mstat-n" style="color:var(--amber);">50+</div><div class="mstat-l">pages audited</div></div><div class="mstat"><div class="mstat-n" style="color:var(--amber);">0</div><div class="mstat-l">violations remaining</div></div><div class="mstat"><div class="mstat-n" style="color:var(--amber);">1</div><div class="mstat-l">training guide</div></div></div>
+    <div class="mtable"><div class="mrow mrow2 hdr"><div>Category</div><div>Pages Affected</div><div>Status</div></div><div class="mrow mrow2"><div>Color contrast failures</div><div>31 pages</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow2"><div>Broken heading hierarchy</div><div>28 pages</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow2"><div>Vague or missing link text</div><div>22 pages</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow2"><div>Missing alt attributes</div><div>19 pages</div><div><span class="bok">Fixed</span></div></div><div class="mrow mrow2"><div>Keyboard navigation gaps</div><div>14 pages</div><div><span class="bok">Fixed</span></div></div></div>
+    <div class="mguide"><h3>Training guide topics</h3><div class="mguide-item">How to write descriptive alt text and when to leave it empty</div><div class="mguide-item">Using headings for structure, not for style</div><div class="mguide-item">Writing link text that makes sense out of context</div><div class="mguide-item">Checking color contrast before publishing</div><div class="mguide-item">How to run a Lighthouse check on any page</div><div class="mguide-item">When to flag something for developer review</div></div>
+    <blockquote>Remediating a site is the easy part. Making sure it stays accessible after you leave requires documentation, training, and a shared standard the whole team owns.</blockquote>
+  </div></div>
+</div>
+
+<!-- M6: Color Contrast Checker LIVE -->
+<div id="m6" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m6t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--pink);">Live Tool · JavaScript · WCAG</div><h2 class="mtitle" id="m6t">WCAG Color Contrast Checker</h2></div><button class="mclose" onclick="closeModal('m6')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>Vanilla JavaScript</span><span>WCAG relative luminance formula</span><span>Keyboard accessible</span></div>
+  <div class="mbody">
+    <p>Pick any two colors and instantly see whether they pass WCAG 2.1 AA (4.5:1) or AAA (7:1) contrast requirements.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div><label class="tool-lbl" for="cc-fg">Foreground color</label><div class="tool-clr-row"><input type="color" id="cc-fg-p" value="#1A202C" class="tool-picker" aria-label="Foreground color picker" onchange="syncCC('fg')"><input type="text" id="cc-fg" value="#1A202C" maxlength="7" class="tool-inp" aria-label="Foreground hex" oninput="syncCCP('fg');runCC()"></div></div>
+      <div><label class="tool-lbl" for="cc-bg">Background color</label><div class="tool-clr-row"><input type="color" id="cc-bg-p" value="#ffffff" class="tool-picker" aria-label="Background color picker" onchange="syncCC('bg')"><input type="text" id="cc-bg" value="#ffffff" maxlength="7" class="tool-inp" aria-label="Background hex" oninput="syncCCP('bg');runCC()"></div></div>
+    </div>
+    <div id="cc-prev" class="t-preview"><div class="t-prev-lg" id="cc-pl">The quick brown fox jumps over the lazy dog</div><div class="t-prev-sm" id="cc-ps">Small text (12px) — harder to read at low contrast</div></div>
+    <div class="tresult-grid"><div class="trc" id="cc-rc"><div class="trc-n" id="cc-ratio">--</div><div class="trc-l">Contrast ratio</div></div><div class="trc" id="cc-aa"><div class="trc-n">--</div><div class="trc-l">WCAG AA (4.5:1)</div></div><div class="trc" id="cc-aaa"><div class="trc-n">--</div><div class="trc-l">WCAG AAA (7:1)</div></div></div>
+    <div id="cc-tip" class="t-tip" style="background:var(--off);color:var(--muted);">Enter two colors above to check their contrast ratio.</div>
+    <div style="margin-top:.9rem;"><div class="tool-lbl">Quick presets</div><div class="presets-row"><button class="preset-btn" onclick="setCC('#1A202C','#ffffff')">Dark on White</button><button class="preset-btn" onclick="setCC('#ffffff','#1B4332')">White on Green</button><button class="preset-btn" onclick="setCC('#718096','#ffffff')" style="color:#DC2626;">Gray on White (fails)</button><button class="preset-btn" onclick="setCC('#1E3A8A','#DBEAFE')">Navy on Sky</button></div></div>
+  </div></div>
+</div>
+
+<!-- M7: WCAG Checklist LIVE -->
+<div id="m7" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m7t">
+  <div class="modal"><div class="mhead"><div><div class="meyebrow" style="color:var(--lav);">Live Tool · JavaScript · WCAG 2.1</div><h2 class="mtitle" id="m7t">WCAG 2.1 AA Compliance Checklist</h2></div><button class="mclose" onclick="closeModal('m7')" aria-label="Close">✕</button></div>
+  <div class="mmeta"><span>30 WCAG 2.1 AA criteria</span><span>Live compliance score</span><span>Copy report to clipboard</span></div>
+  <div class="mbody">
+    <p>Audit any web page for WCAG 2.1 AA compliance. Check off each criterion as you verify it.</p>
+    <div class="score-wrap"><div class="score-circle"><div class="score-n" id="wl-pct">0%</div><div class="score-l">Complete</div></div><div class="score-track"><div class="score-bg"><div class="score-fill" id="wl-fill" style="width:0%"></div></div><div class="score-cnt" id="wl-cnt">0 of 26 criteria checked</div></div><button class="copy-btn" onclick="copyWL()">Copy report</button></div>
+    <div id="wl-list"></div>
+    <div class="tool-btn-row"><button class="tsm-btn" onclick="allWL(true)">Check all</button><button class="tsm-btn" onclick="allWL(false)">Clear all</button></div>
+  </div></div>
+</div>
+
+<!-- M8: Pomodoro Focus Timer LIVE -->
+<div id="m8" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="m8t">
+  <div class="modal" style="max-width:680px;">
+    <div class="mhead">
+      <div>
+        <div class="meyebrow" style="color:#E11D48;">Live Tool · Productivity · Everyday Use</div>
+        <h2 class="mtitle" id="m8t">Pomodoro Focus Timer</h2>
+      </div>
+      <button class="mclose" onclick="closeModal('m8')" aria-label="Close">✕</button>
+    </div>
+    <div class="mmeta"><span>25 min focus · 5 min break · 15 min long break</span><span>Tasks + daily stats</span></div>
+    <div class="mbody" style="padding:1.5rem;">
+
+      <!-- MODE TABS -->
+      <div id="pom-tabs" style="display:flex;gap:.4rem;background:var(--off);border-radius:10px;padding:.3rem;margin-bottom:1.5rem;" role="tablist" aria-label="Timer mode">
+        <button class="pom-tab pom-tab-active" id="tab-focus" role="tab" aria-selected="true" onclick="pomSetMode('focus')">Focus</button>
+        <button class="pom-tab" id="tab-short" role="tab" aria-selected="false" onclick="pomSetMode('short')">Short Break</button>
+        <button class="pom-tab" id="tab-long" role="tab" aria-selected="false" onclick="pomSetMode('long')">Long Break</button>
+      </div>
+
+      <!-- TIMER RING -->
+      <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:1.5rem;">
+        <div style="position:relative;width:180px;height:180px;margin-bottom:1.25rem;" aria-live="polite" aria-atomic="true">
+          <svg width="180" height="180" style="transform:rotate(-90deg);" aria-hidden="true">
+            <circle cx="90" cy="90" r="78" fill="none" stroke="var(--border)" stroke-width="8"/>
+            <circle id="pom-ring" cx="90" cy="90" r="78" fill="none" stroke="#E11D48" stroke-width="8"
+              stroke-dasharray="490" stroke-dashoffset="0" stroke-linecap="round"
+              style="transition:stroke-dashoffset .5s ease, stroke .4s ease;"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div id="pom-time" style="font-size:2.6rem;font-weight:800;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums;">25:00</div>
+            <div id="pom-mode-lbl" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin-top:.3rem;">Focus</div>
+          </div>
         </div>
-        <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link" style="color:var(--purple);">View GitHub Profile →</a>
-      </div>
-    </div>
 
-    <div class="proj-card pc-teal">
-      <div class="proj-label">Green Digital · Lightweight</div>
-      <h3>Multi-Site Web Portfolio Unification</h3>
-      <p>Consolidated three campus web properties (WordPress, Google Sites, legacy static site) into a unified, standards-aligned digital portfolio. Applied green digital design principles, reducing redundant page assets, optimizing image weight, and improving Core Web Vitals (LCP, CLS). Maintained a Confluence backlog and distributed release notes each sprint cycle.</p>
-      <div class="proj-techs">
-        <span class="proj-tech">WordPress</span>
-        <span class="proj-tech">Google Sites</span>
-        <span class="proj-tech">Green Digital</span>
-        <span class="proj-tech">Core Web Vitals</span>
-        <span class="proj-tech">Confluence</span>
+        <!-- CONTROLS -->
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <button onclick="pomReset()" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:white;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s;" title="Reset" aria-label="Reset timer">↺</button>
+          <button id="pom-start-btn" onclick="pomToggle()" style="width:64px;height:64px;border-radius:50%;border:none;background:#E11D48;color:white;cursor:pointer;font-size:16px;font-weight:700;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(225,29,72,.35);transition:transform .15s,box-shadow .15s;" aria-label="Start timer">Start</button>
+          <button onclick="pomSkip()" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:white;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s;" title="Skip" aria-label="Skip to next session">⏭</button>
+        </div>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
-    </div>
 
-    <div class="proj-card pc-coral">
-      <div class="proj-label">Mobile-First · Responsive</div>
-      <h3>Internal Operations Web Dashboard</h3>
-      <p>Built a responsive internal web dashboard in JavaScript, HTML5, and CSS3 with interactive charts, filterable tables, and real-time status indicators. Designed mobile-first so non-technical staff could access operational data on any device. Integrated with internal REST APIs and maintained a live issue backlog resolved through user feedback.</p>
-      <div class="proj-techs">
-        <span class="proj-tech">JavaScript ES6+</span>
-        <span class="proj-tech">HTML5 / CSS3</span>
-        <span class="proj-tech">Mobile-First</span>
-        <span class="proj-tech">REST API</span>
-        <span class="proj-tech">CI/CD</span>
+      <!-- SESSION DOTS -->
+      <div style="display:flex;justify-content:center;gap:.4rem;margin-bottom:1.5rem;" aria-label="Session progress" role="status">
+        <div class="pom-dot pom-dot-done" id="pdot-0"></div>
+        <div class="pom-dot" id="pdot-1"></div>
+        <div class="pom-dot" id="pdot-2"></div>
+        <div class="pom-dot" id="pdot-3"></div>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
-    </div>
 
-    <div class="proj-card pc-blue">
-      <div class="proj-label">Responsive · ADA</div>
-      <h3>Higher Education Website Redesign</h3>
-      <p>Redesigned and maintained content-heavy academic web pages to improve usability, accessibility, and visual consistency. Applied WCAG 2.1 and ADA-compliant design practices , improving keyboard navigation, color contrast, heading structure, and screen reader support throughout all pages.</p>
-      <div class="proj-techs">
-        <span class="proj-tech">WordPress</span>
-        <span class="proj-tech">HTML5 / CSS3</span>
-        <span class="proj-tech">WCAG 2.1</span>
-        <span class="proj-tech">ADA</span>
-        <span class="proj-tech">Figma</span>
+      <!-- STATS ROW -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;">
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.9rem;text-align:center;">
+          <div id="pom-completed" style="font-size:1.5rem;font-weight:800;color:#E11D48;line-height:1;">0</div>
+          <div style="font-size:11px;color:var(--soft);margin-top:.2rem;">Sessions today</div>
+        </div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.9rem;text-align:center;">
+          <div id="pom-mins" style="font-size:1.5rem;font-weight:800;color:#E11D48;line-height:1;">0</div>
+          <div style="font-size:11px;color:var(--soft);margin-top:.2rem;">Minutes focused</div>
+        </div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.9rem;text-align:center;">
+          <div id="pom-tasks-done" style="font-size:1.5rem;font-weight:800;color:#E11D48;line-height:1;">0</div>
+          <div style="font-size:11px;color:var(--soft);margin-top:.2rem;">Tasks done</div>
+        </div>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
-    </div>
 
-    <div class="proj-card pc-green" style="grid-column:1/-1;">
-      <div class="proj-label">WCAG · Content Governance</div>
-      <h3>Content Audit &amp; Accessibility Remediation</h3>
-      <p>Audited a 50+ page university site for WCAG 2.1 violations across color contrast, heading structure, link text, alt attributes, and keyboard accessibility. Remediated issues in HTML and CMS, validated with Lighthouse and axe DevTools, then delivered a training guide for campus content creators to maintain compliance going forward. Demonstrated that accessibility is a continuous operational responsibility, not a one-time fix.</p>
-      <div class="proj-techs">
-        <span class="proj-tech">HTML5</span>
-        <span class="proj-tech">WCAG 2.1</span>
-        <span class="proj-tech">ADA</span>
-        <span class="proj-tech">Lighthouse</span>
-        <span class="proj-tech">axe DevTools</span>
-        <span class="proj-tech">CMS</span>
+      <!-- TASK LIST -->
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin-bottom:.75rem;">Tasks</div>
+        <div style="display:flex;gap:.5rem;margin-bottom:.75rem;">
+          <input type="text" id="pom-task-inp" placeholder="Add a task..." maxlength="60"
+            style="flex:1;padding:.55rem .85rem;border:1px solid var(--border-d);border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;color:var(--ink);background:white;transition:border-color .15s;"
+            onkeydown="if(event.key==='Enter')pomAddTask()" aria-label="New task"/>
+          <button onclick="pomAddTask()" style="padding:.55rem 1rem;background:#E11D48;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s;" aria-label="Add task">Add</button>
+        </div>
+        <div id="pom-task-list" style="display:flex;flex-direction:column;gap:.4rem;max-height:160px;overflow-y:auto;"></div>
+        <div id="pom-task-empty" style="font-size:13px;color:var(--soft);text-align:center;padding:.5rem 0;">No tasks yet. Add one above!</div>
       </div>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="proj-link">View GitHub Profile →</a>
-    </div>
 
+    </div>
   </div>
-</section>
+</div>
 
-<section id="contact" style="padding-bottom:5rem;">
-  <div class="contact-wrap">
-    <h2>Ready to build something <em>great?</em></h2>
-    <p>I'm actively looking for Webmaster and Frontend Web Developer roles in government and public sector.<br>Drop me a line , I'd love to chat.</p>
-    <div class="contact-items">
-      <a href="mailto:saideepika.thammireddy@du.edu" class="contact-item">✉ saideepika.thammireddy@du.edu</a>
-      <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" class="contact-item">💼 LinkedIn</a>
-      <a href="https://github.com/saideepikathammireddy" target="_blank" class="contact-item">💻 GitHub</a>
-    </div>
-    <a href="mailto:saideepika.thammireddy@du.edu" class="btn btn-contact">Get in touch →</a>
-  </div>
-</section>
+<style>
+.pom-tab{flex:1;padding:.55rem .5rem;border:none;background:transparent;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);font-family:'Inter',sans-serif;transition:background .15s,color .15s;}
+.pom-tab-active{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.pom-dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:background .3s;}
+.pom-dot-done{background:#E11D48;}
+.pom-dot-current{background:#FECDD3;box-shadow:0 0 0 3px rgba(225,29,72,.2);}
+.pom-task-item{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;background:white;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--ink);transition:opacity .2s;}
+.pom-task-item.done{opacity:.5;text-decoration:line-through;color:var(--soft);}
+.pom-task-cb{width:15px;height:15px;cursor:pointer;accent-color:#E11D48;flex-shrink:0;}
+.pom-task-text{flex:1;}
+.pom-task-del{background:none;border:none;cursor:pointer;color:var(--soft);font-size:14px;padding:0 .2rem;line-height:1;transition:color .15s;}
+.pom-task-del:hover{color:#E11D48;}
+</style>
+<script>
+function toggleNav(){var m=document.getElementById('mobile-nav'),b=document.getElementById('hamburger'),open=m.classList.toggle('open');b.setAttribute('aria-expanded',open);m.setAttribute('aria-hidden',!open);b.textContent=open?'✕':'☰';}
+function closeNav(){var m=document.getElementById('mobile-nav'),b=document.getElementById('hamburger');m.classList.remove('open');b.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true');b.textContent='☰';}
 
-<footer>Sai Deepika Thammireddy · Denver, CO · 2025</footer>
+// ── SCROLL REVEAL
+(function(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){obs.observe(el);});
+})();
 
+// ── MODAL
+function openModal(id){var o=document.getElementById(id);o.classList.add('open');document.body.style.overflow='hidden';var c=o.querySelector('.mclose');if(c)c.focus();o._oc=function(e){if(e.target===o)closeModal(id);};o.addEventListener('click',o._oc);if(id==='m7')setTimeout(buildWL,50);if(id==='m6')setTimeout(runCC,50);if(id==='m8'){setTimeout(function(){pomRenderTime();pomRenderRing();pomRenderDots();pomRenderTasks();},50);}}
+function closeModal(id){var o=document.getElementById(id);o.classList.remove('open');document.body.style.overflow='';if(o._oc){o.removeEventListener('click',o._oc);delete o._oc;}if(id==='m8'&&POM.running)pomToggle();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){closeModal(m.id);});});
+
+// ── COLOR CONTRAST
+function hexRgb(h){h=h.replace(/^#/,'');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');if(h.length!==6)return null;var r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);return isNaN(r)?null:{r:r,g:g,b:b};}
+function lum(rgb){return[rgb.r,rgb.g,rgb.b].reduce(function(a,v,i){v/=255;v=v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);return a+v*[0.2126,0.7152,0.0722][i];},0);}
+function cR(h1,h2){var r1=hexRgb(h1),r2=hexRgb(h2);if(!r1||!r2)return null;var l1=lum(r1),l2=lum(r2);return(Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05);}
+function runCC(){
+  var fg=document.getElementById('cc-fg').value.trim(),bg=document.getElementById('cc-bg').value.trim();
+  if(!fg.startsWith('#'))fg='#'+fg;if(!bg.startsWith('#'))bg='#'+bg;
+  var prev=document.getElementById('cc-prev');
+  if(hexRgb(fg)&&hexRgb(bg)){prev.style.backgroundColor=bg;prev.style.color=fg;}
+  var r=cR(fg,bg);
+  var rEl=document.getElementById('cc-ratio'),aaEl=document.getElementById('cc-aa'),aaaEl=document.getElementById('cc-aaa'),tipEl=document.getElementById('cc-tip');
+  if(!r){rEl.textContent='--';tipEl.textContent='Enter valid hex colors like #ff0000';return;}
+  rEl.textContent=r.toFixed(2)+':1';
+  function setCard(el,pass){el.style.background=pass?'#D1FAE5':'#FEE2E2';el.style.borderColor=pass?'#6EE7B7':'#FCA5A5';el.children[0].style.color=pass?'#065F46':'#991B1B';el.children[0].textContent=pass?'Pass':'Fail';el.children[1].style.color=pass?'#065F46':'#991B1B';}
+  setCard(aaEl,r>=4.5);setCard(aaaEl,r>=7);
+  var tip=r>=7?'Excellent! Passes WCAG AAA for all text sizes.':r>=4.5?'Passes WCAG AA for normal text.':r>=3?'Passes WCAG AA for large text only (18px bold / 24px+). Fails for normal text.':'Fails WCAG AA. Try a darker foreground or lighter background to reach 4.5:1.';
+  tipEl.textContent=tip;tipEl.style.background=r>=7?'#D1FAE5':r>=4.5?'#FFFBEB':'#FEE2E2';tipEl.style.color=r>=7?'#065F46':r>=4.5?'#78350F':'#991B1B';
+}
+function syncCC(t){document.getElementById('cc-'+t).value=document.getElementById('cc-'+t+'-p').value;runCC();}
+function syncCCP(t){var v=document.getElementById('cc-'+t).value.trim();if(!v.startsWith('#'))v='#'+v;if(/^#[0-9a-fA-F]{6}$/.test(v))document.getElementById('cc-'+t+'-p').value=v;}
+function setCC(fg,bg){['fg','bg'].forEach(function(t,i){var v=[fg,bg][i];document.getElementById('cc-'+t).value=v;document.getElementById('cc-'+t+'-p').value=v;});runCC();}
+
+// ── WCAG CHECKLIST
+var wlItems=[
+  {id:'p1',cat:'Perceivable',cr:'1.1.1',label:'Non-text Content',desc:'All images have descriptive alt text; decorative images use alt=""'},
+  {id:'p2',cat:'Perceivable',cr:'1.3.1',label:'Info and Relationships',desc:'Headings, lists, tables use correct semantic HTML'},
+  {id:'p3',cat:'Perceivable',cr:'1.3.2',label:'Meaningful Sequence',desc:'Content reading order makes sense without CSS'},
+  {id:'p4',cat:'Perceivable',cr:'1.4.1',label:'Use of Color',desc:'Color is not the only visual means of conveying information'},
+  {id:'p5',cat:'Perceivable',cr:'1.4.3',label:'Contrast Minimum',desc:'Normal text has at least 4.5:1 contrast; large text at least 3:1'},
+  {id:'p6',cat:'Perceivable',cr:'1.4.4',label:'Resize Text',desc:'Text can be resized to 200% without loss of content'},
+  {id:'p7',cat:'Perceivable',cr:'1.4.10',label:'Reflow',desc:'Content reflows at 320px without horizontal scrolling'},
+  {id:'p8',cat:'Perceivable',cr:'1.4.11',label:'Non-text Contrast',desc:'UI components and focus indicators have at least 3:1 contrast'},
+  {id:'o1',cat:'Operable',cr:'2.1.1',label:'Keyboard',desc:'All functionality is available via keyboard alone'},
+  {id:'o2',cat:'Operable',cr:'2.1.2',label:'No Keyboard Trap',desc:'Keyboard focus is never trapped inside a component'},
+  {id:'o3',cat:'Operable',cr:'2.4.1',label:'Bypass Blocks',desc:'A skip navigation link is provided'},
+  {id:'o4',cat:'Operable',cr:'2.4.2',label:'Page Titled',desc:'Each page has a descriptive, unique title'},
+  {id:'o5',cat:'Operable',cr:'2.4.3',label:'Focus Order',desc:'Focus moves in a logical, meaningful sequence'},
+  {id:'o6',cat:'Operable',cr:'2.4.4',label:'Link Purpose',desc:'Link text describes the destination without surrounding context'},
+  {id:'o7',cat:'Operable',cr:'2.4.7',label:'Focus Visible',desc:'Keyboard focus indicator is clearly visible on all interactive elements'},
+  {id:'u1',cat:'Understandable',cr:'3.1.1',label:'Language of Page',desc:'HTML lang attribute is set correctly'},
+  {id:'u2',cat:'Understandable',cr:'3.2.1',label:'On Focus',desc:'Receiving focus does not trigger a context change'},
+  {id:'u3',cat:'Understandable',cr:'3.2.2',label:'On Input',desc:'Changing a setting does not auto-submit a form'},
+  {id:'u4',cat:'Understandable',cr:'3.3.1',label:'Error Identification',desc:'Form errors are identified in text describing the problem'},
+  {id:'u5',cat:'Understandable',cr:'3.3.2',label:'Labels or Instructions',desc:'Form inputs have visible labels or clear instructions'},
+  {id:'r1',cat:'Robust',cr:'4.1.1',label:'Parsing',desc:'HTML is valid with no critical parsing errors'},
+  {id:'r2',cat:'Robust',cr:'4.1.2',label:'Name, Role, Value',desc:'All UI components expose name, role, and value to assistive technology'},
+  {id:'r3',cat:'Robust',cr:'4.1.3',label:'Status Messages',desc:'Status messages are programmatically determinable via role or properties'},
+];
+var wlColors={'Perceivable':{bg:'#D1FAE5',c:'#065F46'},'Operable':{bg:'#EDE9FE',c:'#5B21B6'},'Understandable':{bg:'#FEF3C7',c:'#78350F'},'Robust':{bg:'#E0F2FE',c:'#0369A1'}};
+var wlChecked={};
+function buildWL(){
+  var container=document.getElementById('wl-list');
+  if(!container||container.childElementCount>0)return;
+  var cat='';
+  wlItems.forEach(function(item){
+    if(item.cat!==cat){cat=item.cat;var c=wlColors[cat];var h=document.createElement('div');h.className='wl-cat';h.style.background=c.bg;h.style.color=c.c;h.textContent=cat;container.appendChild(h);}
+    var lbl=document.createElement('label');lbl.className='wl-row';lbl.htmlFor='wlcb-'+item.id;
+    var cb=document.createElement('input');cb.type='checkbox';cb.className='wl-cb';cb.id='wlcb-'+item.id;
+    cb.addEventListener('change',function(){wlChecked[item.id]=cb.checked;lbl.style.background=cb.checked?'#D1FAE5':'';lbl.style.borderColor=cb.checked?'#6EE7B7':'';updateWL();});
+    var txt=document.createElement('div');
+    txt.innerHTML='<div><span class="wl-cr">'+item.cr+'</span> <span class="wl-lbl">'+item.label+'</span></div><div class="wl-desc">'+item.desc+'</div>';
+    lbl.appendChild(cb);lbl.appendChild(txt);container.appendChild(lbl);
+  });
+  updateWL();
+}
+function updateWL(){
+  var total=wlItems.length,done=Object.values(wlChecked).filter(Boolean).length,pct=Math.round(done/total*100);
+  document.getElementById('wl-pct').textContent=pct+'%';
+  document.getElementById('wl-fill').style.width=pct+'%';
+  document.getElementById('wl-cnt').textContent=done+' of '+total+' criteria checked';
+  document.getElementById('wl-pct').style.color=pct>=100?'#22C55E':pct>=70?'#D97706':'#6D28D9';
+}
+function allWL(v){wlItems.forEach(function(item){var cb=document.getElementById('wlcb-'+item.id),lbl=cb&&cb.closest('label');if(cb){cb.checked=v;wlChecked[item.id]=v;if(lbl){lbl.style.background=v?'#D1FAE5':'';lbl.style.borderColor=v?'#6EE7B7':'';}};});updateWL();}
+function copyWL(){
+  var total=wlItems.length,done=Object.values(wlChecked).filter(Boolean).length;
+  var lines=['WCAG 2.1 AA Audit Report','========================','Score: '+Math.round(done/total*100)+'% ('+done+'/'+total+')',''];var cat='';
+  wlItems.forEach(function(item){if(item.cat!==cat){cat=item.cat;lines.push('','['+cat+']');}lines.push((wlChecked[item.id]?'[x]':'[ ]')+' '+item.cr+' '+item.label);});
+  navigator.clipboard.writeText(lines.join('\n')).then(function(){var b=event.target,o=b.textContent;b.textContent='Copied!';b.style.background='#1B4332';b.style.color='white';setTimeout(function(){b.textContent=o;b.style.background='';b.style.color='';},2000);}).catch(function(){alert(lines.join('\n'));});
+}
+// ── POMODORO TIMER
+var POM = {
+  modes: { focus: 25*60, short: 5*60, long: 15*60 },
+  modeColors: { focus: '#E11D48', short: '#0D9488', long: '#6D28D9' },
+  modeLabels: { focus: 'Focus', short: 'Short Break', long: 'Long Break' },
+  mode: 'focus',
+  timeLeft: 25*60,
+  running: false,
+  interval: null,
+  session: 0,        // 0-3 focus sessions in cycle
+  completed: 0,
+  minutesFocused: 0,
+  tasksDone: 0,
+  tasks: [],
+  taskId: 0
+};
+
+function pomSetMode(m) {
+  if (POM.running) pomToggle();
+  POM.mode = m;
+  POM.timeLeft = POM.modes[m];
+  ['focus','short','long'].forEach(function(t) {
+    var tab = document.getElementById('tab-'+t);
+    if (tab) { tab.classList.toggle('pom-tab-active', t === m); tab.setAttribute('aria-selected', t === m); }
+  });
+  var ring = document.getElementById('pom-ring');
+  if (ring) ring.style.stroke = POM.modeColors[m];
+  var btn = document.getElementById('pom-start-btn');
+  if (btn) btn.style.background = POM.modeColors[m];
+  var shadow = m === 'focus' ? 'rgba(225,29,72,.35)' : m === 'short' ? 'rgba(13,148,136,.35)' : 'rgba(109,40,217,.35)';
+  if (btn) btn.style.boxShadow = '0 4px 16px ' + shadow;
+  var lbl = document.getElementById('pom-mode-lbl');
+  if (lbl) lbl.textContent = POM.modeLabels[m];
+  pomRenderTime();
+  pomRenderRing();
+}
+
+function pomToggle() {
+  if (POM.running) {
+    clearInterval(POM.interval);
+    POM.running = false;
+    var btn = document.getElementById('pom-start-btn');
+    if (btn) btn.textContent = 'Start';
+  } else {
+    POM.running = true;
+    var btn = document.getElementById('pom-start-btn');
+    if (btn) btn.textContent = 'Pause';
+    POM.interval = setInterval(function() {
+      POM.timeLeft--;
+      if (POM.mode === 'focus') POM.minutesFocused = Math.floor((POM.modes.focus - POM.timeLeft) / 60);
+      pomRenderTime();
+      pomRenderRing();
+      var minsEl = document.getElementById('pom-mins');
+      if (minsEl) minsEl.textContent = POM.minutesFocused + (POM.completed > 0 ? POM.completed * 25 : 0);
+      if (POM.timeLeft <= 0) pomComplete();
+    }, 1000);
+  }
+}
+
+function pomComplete() {
+  clearInterval(POM.interval);
+  POM.running = false;
+  if (POM.mode === 'focus') {
+    POM.completed++;
+    POM.minutesFocused = 0;
+    POM.session = (POM.session + 1) % 4;
+    var compEl = document.getElementById('pom-completed');
+    if (compEl) compEl.textContent = POM.completed;
+    var minsEl = document.getElementById('pom-mins');
+    if (minsEl) minsEl.textContent = POM.completed * 25;
+    pomRenderDots();
+    pomFlash();
+    setTimeout(function() {
+      pomSetMode(POM.session === 0 ? 'long' : 'short');
+    }, 800);
+  } else {
+    pomSetMode('focus');
+  }
+  var btn = document.getElementById('pom-start-btn');
+  if (btn) btn.textContent = 'Start';
+}
+
+function pomReset() {
+  clearInterval(POM.interval);
+  POM.running = false;
+  POM.timeLeft = POM.modes[POM.mode];
+  var btn = document.getElementById('pom-start-btn');
+  if (btn) btn.textContent = 'Start';
+  pomRenderTime();
+  pomRenderRing();
+}
+
+function pomSkip() {
+  clearInterval(POM.interval);
+  POM.running = false;
+  POM.timeLeft = 0;
+  pomComplete();
+}
+
+function pomRenderTime() {
+  var m = Math.floor(POM.timeLeft / 60);
+  var s = POM.timeLeft % 60;
+  var el = document.getElementById('pom-time');
+  if (el) el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function pomRenderRing() {
+  var ring = document.getElementById('pom-ring');
+  if (!ring) return;
+  var total = POM.modes[POM.mode];
+  var pct = POM.timeLeft / total;
+  var circ = 490;
+  ring.style.strokeDashoffset = circ * (1 - pct);
+}
+
+function pomRenderDots() {
+  for (var i = 0; i < 4; i++) {
+    var dot = document.getElementById('pdot-' + i);
+    if (!dot) continue;
+    dot.className = 'pom-dot';
+    if (i < POM.session) dot.classList.add('pom-dot-done');
+    else if (i === POM.session && POM.mode === 'focus') dot.classList.add('pom-dot-current');
+  }
+}
+
+function pomFlash() {
+  var ring = document.getElementById('pom-ring');
+  if (!ring) return;
+  ring.style.stroke = '#22C55E';
+  setTimeout(function() { ring.style.stroke = POM.modeColors[POM.mode]; }, 600);
+}
+
+function pomAddTask() {
+  var inp = document.getElementById('pom-task-inp');
+  if (!inp) return;
+  var text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  var task = { id: POM.taskId++, text: text, done: false };
+  POM.tasks.push(task);
+  pomRenderTasks();
+}
+
+function pomToggleTask(id) {
+  var task = POM.tasks.find(function(t) { return t.id === id; });
+  if (!task) return;
+  task.done = !task.done;
+  POM.tasksDone = POM.tasks.filter(function(t) { return t.done; }).length;
+  var el = document.getElementById('pom-tasks-done');
+  if (el) el.textContent = POM.tasksDone;
+  pomRenderTasks();
+}
+
+function pomDeleteTask(id) {
+  POM.tasks = POM.tasks.filter(function(t) { return t.id !== id; });
+  POM.tasksDone = POM.tasks.filter(function(t) { return t.done; }).length;
+  var el = document.getElementById('pom-tasks-done');
+  if (el) el.textContent = POM.tasksDone;
+  pomRenderTasks();
+}
+
+function pomRenderTasks() {
+  var list = document.getElementById('pom-task-list');
+  var empty = document.getElementById('pom-task-empty');
+  if (!list) return;
+  list.innerHTML = '';
+  if (empty) empty.style.display = POM.tasks.length ? 'none' : 'block';
+  POM.tasks.forEach(function(task) {
+    var item = document.createElement('div');
+    item.className = 'pom-task-item' + (task.done ? ' done' : '');
+    item.innerHTML =
+      '<input type="checkbox" class="pom-task-cb" ' + (task.done ? 'checked' : '') + ' aria-label="Mark task done">' +
+      '<span class="pom-task-text">' + task.text.replace(/</g,'&lt;') + '</span>' +
+      '<button class="pom-task-del" aria-label="Delete task">✕</button>';
+    item.querySelector('.pom-task-cb').addEventListener('change', function() { pomToggleTask(task.id); });
+    item.querySelector('.pom-task-del').addEventListener('click', function() { pomDeleteTask(task.id); });
+    list.appendChild(item);
+  });
+}
+
+// init dots on first open
+document.getElementById('m8').addEventListener('click', function(e) {
+  if (e.target === this) return;
+  pomRenderDots();
+}, { once: false });
+
+</script>
 </body>
 </html>
