@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daily Web Affirmation | Sai Deepika</title>
+<meta name="description" content="Daily web developer affirmations by Sai Deepika Thammireddy. Because every developer needs encouragement."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1a1a1a;--muted:#5a5a5a;--soft:#8a8a8a;--bg:#faf9f7;--white:#ffffff;--border:#e8e5e0;--accent:#2d6a4f;--accent-light:#e8f4ee;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+a:focus-visible,button:focus-visible{outline:3px solid #c47d2e;outline-offset:3px;border-radius:3px;}
+.skip{position:absolute;top:-60px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:999;transition:top .2s;}
+.skip:focus{top:0;}
+nav{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;text-decoration:none;}
+.nav-back{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s;}
+.nav-back:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden;}
+#stars-canvas{position:absolute;inset:0;pointer-events:none;}
+
+.aff-card{max-width:580px;width:100%;text-align:center;position:relative;z-index:1;}
+.aff-tag{display:inline-block;font-size:11px;font-weight:600;color:rgba(255,255,255,.4);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:.3rem .9rem;border-radius:20px;margin-bottom:2rem;text-transform:uppercase;letter-spacing:1px;}
+.aff-emoji{font-size:5rem;margin-bottom:1.5rem;display:block;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;}
+.aff-emoji.animating{transform:scale(.3) rotate(-10deg);opacity:0;}
+blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-style:italic;color:#fff;line-height:1.5;margin-bottom:2.5rem;min-height:120px;display:flex;align-items:center;justify-content:center;transition:opacity .3s,transform .3s;}
+blockquote.animating{opacity:0;transform:translateY(16px);}
+.hashtag{font-size:14px;font-weight:600;color:rgba(255,255,255,.35);margin-bottom:2.5rem;transition:opacity .3s;}
+
+.btn-new{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:15px;font-weight:600;padding:.9rem 2.5rem;border-radius:12px;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s;margin-bottom:1rem;}
+.btn-new:hover{background:rgba(255,255,255,.18);transform:translateY(-1px);}
+.btn-new:active{transform:translateY(0);}
+.btn-share{background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:13px;font-weight:500;padding:.6rem 1.5rem;border-radius:10px;cursor:pointer;font-family:inherit;transition:color .15s,border-color .15s;}
+.btn-share:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.25);}
+.btn-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+
+.aff-counter{font-size:11px;color:rgba(255,255,255,.25);margin-top:1.5rem;}
+
+footer-bar{display:block;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.07);padding:1rem 2rem;text-align:center;}
+footer-bar a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;}
+footer-bar a:hover{color:rgba(255,255,255,.6);}
+
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:.6rem 1.5rem;border-radius:20px;transition:transform .3s;pointer-events:none;z-index:999;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Sai Deepika</a>
+    <a href="../index.html#projects" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+<main id="main" aria-label="Daily Web Affirmation">
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+  <div class="aff-card">
+    <div class="aff-tag" aria-label="Category">Web Wellness</div>
+    <span class="aff-emoji" id="aff-emoji" aria-hidden="true">🌐</span>
+    <blockquote id="aff-quote" aria-live="polite">"Your divs are perfectly aligned, and so is your energy today."</blockquote>
+    <p class="hashtag" id="aff-hashtag" aria-hidden="true">#WebWellness</p>
+    <div class="btn-row">
+      <button class="btn-new" onclick="newAffirmation()" aria-label="Get a new affirmation">✨ Another one</button>
+      <button class="btn-share" onclick="copyAffirmation()" aria-label="Copy affirmation to clipboard">Copy ↗</button>
+    </div>
+    <p class="aff-counter" id="aff-counter" aria-live="polite">1 of 15</p>
+  </div>
+</main>
+<footer-bar><a href="../index.html">← saideepika10.github.io/portfolio</a></footer-bar>
+<div class="toast" id="toast" aria-live="assertive">Copied to clipboard!</div>
+
+<script>
+// Stars
+const canvas=document.getElementById('stars-canvas');
+const ctx=canvas.getContext('2d');
+let stars=[];
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;stars=Array.from({length:120},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+.3,o:Math.random()*.6+.2,speed:Math.random()*.3+.05}));}
+function drawStars(){ctx.clearRect(0,0,canvas.width,canvas.height);stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${s.o})`;ctx.fill();s.o+=s.speed*.015;if(s.o>1||s.o<.1)s.speed*=-1;});requestAnimationFrame(drawStars);}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);drawStars();
+
+const affirmations=[
+  {e:"🌐",t:"Your divs are perfectly aligned, and so is your energy today.",tag:"#WebWellness"},
+  {e:"✨",t:"Every pixel you push makes the internet a more beautiful place.",tag:"#PixelPower"},
+  {e:"🚀",t:"Your code shipped. Your confidence should too.",tag:"#ShipIt"},
+  {e:"🎨",t:"Good design is invisible. Your work is unforgettable.",tag:"#DesignVibes"},
+  {e:"💚",t:"The web is more accessible because you exist in it.",tag:"#A11yLove"},
+  {e:"🧠",t:"You debugged harder problems than this before breakfast.",tag:"#DevLife"},
+  {e:"🌱",t:"Your commits are small. Your impact is massive.",tag:"#GrowthMindset"},
+  {e:"🔥",t:"Someone is going to land a job today because of a portfolio you built.",tag:"#BuildThings"},
+  {e:"💡",t:"The best time to refactor was yesterday. The second best time is right now.",tag:"#CleanCode"},
+  {e:"🌍",t:"WCAG-compliant and absolutely thriving.",tag:"#AccessibilityFirst"},
+  {e:"🎯",t:"Your tab index is in order and so is your life.",tag:"#FocusMode"},
+  {e:"🤝",t:"Semantic HTML is an act of kindness. You are kind.",tag:"#SemanticVibes"},
+  {e:"☀️",t:"Today you will close at least one browser tab. You have the strength.",tag:"#TabsUnderControl"},
+  {e:"💫",t:"Your lighthouse score is a reflection of your soul: 100.",tag:"#PerfectScore"},
+  {e:"🛡️",t:"You are ADA compliant. You contain multitudes.",tag:"#InclusiveWeb"},
+];
+
+let current=0;
+document.getElementById('aff-counter').textContent=`1 of ${affirmations.length}`;
+
+function newAffirmation(){
+  let next;
+  do{next=Math.floor(Math.random()*affirmations.length);}while(next===current);
+  current=next;
+  const a=affirmations[current];
+  const emojiEl=document.getElementById('aff-emoji');
+  const quoteEl=document.getElementById('aff-quote');
+  const hashEl=document.getElementById('aff-hashtag');
+  emojiEl.classList.add('animating');
+  quoteEl.classList.add('animating');
+  setTimeout(()=>{
+    emojiEl.textContent=a.e;
+    quoteEl.textContent=`"${a.t}"`;
+    hashEl.textContent=a.tag;
+    document.getElementById('aff-counter').textContent=`${current+1} of ${affirmations.length}`;
+    document.querySelector('.aff-tag').textContent=a.tag.replace('#','');
+    emojiEl.classList.remove('animating');
+    quoteEl.classList.remove('animating');
+  },300);
+}
+
+function copyAffirmation(){
+  const text=document.getElementById('aff-quote').textContent+' '+document.getElementById('aff-hashtag').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const toast=document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),2000);
+  });
+}
+</script>
+</body>
+</html>
