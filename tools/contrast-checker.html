@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WCAG Color Contrast Checker | Sai Deepika</title>
+<meta name="description" content="Free WCAG 2.1 AA/AAA color contrast checker tool by Sai Deepika Thammireddy."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1a1a1a;--muted:#5a5a5a;--soft:#8a8a8a;--bg:#faf9f7;--white:#ffffff;--border:#e8e5e0;--accent:#2d6a4f;--accent-light:#e8f4ee;}
+html{font-size:16px;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #c47d2e;outline-offset:3px;border-radius:3px;}
+.skip{position:absolute;top:-60px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:999;transition:top .2s;}
+.skip:focus{top:0;}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);}
+.nav-logo:hover{text-decoration:none;}
+.nav-back{font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border:1px solid var(--border);border-radius:8px;transition:border-color .15s,color .15s;}
+.nav-back:hover{color:var(--ink);border-color:var(--ink);text-decoration:none;}
+
+/* HERO */
+.tool-hero{background:var(--white);border-bottom:1px solid var(--border);padding:3rem 2rem 2.5rem;}
+.tool-hero-inner{max-width:900px;margin:0 auto;}
+.tool-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:.3rem .85rem;border-radius:20px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.3px;}
+.tool-hero p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.75;}
+
+/* MAIN */
+main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem;}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.75rem;}
+.card h2{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:1.25rem;}
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem;}
+label{font-size:12px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;}
+.color-row{display:flex;gap:.6rem;align-items:center;}
+input[type=color]{width:48px;height:44px;border:1px solid var(--border);border-radius:8px;padding:3px;cursor:pointer;background:white;}
+input[type=text]{flex:1;padding:.6rem .85rem;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:monospace;color:var(--ink);background:var(--white);}
+input[type=text]:focus{outline:3px solid #c47d2e;outline-offset:2px;}
+
+/* PREVIEW */
+.preview-box{border-radius:12px;border:1px solid var(--border);padding:2rem;margin-bottom:1.5rem;}
+.preview-normal{font-size:16px;font-weight:400;margin-bottom:.5rem;}
+.preview-large{font-size:24px;font-weight:700;margin-bottom:.5rem;}
+.preview-small{font-size:12px;}
+
+/* RESULTS */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;}
+.result-box{border-radius:10px;padding:1rem;text-align:center;border:1px solid;}
+.result-ratio{font-size:1.6rem;font-weight:700;margin-bottom:.2rem;}
+.result-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.pass{background:#dcfce7;border-color:#86efac;color:#15803d;}
+.fail{background:#fee2e2;border-color:#fca5a5;color:#dc2626;}
+.neutral{background:var(--bg);border-color:var(--border);color:var(--ink);}
+
+/* BREAKDOWN */
+.breakdown{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
+.breakdown h3{font-size:12px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.85rem;}
+.brow{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+.brow:last-child{border:none;}
+.brow-label{color:var(--muted);}
+.brow-val{font-weight:600;}
+
+/* TIPS */
+.tips{background:var(--accent-light);border:1px solid rgba(45,106,79,.2);border-radius:10px;padding:1.25rem;margin-top:1.5rem;}
+.tips h3{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:.75rem;}
+.tips ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.tips li{font-size:13px;color:var(--muted);padding-left:1rem;position:relative;}
+.tips li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+
+@media(max-width:700px){.tool-grid{grid-template-columns:1fr;}.results{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Sai Deepika</a>
+    <a href="../index.html#projects" class="nav-back" aria-label="Back to portfolio">← Back to Portfolio</a>
+  </div>
+</nav>
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <div class="tool-badge">WCAG 2.1 Tool</div>
+    <h1>Color Contrast Checker</h1>
+    <p>Check if your text and background color combinations meet WCAG 2.1 AA (4.5:1) and AAA (7:1) contrast requirements for accessibility compliance.</p>
+  </div>
+</div>
+<main id="main">
+  <div class="tool-grid">
+    <div>
+      <div class="card">
+        <h2>Choose your colors</h2>
+        <div class="field">
+          <label for="fg">Text color</label>
+          <div class="color-row">
+            <input type="color" id="fg" value="#1a1a1a" aria-label="Pick text color" oninput="syncPicker('fg','fg-hex');calc()"/>
+            <input type="text" id="fg-hex" value="#1a1a1a" maxlength="7" aria-label="Text color hex" oninput="syncHex('fg','fg-hex');calc()"/>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bg">Background color</label>
+          <div class="color-row">
+            <input type="color" id="bg" value="#ffffff" aria-label="Pick background color" oninput="syncPicker('bg','bg-hex');calc()"/>
+            <input type="text" id="bg-hex" value="#ffffff" maxlength="7" aria-label="Background color hex" oninput="syncHex('bg','bg-hex');calc()"/>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Quick swatches</label>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem;">
+            <button onclick="setSwatch('#1a1a1a','#ffffff')" style="width:28px;height:28px;border-radius:6px;background:#1a1a1a;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Black on white"></button>
+            <button onclick="setSwatch('#ffffff','#1a1a1a')" style="width:28px;height:28px;border-radius:6px;background:#fff;border:2px solid #1a1a1a;cursor:pointer;" aria-label="White on black"></button>
+            <button onclick="setSwatch('#2d6a4f','#e8f4ee')" style="width:28px;height:28px;border-radius:6px;background:#2d6a4f;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Green on light green"></button>
+            <button onclick="setSwatch('#1e40af','#eff6ff')" style="width:28px;height:28px;border-radius:6px;background:#1e40af;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Blue on light blue"></button>
+            <button onclick="setSwatch('#7c3aed','#f5f3ff')" style="width:28px;height:28px;border-radius:6px;background:#7c3aed;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Purple on light purple"></button>
+            <button onclick="setSwatch('#dc2626','#fff1f2')" style="width:28px;height:28px;border-radius:6px;background:#dc2626;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Red on light red"></button>
+            <button onclick="setSwatch('#92400e','#fef3c7')" style="width:28px;height:28px;border-radius:6px;background:#92400e;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Brown on yellow"></button>
+            <button onclick="setSwatch('#065f46','#ecfdf5')" style="width:28px;height:28px;border-radius:6px;background:#065f46;border:2px solid #e8e5e0;cursor:pointer;" aria-label="Dark green on mint"></button>
+          </div>
+        </div>
+      </div>
+      <div class="tips">
+        <h3>WCAG Contrast Requirements</h3>
+        <ul>
+          <li>AA Normal text: 4.5:1 minimum ratio</li>
+          <li>AA Large text (18pt+ or 14pt bold): 3:1 minimum</li>
+          <li>AAA Normal text: 7:1 for enhanced compliance</li>
+          <li>AAA Large text: 4.5:1 for enhanced compliance</li>
+          <li>UI components and icons: 3:1 minimum</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h2>Preview</h2>
+        <div class="preview-box" id="preview-box" style="background:#ffffff;color:#1a1a1a;">
+          <p class="preview-large">Large text sample</p>
+          <p class="preview-normal">Normal body text at 16px weight 400</p>
+          <p class="preview-small">Small text at 12px</p>
+        </div>
+        <div class="results">
+          <div class="result-box neutral" id="res-ratio">
+            <div class="result-ratio" id="ratio-val" aria-live="polite">21:1</div>
+            <div class="result-label">Contrast ratio</div>
+          </div>
+          <div class="result-box pass" id="res-aa">
+            <div class="result-ratio" id="aa-val" aria-live="polite">Pass</div>
+            <div class="result-label">AA Normal</div>
+          </div>
+          <div class="result-box pass" id="res-aaa">
+            <div class="result-ratio" id="aaa-val" aria-live="polite">Pass</div>
+            <div class="result-label">AAA Normal</div>
+          </div>
+        </div>
+        <div class="breakdown">
+          <h3>Full Breakdown</h3>
+          <div class="brow"><span class="brow-label">AA Normal text (4.5:1)</span><span class="brow-val" id="bd-aa-n" aria-live="polite" style="color:#15803d;">Pass</span></div>
+          <div class="brow"><span class="brow-label">AA Large text (3:1)</span><span class="brow-val" id="bd-aa-l" aria-live="polite" style="color:#15803d;">Pass</span></div>
+          <div class="brow"><span class="brow-label">AAA Normal text (7:1)</span><span class="brow-val" id="bd-aaa-n" aria-live="polite" style="color:#15803d;">Pass</span></div>
+          <div class="brow"><span class="brow-label">AAA Large text (4.5:1)</span><span class="brow-val" id="bd-aaa-l" aria-live="polite" style="color:#15803d;">Pass</span></div>
+          <div class="brow"><span class="brow-label">UI Components (3:1)</span><span class="brow-val" id="bd-ui" aria-live="polite" style="color:#15803d;">Pass</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+function hexToRgb(hex){
+  hex=hex.replace('#','');
+  if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
+  if(hex.length!==6||!/^[0-9a-fA-F]{6}$/.test(hex))return null;
+  return{r:parseInt(hex.slice(0,2),16),g:parseInt(hex.slice(2,4),16),b:parseInt(hex.slice(4,6),16)};
+}
+function luminance(r,g,b){
+  return[r,g,b].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);}).reduce((a,c,i)=>a+c*[.2126,.7152,.0722][i],0);
+}
+function contrastRatio(h1,h2){
+  const c1=hexToRgb(h1),c2=hexToRgb(h2);
+  if(!c1||!c2)return null;
+  const l1=luminance(c1.r,c1.g,c1.b),l2=luminance(c2.r,c2.g,c2.b);
+  return(Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05);
+}
+function syncPicker(pid,hid){document.getElementById(hid).value=document.getElementById(pid).value;}
+function syncHex(pid,hid){const h=document.getElementById(hid).value;if(/^#[0-9a-fA-F]{6}$/.test(h))document.getElementById(pid).value=h;}
+function setSwatch(fg,bg){
+  document.getElementById('fg').value=fg;document.getElementById('fg-hex').value=fg;
+  document.getElementById('bg').value=bg;document.getElementById('bg-hex').value=bg;
+  calc();
+}
+function setResult(id,pass,label){
+  const el=document.getElementById(id);
+  el.className='brow-val';
+  el.textContent=pass?'Pass':'Fail';
+  el.style.color=pass?'#15803d':'#dc2626';
+}
+function calc(){
+  const fg=document.getElementById('fg').value;
+  const bg=document.getElementById('bg').value;
+  document.getElementById('preview-box').style.color=fg;
+  document.getElementById('preview-box').style.background=bg;
+  const r=contrastRatio(fg,bg);
+  if(!r)return;
+  document.getElementById('ratio-val').textContent=r.toFixed(2)+':1';
+  const aaPass=r>=4.5,aaaPass=r>=7,lgPass=r>=3;
+  // AA box
+  const aaBox=document.getElementById('res-aa');
+  aaBox.className='result-box '+(aaPass?'pass':'fail');
+  document.getElementById('aa-val').textContent=aaPass?'Pass':'Fail';
+  // AAA box
+  const aaaBox=document.getElementById('res-aaa');
+  aaaBox.className='result-box '+(aaaPass?'pass':'fail');
+  document.getElementById('aaa-val').textContent=aaaPass?'Pass':'Fail';
+  // Breakdown
+  setResult('bd-aa-n',aaPass);
+  setResult('bd-aa-l',lgPass);
+  setResult('bd-aaa-n',aaaPass);
+  setResult('bd-aaa-l',aaPass);
+  setResult('bd-ui',lgPass);
+}
+calc();
+</script>
+</body>
+</html>
