@@ -738,6 +738,31 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
         </div>
       </article>
 
+      <!-- Tool 4: Daily Web Affirmation -->
+      <article class="pcard reveal" aria-label="Daily Web Affirmation generator tool">
+        <div class="pcard-img" style="height:auto;padding:1.5rem;display:block;border-bottom:1px solid var(--border);background:var(--ink);position:relative;overflow:hidden;">
+          <div id="aff-stars" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;"></div>
+          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:1rem;position:relative;">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);padding:3px 8px;border-radius:4px;">Just for fun</span>
+            <span style="font-size:14px;">&#10024;</span>
+          </div>
+          <div id="aff-emoji" style="font-size:2.5rem;margin-bottom:.75rem;text-align:center;position:relative;transition:transform .3s,opacity .3s;" aria-hidden="true">&#127760;</div>
+          <blockquote id="aff-text" style="font-family:Playfair Display,serif;font-size:15px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.7;text-align:center;margin-bottom:1rem;min-height:72px;position:relative;transition:opacity .3s;" aria-live="polite">"Your divs are perfectly aligned, and so is your energy today."</blockquote>
+          <div id="aff-tag" style="text-align:center;margin-bottom:1rem;position:relative;">
+            <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);">#WebWellness</span>
+          </div>
+          <button onclick="newAffirmation()" style="display:block;width:100%;padding:.7rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;position:relative;font-family:inherit;" aria-label="Get a new web affirmation" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">
+            &#10024; Give me another one
+          </button>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-eye">Just for Fun &middot; Daily Dose</p>
+          <h3 class="pcard-title">Daily Web Affirmation</h3>
+          <p class="pcard-desc">Because every developer needs a little encouragement. Click for a fresh affirmation to fuel your coding day. No JavaScript errors included.</p>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">Good Vibes</span><span class="ptag">Fun</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -915,6 +940,42 @@ function calcReadability(){
   else{level='Complex — simplify';color='#dc2626';}
   document.getElementById('rb-result').textContent=level;
   document.getElementById('rb-result').style.color=color;
+}
+
+// Tool 4: Daily Web Affirmation
+const affirmations = [
+  {e:"🌐", t:"Your divs are perfectly aligned, and so is your energy today.", tag:"#WebWellness"},
+  {e:"✨", t:"Every pixel you push makes the internet a more beautiful place.", tag:"#PixelPower"},
+  {e:"🚀", t:"Your code shipped. Your confidence should too.", tag:"#ShipIt"},
+  {e:"🎨", t:"Good design is invisible. Your work is unforgettable.", tag:"#DesignVibes"},
+  {e:"💚", t:"The web is more accessible because you exist in it.", tag:"#A11yLove"},
+  {e:"🧠", t:"You debugged harder problems than this before breakfast.", tag:"#DevLife"},
+  {e:"🌱", t:"Your commits are small. Your impact is massive.", tag:"#GrowthMindset"},
+  {e:"🔥", t:"Someone is going to land a job today because of a portfolio you built.", tag:"#BuildThings"},
+  {e:"💡", t:"The best time to refactor was yesterday. The second best time is right now.", tag:"#CleanCode"},
+  {e:"🌍", t:"WCAG-compliant and absolutely thriving.", tag:"#AccessibilityFirst"},
+  {e:"🎯", t:"Your tab index is in order and so is your life.", tag:"#FocusMode"},
+  {e:"🤝", t:"Semantic HTML is an act of kindness. You are kind.", tag:"#SemanticVibes"},
+  {e:"☀️", t:"Today you will close at least one browser tab. You have the strength.", tag:"#TabsUnderControl"},
+  {e:"💫", t:"Your lighthouse score is a reflection of your soul: 100.", tag:"#PerfectScore"},
+  {e:"🛡️", t:"You are ADA compliant. You contain multitudes.", tag:"#InclusiveWeb"},
+];
+let lastAff = 0;
+function newAffirmation(){
+  let idx;
+  do { idx = Math.floor(Math.random()*affirmations.length); } while(idx===lastAff);
+  lastAff = idx;
+  const a = affirmations[idx];
+  const emojiEl = document.getElementById("aff-emoji");
+  const textEl = document.getElementById("aff-text");
+  const tagEl = document.getElementById("aff-tag").querySelector("span");
+  emojiEl.style.opacity="0"; emojiEl.style.transform="scale(.5)";
+  textEl.style.opacity="0";
+  setTimeout(()=>{
+    emojiEl.textContent=a.e; textEl.textContent='"'+a.t+'"'; tagEl.textContent=a.tag;
+    emojiEl.style.opacity="1"; emojiEl.style.transform="scale(1)";
+    textEl.style.opacity="1";
+  },250);
 }
 
 // Active nav link
