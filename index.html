@@ -624,42 +624,14 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 
       <!-- Tool 1: Color Contrast Checker -->
       <article class="pcard reveal" aria-label="Live WCAG Color Contrast Checker tool">
-        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
-          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
-            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+        <div class="pcard-img" style="background:linear-gradient(135deg,#1a1a1a 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
+          <div style="display:flex;gap:.75rem;align-items:center;">
+            <div style="width:52px;height:52px;border-radius:10px;background:#1a1a1a;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:monospace;">#000</div>
+            <div style="color:rgba(255,255,255,.6);font-size:20px;font-weight:300;">vs</div>
+            <div style="width:52px;height:52px;border-radius:10px;background:#fff;border:3px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1a1a1a;font-family:monospace;">#FFF</div>
           </div>
-          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.6rem;">
-            <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;">
-              <label for="cc-fg" style="font-size:11px;font-weight:600;color:var(--soft);">Text color</label>
-              <div style="display:flex;gap:.4rem;align-items:center;">
-                <input type="color" id="cc-fg" value="#1a1a1a" style="width:36px;height:32px;border:1px solid var(--border);border-radius:6px;padding:2px;cursor:pointer;background:white;" aria-label="Choose text color" oninput="calcContrast()"/>
-                <input type="text" id="cc-fg-hex" value="#1a1a1a" maxlength="7" style="flex:1;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:monospace;color:var(--ink);" aria-label="Text color hex value" oninput="syncColor('cc-fg','cc-fg-hex')"/>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;">
-              <label for="cc-bg" style="font-size:11px;font-weight:600;color:var(--soft);">Background</label>
-              <div style="display:flex;gap:.4rem;align-items:center;">
-                <input type="color" id="cc-bg" value="#ffffff" style="width:36px;height:32px;border:1px solid var(--border);border-radius:6px;padding:2px;cursor:pointer;background:white;" aria-label="Choose background color" oninput="calcContrast()"/>
-                <input type="text" id="cc-bg-hex" value="#ffffff" maxlength="7" style="flex:1;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:monospace;color:var(--ink);" aria-label="Background color hex value" oninput="syncColor('cc-bg','cc-bg-hex')"/>
-              </div>
-            </div>
-          </div>
-          <div id="cc-preview" style="border-radius:8px;padding:.75rem 1rem;border:1px solid var(--border);font-size:14px;font-weight:500;background:#ffffff;color:#1a1a1a;margin-bottom:.6rem;">Sample text preview</div>
-          <div style="display:flex;gap:.5rem;">
-            <div id="cc-ratio" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
-              <div style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">21:1</div>
-              <div style="font-size:10px;color:var(--soft);">Ratio</div>
-            </div>
-            <div id="cc-aa" style="flex:1;background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:.5rem;text-align:center;">
-              <div style="font-size:.95rem;font-weight:700;color:#15803d;" aria-live="polite">AA Pass</div>
-              <div style="font-size:10px;color:#15803d;">Normal text</div>
-            </div>
-            <div id="cc-aaa" style="flex:1;background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:.5rem;text-align:center;">
-              <div style="font-size:.95rem;font-weight:700;color:#15803d;" aria-live="polite">AAA Pass</div>
-              <div style="font-size:10px;color:#15803d;">Enhanced</div>
-            </div>
-          </div>
+          <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.4rem 1.1rem;font-size:1.1rem;font-weight:700;color:#fff;font-family:monospace;">21:1 — AAA Pass</div>
+          <a href="tools/contrast-checker.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open WCAG Color Contrast Checker tool">Open Tool ↗</a>
         </div>
         <div class="pcard-body">
           <p class="pcard-eye">Live Tool · WCAG 2.1</p>
@@ -671,35 +643,16 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 
       <!-- Tool 2: WCAG Checklist -->
       <article class="pcard reveal delay-1" aria-label="Live WCAG 2.1 AA Compliance Checklist tool">
-        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
-          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
-            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+                <div class="pcard-img" style="background:linear-gradient(135deg,#1e3a5f 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
+          <div style="width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;">
+            <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:#fff;"><span style="width:14px;height:14px;border-radius:3px;background:#22c55e;flex-shrink:0;"></span>Alt text for images</div>
+            <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:#fff;"><span style="width:14px;height:14px;border-radius:3px;background:#22c55e;flex-shrink:0;"></span>Color contrast 4.5:1</div>
+            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:rgba(255,255,255,.5);"><span style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);flex-shrink:0;"></span>Keyboard navigable</div>
+            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:rgba(255,255,255,.5);"><span style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);flex-shrink:0;"></span>Visible focus indicator</div>
           </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.6rem .85rem;display:flex;align-items:center;gap:.85rem;margin-bottom:.6rem;">
-            <div style="text-align:center;">
-              <div id="wl-score" style="font-size:1.5rem;font-weight:700;color:var(--accent);" aria-live="polite">0</div>
-              <div style="font-size:10px;color:var(--soft);">/ 8 done</div>
-            </div>
-            <div style="flex:1;">
-              <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:.3rem;">
-                <div id="wl-bar" style="height:100%;width:0%;background:var(--accent);border-radius:99px;transition:width .3s;"></div>
-              </div>
-              <div id="wl-label" style="font-size:11px;color:var(--muted);">Check off criteria as you audit</div>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:.3rem;max-height:148px;overflow-y:auto;" role="group" aria-label="WCAG checklist items">
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Text alternatives for images"/> Alt text for images (1.1.1)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Color contrast 4.5:1"/> Color contrast 4.5:1 (1.4.3)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Keyboard navigation"/> Keyboard navigable (2.1.1)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Visible focus indicator"/> Visible focus indicator (2.4.7)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Descriptive page title"/> Descriptive page title (2.4.2)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Heading structure"/> Logical heading structure (1.3.1)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="ARIA labels on interactive elements"/> ARIA labels on controls (4.1.2)</label>
-            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Error identification"/> Error identification (3.3.1)</label>
-          </div>
+          <a href="tools/wcag-checklist.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open WCAG Checklist tool">Open Tool &#8599;</a>
         </div>
-        <div class="pcard-body">
+<div class="pcard-body">
           <p class="pcard-eye">Live Tool · WCAG 2.1 AA</p>
           <h3 class="pcard-title">WCAG 2.1 AA Compliance Checklist</h3>
           <p class="pcard-desc">Interactive checklist of key WCAG 2.1 AA criteria. Check off items as you audit a site and watch your compliance score update live.</p>
@@ -709,28 +662,19 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 
       <!-- Tool 3: Readability Checker -->
       <article class="pcard reveal delay-2" aria-label="Live Readability Score Checker tool">
-        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
-          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
-            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
-          </div>
-          <textarea id="rb-input" rows="4" placeholder="Paste your web copy here to check readability..." style="width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;color:var(--ink);resize:none;margin-bottom:.6rem;line-height:1.6;" aria-label="Text to analyse for readability" oninput="calcReadability()"></textarea>
-          <div style="display:flex;gap:.5rem;">
-            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
-              <div id="rb-grade" style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">--</div>
-              <div style="font-size:10px;color:var(--soft);">Grade level</div>
-            </div>
-            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
-              <div id="rb-words" style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">0</div>
-              <div style="font-size:10px;color:var(--soft);">Words</div>
-            </div>
-            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
-              <div id="rb-result" style="font-size:.85rem;font-weight:700;color:var(--soft);" aria-live="polite">Type to analyse</div>
-              <div style="font-size:10px;color:var(--soft);">WCAG level</div>
+                <div class="pcard-img" style="background:linear-gradient(135deg,#3b1f6b 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
+          <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:1rem;width:100%;max-width:200px;">
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Paste your copy here...</div>
+            <div style="height:4px;background:rgba(255,255,255,.15);border-radius:99px;margin-bottom:.75rem;"></div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+              <span style="font-size:11px;font-weight:700;color:#22c55e;background:rgba(34,197,94,.15);padding:2px 8px;border-radius:4px;">Grade 5</span>
+              <span style="font-size:11px;font-weight:700;color:#22c55e;background:rgba(34,197,94,.15);padding:2px 8px;border-radius:4px;">Excellent</span>
+              <span style="font-size:11px;color:rgba(255,255,255,.4);">42 words</span>
             </div>
           </div>
+          <a href="tools/readability-checker.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open Readability Checker tool">Open Tool &#8599;</a>
         </div>
-        <div class="pcard-body">
+<div class="pcard-body">
           <p class="pcard-eye">Live Tool · Accessibility</p>
           <h3 class="pcard-title">Web Copy Readability Checker</h3>
           <p class="pcard-desc">Paste any web copy to instantly get a Flesch-Kincaid grade level score and WCAG readability guidance. Helps ensure content meets 3.1.5 Reading Level best practice.</p>
@@ -740,22 +684,13 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 
       <!-- Tool 4: Daily Web Affirmation -->
       <article class="pcard reveal" aria-label="Daily Web Affirmation generator tool">
-        <div class="pcard-img" style="height:auto;padding:1.5rem;display:block;border-bottom:1px solid var(--border);background:var(--ink);position:relative;overflow:hidden;">
-          <div id="aff-stars" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;"></div>
-          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:1rem;position:relative;">
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);padding:3px 8px;border-radius:4px;">Just for fun</span>
-            <span style="font-size:14px;">&#10024;</span>
-          </div>
-          <div id="aff-emoji" style="font-size:2.5rem;margin-bottom:.75rem;text-align:center;position:relative;transition:transform .3s,opacity .3s;" aria-hidden="true">&#127760;</div>
-          <blockquote id="aff-text" style="font-family:Playfair Display,serif;font-size:15px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.7;text-align:center;margin-bottom:1rem;min-height:72px;position:relative;transition:opacity .3s;" aria-live="polite">"Your divs are perfectly aligned, and so is your energy today."</blockquote>
-          <div id="aff-tag" style="text-align:center;margin-bottom:1rem;position:relative;">
-            <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);">#WebWellness</span>
-          </div>
-          <button onclick="newAffirmation()" style="display:block;width:100%;padding:.7rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;position:relative;font-family:inherit;" aria-label="Get a new web affirmation" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">
-            &#10024; Give me another one
-          </button>
+                <div class="pcard-img" style="background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:2rem;">
+          <div style="font-size:3rem;">&#127760;</div>
+          <p style="font-family:Playfair Display,serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.8);text-align:center;max-width:180px;line-height:1.5;">"WCAG-compliant and absolutely thriving."</p>
+          <span style="font-size:11px;color:rgba(255,255,255,.35);">#AccessibilityFirst</span>
+          <a href="tools/affirmation.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);" aria-label="Open Daily Web Affirmation tool">Open Tool &#8599;</a>
         </div>
-        <div class="pcard-body">
+<div class="pcard-body">
           <p class="pcard-eye">Just for Fun &middot; Daily Dose</p>
           <h3 class="pcard-title">Daily Web Affirmation</h3>
           <p class="pcard-desc">Because every developer needs a little encouragement. Click for a fresh affirmation to fuel your coding day. No JavaScript errors included.</p>
