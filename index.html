@@ -213,6 +213,68 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
   .hero h1{font-size:2.2rem;}
   .foot-inner{flex-direction:column;gap:1rem;}
 }
+
+/* ===== TOOL CARDS ===== */
+.tool-card{overflow:hidden;}
+.tool-preview{height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+
+/* Open button */
+.tool-open-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:700;padding:.6rem 1.25rem;border-radius:10px;margin-top:.85rem;text-decoration:none;transition:gap .2s,transform .15s,box-shadow .2s;background:var(--ink);color:#fff;border:none;cursor:pointer;}
+.tool-open-btn:hover{gap:.7rem;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);text-decoration:none;color:#fff;}
+.tool-open-btn .tool-arrow{font-size:15px;display:inline-block;transition:transform .2s;}
+.tool-open-btn:hover .tool-arrow{transform:translate(2px,-2px);}
+.tob-2{background:#1e3a5f;}
+.tob-3{background:#3b1f6b;}
+.tob-4{background:#1a1a1a;}
+
+/* TP1 - Contrast */
+.tp1{background:linear-gradient(135deg,#0f172a 0%,#1e3a2f 100%);}
+.tp1-swatch-row{display:flex;align-items:center;gap:.75rem;}
+.tp1-swatch{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:monospace;transition:transform .3s;}
+.tool-card-1:hover .tp1-swatch{transform:scale(1.08);}
+.tp1-arrow{color:rgba(255,255,255,.4);font-size:22px;}
+.tp1-ratio{font-size:2rem;font-weight:700;color:#fff;font-family:monospace;line-height:1;animation:tp1pulse 2.5s ease-in-out infinite;}
+@keyframes tp1pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+.tp1-badges{display:flex;gap:.5rem;}
+.tp1-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.tp1-badge.pass{background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3);}
+.tp1-bar-wrap{width:80%;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
+.tp1-bar{height:100%;background:linear-gradient(90deg,#22c55e,#2d6a4f);border-radius:99px;width:0%;animation:tp1bar 2s ease-out .3s forwards;}
+@keyframes tp1bar{to{width:95%;}}
+
+/* TP2 - Checklist */
+.tp2{background:linear-gradient(135deg,#1e3a5f 0%,#0f2d1a 100%);flex-direction:row;gap:1.25rem;padding:1.5rem;}
+@keyframes tp2spin{0%{stroke-dashoffset:180;}100%{stroke-dashoffset:60;}}
+.tp2-progress-ring{position:relative;flex-shrink:0;}
+.tp2-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;}
+.tp2-items{display:flex;flex-direction:column;gap:.4rem;}
+.tp2-item{display:flex;align-items:center;gap:.5rem;font-size:12px;color:rgba(255,255,255,.5);transition:color .3s;}
+.tp2-item.done{color:#fff;}
+.tp2-check{width:18px;height:18px;border-radius:4px;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;animation:checkpop .3s ease;}
+@keyframes checkpop{0%{transform:scale(0);}70%{transform:scale(1.2);}100%{transform:scale(1);}}
+.tp2-uncheck{width:18px;height:18px;border-radius:4px;border:1.5px solid rgba(255,255,255,.2);flex-shrink:0;}
+
+/* TP3 - Readability */
+.tp3{background:linear-gradient(135deg,#2e1065 0%,#1e3a5f 100%);padding:1.5rem;}
+.tp3-text-lines{width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;margin-bottom:.85rem;}
+.tp3-line{height:6px;border-radius:99px;background:rgba(255,255,255,.15);animation:tp3scan 2s ease-in-out infinite alternate;}
+@keyframes tp3scan{0%{background:rgba(255,255,255,.1);}100%{background:rgba(255,255,255,.3);}}
+.tp3-score-row{display:flex;gap:.5rem;}
+.tp3-score-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.4rem .75rem;text-align:center;display:flex;flex-direction:column;}
+.tp3-good{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.3);}
+.tp3-val{font-size:1.1rem;font-weight:700;color:#fff;line-height:1;}
+.tp3-lbl{font-size:10px;color:rgba(255,255,255,.4);margin-top:.15rem;}
+
+/* TP4 - Affirmation */
+.tp4{background:#1a1a1a;position:relative;}
+.tp4-stars{position:absolute;inset:0;}
+.tp4-stars::before,.tp4-stars::after{content:'';position:absolute;border-radius:50%;animation:tp4twinkle 1.8s ease-in-out infinite alternate;}
+.tp4-stars::before{width:3px;height:3px;background:#fff;top:20%;left:15%;box-shadow:40px 10px 0 rgba(255,255,255,.5),80px 30px 0 rgba(255,255,255,.3),20px 50px 0 rgba(255,255,255,.6),100px 15px 0 rgba(255,255,255,.4),130px 40px 0 rgba(255,255,255,.7),60px 60px 0 rgba(255,255,255,.3),150px 55px 0 rgba(255,255,255,.5);}
+@keyframes tp4twinkle{0%{opacity:.3;}100%{opacity:1;}}
+.tp4-emoji{font-size:2.5rem;position:relative;z-index:1;animation:tp4float 3s ease-in-out infinite;}
+@keyframes tp4float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.tp4-quote{font-family:"Playfair Display",serif;font-style:italic;font-size:12.5px;color:rgba(255,255,255,.85);text-align:center;line-height:1.6;position:relative;z-index:1;max-width:200px;}
+.tp4-tag{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);position:relative;z-index:1;}
 </style>
 </head>
 <body>
@@ -623,78 +685,96 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
       </article>
 
       <!-- Tool 1: Color Contrast Checker -->
-      <article class="pcard reveal" aria-label="Live WCAG Color Contrast Checker tool">
-        <div class="pcard-img" style="background:linear-gradient(135deg,#1a1a1a 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
-          <div style="display:flex;gap:.75rem;align-items:center;">
-            <div style="width:52px;height:52px;border-radius:10px;background:#1a1a1a;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:monospace;">#000</div>
-            <div style="color:rgba(255,255,255,.6);font-size:20px;font-weight:300;">vs</div>
-            <div style="width:52px;height:52px;border-radius:10px;background:#fff;border:3px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1a1a1a;font-family:monospace;">#FFF</div>
+      <article class="pcard tool-card tool-card-1 reveal" aria-label="WCAG Color Contrast Checker tool">
+        <div class="tool-preview tp1" aria-hidden="true">
+          <div class="tp1-swatch-row">
+            <div class="tp1-swatch" style="background:#1a1a1a;color:#fff;" data-label="#000">#000</div>
+            <div class="tp1-arrow">&#8596;</div>
+            <div class="tp1-swatch" style="background:#ffffff;color:#1a1a1a;border:2px solid rgba(255,255,255,.3);" data-label="#FFF">#FFF</div>
           </div>
-          <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.4rem 1.1rem;font-size:1.1rem;font-weight:700;color:#fff;font-family:monospace;">21:1 — AAA Pass</div>
-          <a href="tools/contrast-checker.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open WCAG Color Contrast Checker tool">Open Tool ↗</a>
+          <div class="tp1-ratio">21:1</div>
+          <div class="tp1-badges">
+            <span class="tp1-badge pass">AA Pass</span>
+            <span class="tp1-badge pass">AAA Pass</span>
+          </div>
+          <div class="tp1-bar-wrap">
+            <div class="tp1-bar"></div>
+          </div>
         </div>
         <div class="pcard-body">
-          <p class="pcard-eye">Live Tool · WCAG 2.1</p>
+          <p class="pcard-eye">Live Tool &middot; WCAG 2.1</p>
           <h3 class="pcard-title">WCAG Color Contrast Checker</h3>
-          <p class="pcard-desc">Real-time contrast ratio calculator using the WCAG relative luminance formula. Instantly shows AA and AAA pass/fail for normal and large text.</p>
-          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1</span><span class="ptag">Accessibility</span></div>
+          <p class="pcard-desc">Real-time contrast ratio calculator. Instantly shows AA and AAA pass/fail for text and background color combinations.</p>
+          <div class="ptags"><span class="ptag">WCAG 2.1</span><span class="ptag">JavaScript</span><span class="ptag">Accessibility</span></div>
+          <a href="tools/contrast-checker.html" class="tool-open-btn" aria-label="Open Color Contrast Checker">Open Tool <span class="tool-arrow">&#8599;</span></a>
         </div>
       </article>
 
       <!-- Tool 2: WCAG Checklist -->
-      <article class="pcard reveal delay-1" aria-label="Live WCAG 2.1 AA Compliance Checklist tool">
-                <div class="pcard-img" style="background:linear-gradient(135deg,#1e3a5f 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
-          <div style="width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;">
-            <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:#fff;"><span style="width:14px;height:14px;border-radius:3px;background:#22c55e;flex-shrink:0;"></span>Alt text for images</div>
-            <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:#fff;"><span style="width:14px;height:14px;border-radius:3px;background:#22c55e;flex-shrink:0;"></span>Color contrast 4.5:1</div>
-            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:rgba(255,255,255,.5);"><span style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);flex-shrink:0;"></span>Keyboard navigable</div>
-            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.45rem .75rem;display:flex;align-items:center;gap:.6rem;font-size:12px;color:rgba(255,255,255,.5);"><span style="width:14px;height:14px;border-radius:3px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);flex-shrink:0;"></span>Visible focus indicator</div>
+      <article class="pcard tool-card tool-card-2 reveal delay-1" aria-label="WCAG 2.1 AA Compliance Checklist tool">
+        <div class="tool-preview tp2" aria-hidden="true">
+          <div class="tp2-progress-ring">
+            <svg width="90" height="90" viewBox="0 0 90 90">
+              <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
+              <circle cx="45" cy="45" r="36" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="226.2" stroke-dashoffset="113" style="transform:rotate(-90deg);transform-origin:50% 50%;animation:tp2spin 3s ease-in-out infinite alternate;"/>
+            </svg>
+            <div class="tp2-ring-label">50%</div>
           </div>
-          <a href="tools/wcag-checklist.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open WCAG Checklist tool">Open Tool &#8599;</a>
+          <div class="tp2-items">
+            <div class="tp2-item done"><span class="tp2-check">&#10003;</span>Alt text</div>
+            <div class="tp2-item done"><span class="tp2-check">&#10003;</span>Contrast</div>
+            <div class="tp2-item"><span class="tp2-uncheck"></span>Keyboard nav</div>
+            <div class="tp2-item"><span class="tp2-uncheck"></span>Focus visible</div>
+          </div>
         </div>
-<div class="pcard-body">
-          <p class="pcard-eye">Live Tool · WCAG 2.1 AA</p>
+        <div class="pcard-body">
+          <p class="pcard-eye">Live Tool &middot; WCAG 2.1 AA</p>
           <h3 class="pcard-title">WCAG 2.1 AA Compliance Checklist</h3>
-          <p class="pcard-desc">Interactive checklist of key WCAG 2.1 AA criteria. Check off items as you audit a site and watch your compliance score update live.</p>
-          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1 AA</span><span class="ptag">Accessibility</span></div>
+          <p class="pcard-desc">Work through 24 key WCAG 2.1 AA criteria. Check items off as you audit and watch your compliance score update live.</p>
+          <div class="ptags"><span class="ptag">WCAG 2.1 AA</span><span class="ptag">Audit</span><span class="ptag">24 Criteria</span></div>
+          <a href="tools/wcag-checklist.html" class="tool-open-btn tob-2" aria-label="Open WCAG Checklist">Open Tool <span class="tool-arrow">&#8599;</span></a>
         </div>
       </article>
 
       <!-- Tool 3: Readability Checker -->
-      <article class="pcard reveal delay-2" aria-label="Live Readability Score Checker tool">
-                <div class="pcard-img" style="background:linear-gradient(135deg,#3b1f6b 0%,#2d6a4f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;">
-          <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:1rem;width:100%;max-width:200px;">
-            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Paste your copy here...</div>
-            <div style="height:4px;background:rgba(255,255,255,.15);border-radius:99px;margin-bottom:.75rem;"></div>
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-              <span style="font-size:11px;font-weight:700;color:#22c55e;background:rgba(34,197,94,.15);padding:2px 8px;border-radius:4px;">Grade 5</span>
-              <span style="font-size:11px;font-weight:700;color:#22c55e;background:rgba(34,197,94,.15);padding:2px 8px;border-radius:4px;">Excellent</span>
-              <span style="font-size:11px;color:rgba(255,255,255,.4);">42 words</span>
-            </div>
+      <article class="pcard tool-card tool-card-3 reveal delay-2" aria-label="Web Copy Readability Checker tool">
+        <div class="tool-preview tp3" aria-hidden="true">
+          <div class="tp3-text-lines">
+            <div class="tp3-line" style="width:90%;animation-delay:0s;"></div>
+            <div class="tp3-line" style="width:75%;animation-delay:.15s;"></div>
+            <div class="tp3-line" style="width:85%;animation-delay:.3s;"></div>
+            <div class="tp3-line" style="width:60%;animation-delay:.45s;"></div>
           </div>
-          <a href="tools/readability-checker.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;" aria-label="Open Readability Checker tool">Open Tool &#8599;</a>
+          <div class="tp3-score-row">
+            <div class="tp3-score-box"><span class="tp3-val">G5</span><span class="tp3-lbl">Grade</span></div>
+            <div class="tp3-score-box tp3-good"><span class="tp3-val" style="color:#22c55e;">&#10003;</span><span class="tp3-lbl">Excellent</span></div>
+            <div class="tp3-score-box"><span class="tp3-val">42</span><span class="tp3-lbl">Words</span></div>
+          </div>
         </div>
-<div class="pcard-body">
-          <p class="pcard-eye">Live Tool · Accessibility</p>
+        <div class="pcard-body">
+          <p class="pcard-eye">Live Tool &middot; Content Accessibility</p>
           <h3 class="pcard-title">Web Copy Readability Checker</h3>
-          <p class="pcard-desc">Paste any web copy to instantly get a Flesch-Kincaid grade level score and WCAG readability guidance. Helps ensure content meets 3.1.5 Reading Level best practice.</p>
-          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 3.1.5</span><span class="ptag">Content Accessibility</span></div>
+          <p class="pcard-desc">Paste any web copy to instantly get a Flesch-Kincaid grade level and WCAG 3.1.5 readability guidance.</p>
+          <div class="ptags"><span class="ptag">WCAG 3.1.5</span><span class="ptag">Plain Language</span><span class="ptag">JavaScript</span></div>
+          <a href="tools/readability-checker.html" class="tool-open-btn tob-3" aria-label="Open Readability Checker">Open Tool <span class="tool-arrow">&#8599;</span></a>
         </div>
       </article>
 
       <!-- Tool 4: Daily Web Affirmation -->
-      <article class="pcard reveal" aria-label="Daily Web Affirmation generator tool">
-                <div class="pcard-img" style="background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:2rem;">
-          <div style="font-size:3rem;">&#127760;</div>
-          <p style="font-family:Playfair Display,serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.8);text-align:center;max-width:180px;line-height:1.5;">"WCAG-compliant and absolutely thriving."</p>
-          <span style="font-size:11px;color:rgba(255,255,255,.35);">#AccessibilityFirst</span>
-          <a href="tools/affirmation.html" class="btn-primary" style="font-size:13px;padding:.6rem 1.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);" aria-label="Open Daily Web Affirmation tool">Open Tool &#8599;</a>
+      <article class="pcard tool-card tool-card-4 reveal" aria-label="Daily Web Affirmation tool">
+        <div class="tool-preview tp4" aria-hidden="true">
+          <div class="tp4-stars"></div>
+          <div class="tp4-emoji">&#127760;</div>
+          <p class="tp4-quote">&ldquo;WCAG-compliant and<br>absolutely thriving.&rdquo;</p>
+          <span class="tp4-tag">#AccessibilityFirst</span>
         </div>
-<div class="pcard-body">
+        <div class="pcard-body">
           <p class="pcard-eye">Just for Fun &middot; Daily Dose</p>
           <h3 class="pcard-title">Daily Web Affirmation</h3>
-          <p class="pcard-desc">Because every developer needs a little encouragement. Click for a fresh affirmation to fuel your coding day. No JavaScript errors included.</p>
-          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">Good Vibes</span><span class="ptag">Fun</span></div>
+          <p class="pcard-desc">Because every developer needs encouragement. Click for a fresh affirmation to fuel your coding day.</p>
+          <div class="ptags"><span class="ptag">Good Vibes</span><span class="ptag">Fun</span><span class="ptag">15 Affirmations</span></div>
+          <a href="tools/affirmation.html" class="tool-open-btn tob-4" aria-label="Open Daily Web Affirmation">Open Tool <span class="tool-arrow">&#8599;</span></a>
         </div>
       </article>
 
@@ -787,131 +867,6 @@ const observer=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
 },{threshold:0.12});
 revealEls.forEach(el=>observer.observe(el));
-
-// Tool 1: Color Contrast Checker
-function hexToRgb(hex){
-  hex=hex.replace('#','');
-  if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
-  if(hex.length!==6||!/^[0-9a-fA-F]{6}$/.test(hex))return null;
-  return{r:parseInt(hex.slice(0,2),16),g:parseInt(hex.slice(2,4),16),b:parseInt(hex.slice(4,6),16)};
-}
-function luminance(r,g,b){
-  return[r,g,b].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);}).reduce((a,c,i)=>a+c*[.2126,.7152,.0722][i],0);
-}
-function contrastRatio(hex1,hex2){
-  const c1=hexToRgb(hex1),c2=hexToRgb(hex2);
-  if(!c1||!c2)return null;
-  const l1=luminance(c1.r,c1.g,c1.b),l2=luminance(c2.r,c2.g,c2.b);
-  const lighter=Math.max(l1,l2),darker=Math.min(l1,l2);
-  return(lighter+.05)/(darker+.05);
-}
-function syncColor(pickerId,hexId){
-  const hex=document.getElementById(hexId).value;
-  if(/^#[0-9a-fA-F]{6}$/.test(hex))document.getElementById(pickerId).value=hex;
-  calcContrast();
-}
-function calcContrast(){
-  const fg=document.getElementById('cc-fg').value;
-  const bg=document.getElementById('cc-bg').value;
-  document.getElementById('cc-fg-hex').value=fg;
-  document.getElementById('cc-bg-hex').value=bg;
-  document.getElementById('cc-preview').style.color=fg;
-  document.getElementById('cc-preview').style.background=bg;
-  const ratio=contrastRatio(fg,bg);
-  if(!ratio)return;
-  document.getElementById('cc-ratio').querySelector('div').textContent=ratio.toFixed(2)+':1';
-  const aaPass=ratio>=4.5,aaaPass=ratio>=7;
-  const aaEl=document.getElementById('cc-aa'),aaaEl=document.getElementById('cc-aaa');
-  aaEl.style.background=aaPass?'#dcfce7':'#fee2e2';
-  aaEl.style.borderColor=aaPass?'#86efac':'#fca5a5';
-  aaEl.querySelector('div').style.color=aaPass?'#15803d':'#dc2626';
-  aaEl.querySelector('div').textContent=aaPass?'AA Pass':'AA Fail';
-  aaEl.querySelectorAll('div')[1].style.color=aaPass?'#15803d':'#dc2626';
-  aaaEl.style.background=aaaPass?'#dcfce7':'#fee2e2';
-  aaaEl.style.borderColor=aaaPass?'#86efac':'#fca5a5';
-  aaaEl.querySelector('div').style.color=aaaPass?'#15803d':'#dc2626';
-  aaaEl.querySelector('div').textContent=aaaPass?'AAA Pass':'AAA Fail';
-  aaaEl.querySelectorAll('div')[1].style.color=aaaPass?'#15803d':'#dc2626';
-}
-calcContrast();
-
-// Tool 2: WCAG Checklist
-function updateWL(){
-  const boxes=document.querySelectorAll('.wl-item input[type=checkbox]');
-  const total=boxes.length,checked=[...boxes].filter(b=>b.checked).length;
-  document.getElementById('wl-score').textContent=checked;
-  document.getElementById('wl-bar').style.width=(checked/total*100)+'%';
-  const pct=Math.round(checked/total*100);
-  document.getElementById('wl-label').textContent=checked===total?'Full compliance achieved!':pct+'% complete';
-  document.getElementById('wl-score').style.color=checked===total?'#15803d':'var(--accent)';
-}
-
-// Tool 3: Readability (Flesch-Kincaid Grade)
-function calcReadability(){
-  const text=document.getElementById('rb-input').value.trim();
-  const words=text.split(/\s+/).filter(w=>w.length>0);
-  const wc=words.length;
-  document.getElementById('rb-words').textContent=wc;
-  if(wc<10){
-    document.getElementById('rb-grade').textContent='--';
-    document.getElementById('rb-result').textContent='Type to analyse';
-    document.getElementById('rb-result').style.color='var(--soft)';
-    return;
-  }
-  const sentences=text.split(/[.!?]+/).filter(s=>s.trim().length>0).length||1;
-  const syllables=words.reduce((sum,w)=>{
-    w=w.toLowerCase().replace(/[^a-z]/g,'');
-    if(!w)return sum;
-    let s=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'').replace(/^y/,'').match(/[aeiouy]{1,2}/g);
-    return sum+Math.max(1,s?s.length:1);
-  },0);
-  const fk=.39*(wc/sentences)+11.8*(syllables/wc)-15.59;
-  const grade=Math.max(1,Math.min(16,Math.round(fk)));
-  document.getElementById('rb-grade').textContent='Grade '+grade;
-  let level,color;
-  if(grade<=8){level='Excellent (WCAG AA)';color='#15803d';}
-  else if(grade<=10){level='Good';color='#2d6a4f';}
-  else if(grade<=12){level='Moderate';color='#c47d2e';}
-  else{level='Complex — simplify';color='#dc2626';}
-  document.getElementById('rb-result').textContent=level;
-  document.getElementById('rb-result').style.color=color;
-}
-
-// Tool 4: Daily Web Affirmation
-const affirmations = [
-  {e:"🌐", t:"Your divs are perfectly aligned, and so is your energy today.", tag:"#WebWellness"},
-  {e:"✨", t:"Every pixel you push makes the internet a more beautiful place.", tag:"#PixelPower"},
-  {e:"🚀", t:"Your code shipped. Your confidence should too.", tag:"#ShipIt"},
-  {e:"🎨", t:"Good design is invisible. Your work is unforgettable.", tag:"#DesignVibes"},
-  {e:"💚", t:"The web is more accessible because you exist in it.", tag:"#A11yLove"},
-  {e:"🧠", t:"You debugged harder problems than this before breakfast.", tag:"#DevLife"},
-  {e:"🌱", t:"Your commits are small. Your impact is massive.", tag:"#GrowthMindset"},
-  {e:"🔥", t:"Someone is going to land a job today because of a portfolio you built.", tag:"#BuildThings"},
-  {e:"💡", t:"The best time to refactor was yesterday. The second best time is right now.", tag:"#CleanCode"},
-  {e:"🌍", t:"WCAG-compliant and absolutely thriving.", tag:"#AccessibilityFirst"},
-  {e:"🎯", t:"Your tab index is in order and so is your life.", tag:"#FocusMode"},
-  {e:"🤝", t:"Semantic HTML is an act of kindness. You are kind.", tag:"#SemanticVibes"},
-  {e:"☀️", t:"Today you will close at least one browser tab. You have the strength.", tag:"#TabsUnderControl"},
-  {e:"💫", t:"Your lighthouse score is a reflection of your soul: 100.", tag:"#PerfectScore"},
-  {e:"🛡️", t:"You are ADA compliant. You contain multitudes.", tag:"#InclusiveWeb"},
-];
-let lastAff = 0;
-function newAffirmation(){
-  let idx;
-  do { idx = Math.floor(Math.random()*affirmations.length); } while(idx===lastAff);
-  lastAff = idx;
-  const a = affirmations[idx];
-  const emojiEl = document.getElementById("aff-emoji");
-  const textEl = document.getElementById("aff-text");
-  const tagEl = document.getElementById("aff-tag").querySelector("span");
-  emojiEl.style.opacity="0"; emojiEl.style.transform="scale(.5)";
-  textEl.style.opacity="0";
-  setTimeout(()=>{
-    emojiEl.textContent=a.e; textEl.textContent='"'+a.t+'"'; tagEl.textContent=a.tag;
-    emojiEl.style.opacity="1"; emojiEl.style.transform="scale(1)";
-    textEl.style.opacity="1";
-  },250);
-}
 
 // Active nav link
 const sections=document.querySelectorAll('section[id],div[id]');
