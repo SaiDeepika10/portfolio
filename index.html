@@ -622,13 +622,121 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
         </div>
       </article>
 
-      <!-- GitHub CTA card -->
-      <div class="pcard reveal delay-2" style="background:var(--accent-light);border-color:rgba(45,106,79,.2);justify-content:center;align-items:center;text-align:center;padding:2.5rem;">
-        <svg width="36" height="36" fill="#2d6a4f" viewBox="0 0 24 24" aria-hidden="true" style="margin:0 auto 1rem;"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-        <p style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:.5rem;">See all my work</p>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:1.25rem;">All projects and code available on my GitHub profile.</p>
-        <a href="https://github.com/SaiDeepika10" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;margin:0 auto;" aria-label="Visit Sai Deepika's GitHub profile">View GitHub Profile ↗</a>
-      </div>
+      <!-- Tool 1: Color Contrast Checker -->
+      <article class="pcard reveal" aria-label="Live WCAG Color Contrast Checker tool">
+        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
+          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+          </div>
+          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.6rem;">
+            <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;">
+              <label for="cc-fg" style="font-size:11px;font-weight:600;color:var(--soft);">Text color</label>
+              <div style="display:flex;gap:.4rem;align-items:center;">
+                <input type="color" id="cc-fg" value="#1a1a1a" style="width:36px;height:32px;border:1px solid var(--border);border-radius:6px;padding:2px;cursor:pointer;background:white;" aria-label="Choose text color" oninput="calcContrast()"/>
+                <input type="text" id="cc-fg-hex" value="#1a1a1a" maxlength="7" style="flex:1;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:monospace;color:var(--ink);" aria-label="Text color hex value" oninput="syncColor('cc-fg','cc-fg-hex')"/>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;">
+              <label for="cc-bg" style="font-size:11px;font-weight:600;color:var(--soft);">Background</label>
+              <div style="display:flex;gap:.4rem;align-items:center;">
+                <input type="color" id="cc-bg" value="#ffffff" style="width:36px;height:32px;border:1px solid var(--border);border-radius:6px;padding:2px;cursor:pointer;background:white;" aria-label="Choose background color" oninput="calcContrast()"/>
+                <input type="text" id="cc-bg-hex" value="#ffffff" maxlength="7" style="flex:1;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:monospace;color:var(--ink);" aria-label="Background color hex value" oninput="syncColor('cc-bg','cc-bg-hex')"/>
+              </div>
+            </div>
+          </div>
+          <div id="cc-preview" style="border-radius:8px;padding:.75rem 1rem;border:1px solid var(--border);font-size:14px;font-weight:500;background:#ffffff;color:#1a1a1a;margin-bottom:.6rem;">Sample text preview</div>
+          <div style="display:flex;gap:.5rem;">
+            <div id="cc-ratio" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
+              <div style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">21:1</div>
+              <div style="font-size:10px;color:var(--soft);">Ratio</div>
+            </div>
+            <div id="cc-aa" style="flex:1;background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:.5rem;text-align:center;">
+              <div style="font-size:.95rem;font-weight:700;color:#15803d;" aria-live="polite">AA Pass</div>
+              <div style="font-size:10px;color:#15803d;">Normal text</div>
+            </div>
+            <div id="cc-aaa" style="flex:1;background:#dcfce7;border:1px solid #86efac;border-radius:8px;padding:.5rem;text-align:center;">
+              <div style="font-size:.95rem;font-weight:700;color:#15803d;" aria-live="polite">AAA Pass</div>
+              <div style="font-size:10px;color:#15803d;">Enhanced</div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-eye">Live Tool · WCAG 2.1</p>
+          <h3 class="pcard-title">WCAG Color Contrast Checker</h3>
+          <p class="pcard-desc">Real-time contrast ratio calculator using the WCAG relative luminance formula. Instantly shows AA and AAA pass/fail for normal and large text.</p>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1</span><span class="ptag">Accessibility</span></div>
+        </div>
+      </article>
+
+      <!-- Tool 2: WCAG Checklist -->
+      <article class="pcard reveal delay-1" aria-label="Live WCAG 2.1 AA Compliance Checklist tool">
+        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
+          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.6rem .85rem;display:flex;align-items:center;gap:.85rem;margin-bottom:.6rem;">
+            <div style="text-align:center;">
+              <div id="wl-score" style="font-size:1.5rem;font-weight:700;color:var(--accent);" aria-live="polite">0</div>
+              <div style="font-size:10px;color:var(--soft);">/ 8 done</div>
+            </div>
+            <div style="flex:1;">
+              <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:.3rem;">
+                <div id="wl-bar" style="height:100%;width:0%;background:var(--accent);border-radius:99px;transition:width .3s;"></div>
+              </div>
+              <div id="wl-label" style="font-size:11px;color:var(--muted);">Check off criteria as you audit</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.3rem;max-height:148px;overflow-y:auto;" role="group" aria-label="WCAG checklist items">
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Text alternatives for images"/> Alt text for images (1.1.1)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Color contrast 4.5:1"/> Color contrast 4.5:1 (1.4.3)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Keyboard navigation"/> Keyboard navigable (2.1.1)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Visible focus indicator"/> Visible focus indicator (2.4.7)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Descriptive page title"/> Descriptive page title (2.4.2)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Heading structure"/> Logical heading structure (1.3.1)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="ARIA labels on interactive elements"/> ARIA labels on controls (4.1.2)</label>
+            <label class="wl-item" style="display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .5rem;border-radius:6px;cursor:pointer;font-size:12px;color:var(--muted);border:1px solid var(--border);background:white;"><input type="checkbox" onchange="updateWL()" style="margin-top:2px;accent-color:var(--accent);cursor:pointer;" aria-label="Error identification"/> Error identification (3.3.1)</label>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-eye">Live Tool · WCAG 2.1 AA</p>
+          <h3 class="pcard-title">WCAG 2.1 AA Compliance Checklist</h3>
+          <p class="pcard-desc">Interactive checklist of key WCAG 2.1 AA criteria. Check off items as you audit a site and watch your compliance score update live.</p>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 2.1 AA</span><span class="ptag">Accessibility</span></div>
+        </div>
+      </article>
+
+      <!-- Tool 3: Readability Checker -->
+      <article class="pcard reveal delay-2" aria-label="Live Readability Score Checker tool">
+        <div class="pcard-img" style="height:auto;padding:1.25rem;display:block;border-bottom:1px solid var(--border);background:var(--white);">
+          <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.75rem;">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A;padding:3px 8px;border-radius:4px;">Live Tool</span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+          </div>
+          <textarea id="rb-input" rows="4" placeholder="Paste your web copy here to check readability..." style="width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;color:var(--ink);resize:none;margin-bottom:.6rem;line-height:1.6;" aria-label="Text to analyse for readability" oninput="calcReadability()"></textarea>
+          <div style="display:flex;gap:.5rem;">
+            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
+              <div id="rb-grade" style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">--</div>
+              <div style="font-size:10px;color:var(--soft);">Grade level</div>
+            </div>
+            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
+              <div id="rb-words" style="font-size:1.2rem;font-weight:700;color:var(--ink);" aria-live="polite">0</div>
+              <div style="font-size:10px;color:var(--soft);">Words</div>
+            </div>
+            <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.5rem;text-align:center;">
+              <div id="rb-result" style="font-size:.85rem;font-weight:700;color:var(--soft);" aria-live="polite">Type to analyse</div>
+              <div style="font-size:10px;color:var(--soft);">WCAG level</div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <p class="pcard-eye">Live Tool · Accessibility</p>
+          <h3 class="pcard-title">Web Copy Readability Checker</h3>
+          <p class="pcard-desc">Paste any web copy to instantly get a Flesch-Kincaid grade level score and WCAG readability guidance. Helps ensure content meets 3.1.5 Reading Level best practice.</p>
+          <div class="ptags"><span class="ptag">JavaScript</span><span class="ptag">WCAG 3.1.5</span><span class="ptag">Content Accessibility</span></div>
+        </div>
+      </article>
 
     </div>
   </div>
@@ -719,6 +827,95 @@ const observer=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
 },{threshold:0.12});
 revealEls.forEach(el=>observer.observe(el));
+
+// Tool 1: Color Contrast Checker
+function hexToRgb(hex){
+  hex=hex.replace('#','');
+  if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
+  if(hex.length!==6||!/^[0-9a-fA-F]{6}$/.test(hex))return null;
+  return{r:parseInt(hex.slice(0,2),16),g:parseInt(hex.slice(2,4),16),b:parseInt(hex.slice(4,6),16)};
+}
+function luminance(r,g,b){
+  return[r,g,b].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);}).reduce((a,c,i)=>a+c*[.2126,.7152,.0722][i],0);
+}
+function contrastRatio(hex1,hex2){
+  const c1=hexToRgb(hex1),c2=hexToRgb(hex2);
+  if(!c1||!c2)return null;
+  const l1=luminance(c1.r,c1.g,c1.b),l2=luminance(c2.r,c2.g,c2.b);
+  const lighter=Math.max(l1,l2),darker=Math.min(l1,l2);
+  return(lighter+.05)/(darker+.05);
+}
+function syncColor(pickerId,hexId){
+  const hex=document.getElementById(hexId).value;
+  if(/^#[0-9a-fA-F]{6}$/.test(hex))document.getElementById(pickerId).value=hex;
+  calcContrast();
+}
+function calcContrast(){
+  const fg=document.getElementById('cc-fg').value;
+  const bg=document.getElementById('cc-bg').value;
+  document.getElementById('cc-fg-hex').value=fg;
+  document.getElementById('cc-bg-hex').value=bg;
+  document.getElementById('cc-preview').style.color=fg;
+  document.getElementById('cc-preview').style.background=bg;
+  const ratio=contrastRatio(fg,bg);
+  if(!ratio)return;
+  document.getElementById('cc-ratio').querySelector('div').textContent=ratio.toFixed(2)+':1';
+  const aaPass=ratio>=4.5,aaaPass=ratio>=7;
+  const aaEl=document.getElementById('cc-aa'),aaaEl=document.getElementById('cc-aaa');
+  aaEl.style.background=aaPass?'#dcfce7':'#fee2e2';
+  aaEl.style.borderColor=aaPass?'#86efac':'#fca5a5';
+  aaEl.querySelector('div').style.color=aaPass?'#15803d':'#dc2626';
+  aaEl.querySelector('div').textContent=aaPass?'AA Pass':'AA Fail';
+  aaEl.querySelectorAll('div')[1].style.color=aaPass?'#15803d':'#dc2626';
+  aaaEl.style.background=aaaPass?'#dcfce7':'#fee2e2';
+  aaaEl.style.borderColor=aaaPass?'#86efac':'#fca5a5';
+  aaaEl.querySelector('div').style.color=aaaPass?'#15803d':'#dc2626';
+  aaaEl.querySelector('div').textContent=aaaPass?'AAA Pass':'AAA Fail';
+  aaaEl.querySelectorAll('div')[1].style.color=aaaPass?'#15803d':'#dc2626';
+}
+calcContrast();
+
+// Tool 2: WCAG Checklist
+function updateWL(){
+  const boxes=document.querySelectorAll('.wl-item input[type=checkbox]');
+  const total=boxes.length,checked=[...boxes].filter(b=>b.checked).length;
+  document.getElementById('wl-score').textContent=checked;
+  document.getElementById('wl-bar').style.width=(checked/total*100)+'%';
+  const pct=Math.round(checked/total*100);
+  document.getElementById('wl-label').textContent=checked===total?'Full compliance achieved!':pct+'% complete';
+  document.getElementById('wl-score').style.color=checked===total?'#15803d':'var(--accent)';
+}
+
+// Tool 3: Readability (Flesch-Kincaid Grade)
+function calcReadability(){
+  const text=document.getElementById('rb-input').value.trim();
+  const words=text.split(/\s+/).filter(w=>w.length>0);
+  const wc=words.length;
+  document.getElementById('rb-words').textContent=wc;
+  if(wc<10){
+    document.getElementById('rb-grade').textContent='--';
+    document.getElementById('rb-result').textContent='Type to analyse';
+    document.getElementById('rb-result').style.color='var(--soft)';
+    return;
+  }
+  const sentences=text.split(/[.!?]+/).filter(s=>s.trim().length>0).length||1;
+  const syllables=words.reduce((sum,w)=>{
+    w=w.toLowerCase().replace(/[^a-z]/g,'');
+    if(!w)return sum;
+    let s=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'').replace(/^y/,'').match(/[aeiouy]{1,2}/g);
+    return sum+Math.max(1,s?s.length:1);
+  },0);
+  const fk=.39*(wc/sentences)+11.8*(syllables/wc)-15.59;
+  const grade=Math.max(1,Math.min(16,Math.round(fk)));
+  document.getElementById('rb-grade').textContent='Grade '+grade;
+  let level,color;
+  if(grade<=8){level='Excellent (WCAG AA)';color='#15803d';}
+  else if(grade<=10){level='Good';color='#2d6a4f';}
+  else if(grade<=12){level='Moderate';color='#c47d2e';}
+  else{level='Complex — simplify';color='#dc2626';}
+  document.getElementById('rb-result').textContent=level;
+  document.getElementById('rb-result').style.color=color;
+}
 
 // Active nav link
 const sections=document.querySelectorAll('section[id],div[id]');
