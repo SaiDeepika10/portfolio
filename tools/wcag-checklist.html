@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WCAG 2.1 AA Compliance Checklist | Sai Deepika</title>
+<meta name="description" content="Interactive WCAG 2.1 AA compliance checklist tool by Sai Deepika Thammireddy."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1a1a1a;--muted:#5a5a5a;--soft:#8a8a8a;--bg:#faf9f7;--white:#ffffff;--border:#e8e5e0;--accent:#2d6a4f;--accent-light:#e8f4ee;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #c47d2e;outline-offset:3px;border-radius:3px;}
+.skip{position:absolute;top:-60px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:999;transition:top .2s;}
+.skip:focus{top:0;}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none;}
+.nav-back{font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s;}
+.nav-back:hover{color:var(--ink);border-color:var(--ink);}
+.tool-hero{background:var(--white);border-bottom:1px solid var(--border);padding:3rem 2rem 2.5rem;}
+.tool-hero-inner{max-width:900px;margin:0 auto;}
+.tool-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:.3rem .85rem;border-radius:20px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--ink);margin-bottom:.5rem;}
+.tool-hero p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.75;}
+main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem;}
+
+/* SCORE BAR */
+.score-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:2rem;align-items:center;}
+.score-circle{width:90px;height:90px;flex-shrink:0;position:relative;}
+.score-circle svg{transform:rotate(-90deg);}
+.score-circle-track{fill:none;stroke:var(--border);stroke-width:8;}
+.score-circle-fill{fill:none;stroke:var(--accent);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .4s ease;}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:var(--ink);line-height:1;}
+.score-num span{font-size:11px;font-weight:500;color:var(--soft);}
+.score-info{flex:1;}
+.score-info h2{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:.3rem;}
+.score-info p{font-size:13px;color:var(--muted);margin-bottom:.85rem;}
+.progress-bar{height:8px;background:var(--bg);border-radius:99px;overflow:hidden;border:1px solid var(--border);}
+.progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .4s ease;width:0%;}
+.btn-reset{font-size:12px;font-weight:600;color:var(--muted);background:none;border:1px solid var(--border);border-radius:8px;padding:.35rem .85rem;cursor:pointer;margin-top:.6rem;font-family:inherit;transition:color .15s,border-color .15s;}
+.btn-reset:hover{color:var(--ink);border-color:var(--ink);}
+
+/* CATEGORIES */
+.cat-section{margin-bottom:1.25rem;}
+.cat-header{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.cat-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.checklist{display:flex;flex-direction:column;gap:.5rem;}
+.check-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;display:flex;align-items:flex-start;gap:.85rem;cursor:pointer;transition:border-color .15s,background .15s;}
+.check-item:hover{border-color:var(--accent);background:var(--accent-light);}
+.check-item.done{background:#f0fdf4;border-color:#86efac;}
+.check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:2px;}
+.check-body{flex:1;}
+.check-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.2rem;}
+.check-item.done .check-title{color:#15803d;text-decoration:line-through;text-decoration-color:#86efac;}
+.check-desc{font-size:12px;color:var(--soft);line-height:1.6;}
+.check-sc{font-size:10px;font-weight:600;color:var(--accent);background:var(--accent-light);padding:2px 7px;border-radius:4px;margin-left:.5rem;}
+
+@media(max-width:600px){.score-card{flex-direction:column;text-align:center;}.score-info p{display:none;}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Sai Deepika</a>
+    <a href="../index.html#projects" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <div class="tool-badge">WCAG 2.1 AA Tool</div>
+    <h1>Compliance Checklist</h1>
+    <p>Work through 24 key WCAG 2.1 AA criteria organized by principle. Check off items as you audit your site and track your compliance progress.</p>
+  </div>
+</div>
+<main id="main">
+  <div class="score-card" role="status" aria-live="polite" aria-label="Compliance score">
+    <div class="score-circle" aria-hidden="true">
+      <svg width="90" height="90" viewBox="0 0 90 90">
+        <circle class="score-circle-track" cx="45" cy="45" r="36"/>
+        <circle class="score-circle-fill" id="circle-fill" cx="45" cy="45" r="36" stroke-dasharray="226.2" stroke-dashoffset="226.2"/>
+      </svg>
+      <div class="score-num"><span id="score-pct">0%</span><span>done</span></div>
+    </div>
+    <div class="score-info">
+      <h2 id="score-title">Start your audit</h2>
+      <p id="score-desc">Check off criteria as you test each one on your website. Items are organized by WCAG principle.</p>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <button class="btn-reset" onclick="resetAll()" aria-label="Reset all checklist items">Reset checklist</button>
+    </div>
+  </div>
+
+  <div id="checklist-container"></div>
+</main>
+<script>
+const criteria = [
+  {cat:"Perceivable", items:[
+    {id:"c1",sc:"1.1.1",title:"Text alternatives for images",desc:"All non-text content has a text alternative that serves the same purpose."},
+    {id:"c2",sc:"1.2.3",title:"Audio description or media alternative",desc:"An alternative for time-based media or audio description is provided for prerecorded video."},
+    {id:"c3",sc:"1.3.1",title:"Info and relationships",desc:"Structure and relationships conveyed through presentation can be programmatically determined."},
+    {id:"c4",sc:"1.3.2",title:"Meaningful sequence",desc:"Reading and navigation order is logical and meaningful when stylesheets are removed."},
+    {id:"c5",sc:"1.4.1",title:"Use of color not sole means",desc:"Color is not the only visual means of conveying information or indicating an action."},
+    {id:"c6",sc:"1.4.3",title:"Color contrast 4.5:1",desc:"Text has a contrast ratio of at least 4.5:1 against its background."},
+    {id:"c7",sc:"1.4.4",title:"Resize text to 200%",desc:"Text can be resized up to 200% without loss of content or functionality."},
+    {id:"c8",sc:"1.4.10",title:"Reflow at 320px",desc:"Content can be presented without scrolling in two dimensions at 320px width."},
+  ]},
+  {cat:"Operable", items:[
+    {id:"c9",sc:"2.1.1",title:"Keyboard accessible",desc:"All functionality is operable through a keyboard interface without requiring specific timing."},
+    {id:"c10",sc:"2.1.2",title:"No keyboard trap",desc:"Keyboard focus is never locked on a component unless the user is informed how to move it."},
+    {id:"c11",sc:"2.4.1",title:"Skip to main content link",desc:"A mechanism is available to bypass blocks of content repeated on multiple pages."},
+    {id:"c12",sc:"2.4.2",title:"Descriptive page titles",desc:"Web pages have titles that describe topic or purpose."},
+    {id:"c13",sc:"2.4.3",title:"Logical focus order",desc:"If a page can be navigated sequentially, components receive focus in a logical order."},
+    {id:"c14",sc:"2.4.4",title:"Descriptive link text",desc:"The purpose of each link can be determined from the link text alone or its context."},
+    {id:"c15",sc:"2.4.7",title:"Visible focus indicator",desc:"Any keyboard operable user interface has a mode of operation where the focus indicator is visible."},
+  ]},
+  {cat:"Understandable", items:[
+    {id:"c16",sc:"3.1.1",title:"Language of page",desc:"The default human language of each web page can be programmatically determined (lang attribute)."},
+    {id:"c17",sc:"3.2.1",title:"On focus — no unexpected change",desc:"Receiving focus does not automatically trigger any unexpected change of context."},
+    {id:"c18",sc:"3.2.2",title:"On input — no unexpected change",desc:"Changing a setting does not automatically cause a change of context unless users are advised."},
+    {id:"c19",sc:"3.3.1",title:"Error identification",desc:"Input errors are identified and described to the user in text."},
+    {id:"c20",sc:"3.3.2",title:"Labels or instructions",desc:"Labels or instructions are provided when content requires user input."},
+  ]},
+  {cat:"Robust", items:[
+    {id:"c21",sc:"4.1.1",title:"Valid HTML markup",desc:"Pages have complete start and end tags, elements nested per specs, no duplicate attributes."},
+    {id:"c22",sc:"4.1.2",title:"ARIA name, role, value",desc:"All UI components have name, role, and value that can be programmatically determined."},
+    {id:"c23",sc:"4.1.3",title:"Status messages",desc:"Status messages can be programmatically determined through role or property without focus."},
+    {id:"c24",sc:"4.1.2",title:"Form inputs have accessible labels",desc:"Every form field has a visible label that is programmatically associated with the input."},
+  ]},
+];
+
+const total = criteria.reduce((s,c)=>s+c.items.length,0);
+const state = {};
+
+function buildChecklist(){
+  const container = document.getElementById('checklist-container');
+  criteria.forEach(cat=>{
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.innerHTML = `<div class="cat-header"><span class="cat-dot"></span>${cat.cat}</div><div class="checklist" role="group" aria-label="${cat.cat} criteria">`;
+    cat.items.forEach(item=>{
+      state[item.id] = false;
+      const el = document.createElement('label');
+      el.className = 'check-item';
+      el.setAttribute('for', item.id);
+      el.innerHTML = `<input type="checkbox" id="${item.id}" onchange="toggle('${item.id}', this.checked)" aria-label="${item.title} (WCAG ${item.sc})"/><div class="check-body"><div class="check-title">${item.title}<span class="check-sc">${item.sc}</span></div><div class="check-desc">${item.desc}</div></div>`;
+      sec.querySelector('.checklist').appendChild(el);
+    });
+    container.appendChild(sec);
+  });
+}
+
+function toggle(id, checked){
+  state[id] = checked;
+  const label = document.querySelector(`label[for="${id}"]`);
+  label.classList.toggle('done', checked);
+  updateScore();
+}
+
+function updateScore(){
+  const done = Object.values(state).filter(Boolean).length;
+  const pct = Math.round(done/total*100);
+  document.getElementById('score-pct').textContent = pct+'%';
+  document.getElementById('progress-fill').style.width = pct+'%';
+  const circumference = 226.2;
+  document.getElementById('circle-fill').style.strokeDashoffset = circumference - (circumference * pct/100);
+  const titles = ['Start your audit','Good progress!','Halfway there!','Almost compliant!','Fully WCAG 2.1 AA compliant!'];
+  const ti = done===total?4:pct>=75?3:pct>=50?2:pct>=25?1:0;
+  document.getElementById('score-title').textContent = titles[ti];
+  document.getElementById('circle-fill').style.stroke = done===total?'#15803d':'#2d6a4f';
+}
+
+function resetAll(){
+  Object.keys(state).forEach(id=>{
+    state[id]=false;
+    document.getElementById(id).checked=false;
+    document.querySelector(`label[for="${id}"]`).classList.remove('done');
+  });
+  updateScore();
+}
+
+buildChecklist();
+</script>
+</body>
+</html>
