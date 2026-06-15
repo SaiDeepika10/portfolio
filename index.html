@@ -308,6 +308,294 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 .eyebrow span{display:inline-block;transform:translateY(100%);animation:eyebrowIn .5s cubic-bezier(.34,1.56,.64,1) .1s forwards;}
 @keyframes eyebrowIn{to{transform:translateY(0);}}
 
+/* ===== WILD TEXT & VISUAL ANIMATIONS ===== */
+
+/* ---- GRADIENT SWEEP on section titles ---- */
+.sec-title {
+  background: linear-gradient(100deg, var(--ink) 0%, #2d6a4f 30%, #c47d2e 55%, var(--ink) 80%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: richSweep 5s linear infinite;
+}
+@keyframes richSweep {
+  0%   { background-position: 250% center; }
+  100% { background-position: -250% center; }
+}
+
+/* ---- HERO H1 big bounce-in ---- */
+.hero h1 { cursor: default; }
+.hero h1 em {
+  display: inline-block;
+  background: linear-gradient(135deg, #2d6a4f, #c47d2e 60%, #2d6a4f);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroGrad 4s ease-in-out infinite alternate;
+  transition: letter-spacing .5s cubic-bezier(.34,1.56,.64,1), filter .3s;
+}
+@keyframes heroGrad {
+  0%   { background-position: 0% 50%;   }
+  100% { background-position: 100% 50%; }
+}
+.hero h1:hover em {
+  letter-spacing: 5px;
+  filter: drop-shadow(0 0 18px rgba(45,106,79,.45));
+}
+
+/* ---- GLITCH on nav logo ---- */
+.nav-logo { position: relative; display: inline-block; }
+.nav-logo::before,
+.nav-logo::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  opacity: 0; transition: opacity .1s;
+}
+.nav-logo::before { color: #2d6a4f; clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); }
+.nav-logo::after  { color: #c47d2e; clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); }
+.nav-logo:hover::before { opacity: .9; animation: glitchA .25s steps(2) infinite; }
+.nav-logo:hover::after  { opacity: .9; animation: glitchB .25s steps(2) .04s infinite; }
+@keyframes glitchA { 0%{transform:translateX(-4px) skewX(-1deg)} 50%{transform:translateX(4px) skewX(1deg)} 100%{transform:translateX(-2px)} }
+@keyframes glitchB { 0%{transform:translateX(3px)}  50%{transform:translateX(-3px)} 100%{transform:translateX(2px)} }
+
+/* ---- NAV LINK magnetic underline ---- */
+.nav-links a { position: relative; overflow: hidden; }
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: 4px; left: .85rem; right: .85rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), #c47d2e);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform .3s cubic-bezier(.76,0,.24,1);
+}
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---- EYEBROW expand on scroll ---- */
+.eyebrow { transition: letter-spacing .7s cubic-bezier(.34,1.56,.64,1), color .3s; }
+.eyebrow.visible { letter-spacing: 4px; }
+.eyebrow:hover { color: var(--accent); cursor: default; }
+
+/* ---- FLOATING STICKER badges in hero ---- */
+.badge-strip .badge {
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .3s;
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+.badge-strip .badge:nth-child(1){animation-delay:0s;}
+.badge-strip .badge:nth-child(2){animation-delay:.3s;}
+.badge-strip .badge:nth-child(3){animation-delay:.6s;}
+.badge-strip .badge:nth-child(4){animation-delay:.9s;}
+.badge-strip .badge:nth-child(5){animation-delay:1.2s;}
+@keyframes badgeFloat {
+  0%,100%{transform:translateY(0) rotate(-1deg);}
+  50%{transform:translateY(-5px) rotate(1deg);}
+}
+.badge-strip .badge:hover {
+  transform: scale(1.12) rotate(-2deg) !important;
+  box-shadow: 0 6px 20px rgba(45,106,79,.25);
+  background: #2d6a4f; color: #fff;
+}
+
+/* ---- PCARD morph underline ---- */
+.pcard-title {
+  position: relative; display: inline-block;
+  background: linear-gradient(90deg, var(--ink), var(--ink)) no-repeat bottom left;
+  background-size: 0% 2px;
+  -webkit-background-clip: unset; background-clip: unset;
+  -webkit-text-fill-color: unset;
+  transition: background-size .35s cubic-bezier(.76,0,.24,1);
+}
+.pcard:hover .pcard-title { background-size: 100% 2px; }
+
+/* ---- CONTACT TITLE sweep ---- */
+.contact-title {
+  background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.45) 45%, #fff 80%);
+  background-size: 250% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: richSweep 5s linear infinite;
+}
+.contact-title em {
+  background: linear-gradient(90deg, rgba(255,255,255,.3), #fff 50%, rgba(255,255,255,.3));
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: richSweep 3s linear infinite reverse;
+}
+
+/* ---- SKILL PILLS pop on hover ---- */
+.pill {
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .2s, color .2s, box-shadow .2s;
+  cursor: default;
+}
+.pill:hover {
+  transform: scale(1.12) rotate(-2deg);
+  background: var(--ink); color: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+
+/* ---- ETAG pop ---- */
+.etag {
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .2s, color .2s;
+  cursor: default; display: inline-block;
+}
+.etag:hover { transform: scale(1.1) rotate(2deg); background: var(--accent); color: #fff; }
+
+/* ---- HERO ROLE typing cursor ---- */
+.hero-role::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+  animation: blink .8s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+/* ---- SCROLL progress bar ---- */
+#scroll-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 9998; width: 0%;
+  background: linear-gradient(90deg, #2d6a4f, #c47d2e);
+  transition: width .1s linear;
+}
+
+/* ---- EXPERIENCE card tilt on hover ---- */
+.ecard {
+  transition: box-shadow .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+  transform-style: preserve-3d;
+}
+.ecard:hover { transform: perspective(800px) rotateX(1.5deg) rotateY(-1deg) translateY(-4px); }
+
+/* ---- SECTION NUMBER float ---- */
+.eyebrow::before {
+  display: inline-block;
+  animation: numFloat 2s ease-in-out infinite;
+  margin-right: 2px;
+}
+@keyframes numFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-3px);} }
+
+/* ---- BTN shimmer ---- */
+.btn-primary {
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@keyframes shimmer { 0%{left:-100%;} 100%{left:200%;} }
+
+/* ---- HERO availability dot pulse ring ---- */
+.avail-dot::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(45,106,79,.3);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  animation: ring 1.8s ease-out infinite;
+}
+.hero-avail { position: relative; }
+@keyframes ring { 0%{transform:translate(-50%,-50%) scale(1);opacity:.6;} 100%{transform:translate(-50%,-50%) scale(2.5);opacity:0;} }
+
+/* ---- MOBILE NAV slide ---- */
+.mobile-nav { transform: translateY(-8px); opacity: 0; transition: transform .28s cubic-bezier(.34,1.56,.64,1), opacity .22s; }
+.mobile-nav.open { transform: translateY(0); opacity: 1; display: block; }
+
+/* ===== TOOL CARDS ===== *//* ===== TOOL CARDS ===== */
+.tool-card{overflow:hidden;}
+.tool-preview{height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+
+/* Open button */
+.tool-open-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:700;padding:.6rem 1.25rem;border-radius:10px;margin-top:.85rem;text-decoration:none;transition:gap .2s,transform .15s,box-shadow .2s;background:#1C1C1C;color:#FAF8F5;border:none;cursor:pointer;}
+.tool-open-btn:hover{gap:.7rem;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);text-decoration:none;color:#fff;}
+.tool-open-btn .tool-arrow{font-size:15px;display:inline-block;transition:transform .2s;}
+.tool-open-btn:hover .tool-arrow{transform:translate(2px,-2px);}
+.tob-2{background:#1C1C1C;}
+.tob-3{background:#1C1C1C;}
+.tob-4{background:#1C1C1C;}
+
+/* TP1 - Contrast */
+.tp1{background:#1C1C1C;}
+.tp1-swatch-row{display:flex;align-items:center;gap:.75rem;}
+.tp1-swatch{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:monospace;transition:transform .3s;}
+.tool-card-1:hover .tp1-swatch{transform:scale(1.08);}
+.tp1-arrow{color:rgba(255,255,255,.4);font-size:22px;}
+.tp1-ratio{font-size:2rem;font-weight:700;color:#FAF8F5;font-family:monospace;line-height:1;animation:tp1pulse 2.5s ease-in-out infinite;}
+@keyframes tp1pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+.tp1-badges{display:flex;gap:.5rem;}
+.tp1-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.tp1-badge.pass{background:rgba(255,255,255,.12);color:#FAF8F5;border:1px solid rgba(255,255,255,.2);}
+.tp1-bar-wrap{width:80%;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
+.tp1-bar{height:100%;background:linear-gradient(90deg,#22c55e,#2d6a4f);border-radius:99px;width:0%;animation:tp1bar 2s ease-out .3s forwards;}
+@keyframes tp1bar{to{width:95%;}}
+
+/* TP2 - Checklist */
+.tp2{background:#F5F0E8;flex-direction:row;gap:1.25rem;padding:1.5rem;}
+@keyframes tp2spin{0%{stroke-dashoffset:180;}100%{stroke-dashoffset:60;}}
+.tp2-progress-ring{position:relative;flex-shrink:0;}
+.tp2-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#1C1C1C;}
+.tp2-items{display:flex;flex-direction:column;gap:.4rem;}
+.tp2-item{display:flex;align-items:center;gap:.5rem;font-size:12px;color:rgba(28,28,28,.4);transition:color .3s;}
+.tp2-item.done{color:#1C1C1C;}
+.tp2-check{width:18px;height:18px;border-radius:4px;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;animation:checkpop .3s ease;}
+@keyframes checkpop{0%{transform:scale(0);}70%{transform:scale(1.2);}100%{transform:scale(1);}}
+.tp2-uncheck{width:18px;height:18px;border-radius:4px;border:1.5px solid rgba(28,28,28,.2);flex-shrink:0;}
+
+/* TP3 - Readability */
+.tp3{background:#FDFAF5;padding:1.5rem;border-bottom:1px solid var(--border);}
+.tp3-text-lines{width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;margin-bottom:.85rem;}
+.tp3-line{height:6px;border-radius:99px;background:rgba(28,28,28,.1);animation:tp3scan 2s ease-in-out infinite alternate;}
+@keyframes tp3scan{0%{background:rgba(28,28,28,.08);}100%{background:rgba(28,28,28,.25);}}
+.tp3-score-row{display:flex;gap:.5rem;}
+.tp3-score-box{background:rgba(28,28,28,.06);border:1px solid rgba(28,28,28,.1);border-radius:8px;padding:.4rem .75rem;text-align:center;display:flex;flex-direction:column;}
+.tp3-good{background:rgba(45,106,79,.1);border-color:rgba(45,106,79,.25);}
+.tp3-val{font-size:1.1rem;font-weight:700;color:#1C1C1C;line-height:1;}
+.tp3-lbl{font-size:10px;color:rgba(28,28,28,.4);margin-top:.15rem;}
+
+/* TP4 - Affirmation */
+.tp4{background:#1C1C1C;position:relative;}
+.tp4-stars{position:absolute;inset:0;}
+.tp4-stars::before,.tp4-stars::after{content:'';position:absolute;border-radius:50%;animation:tp4twinkle 1.8s ease-in-out infinite alternate;}
+.tp4-stars::before{width:3px;height:3px;background:#fff;top:20%;left:15%;box-shadow:40px 10px 0 rgba(255,255,255,.5),80px 30px 0 rgba(255,255,255,.3),20px 50px 0 rgba(255,255,255,.6),100px 15px 0 rgba(255,255,255,.4),130px 40px 0 rgba(255,255,255,.7),60px 60px 0 rgba(255,255,255,.3),150px 55px 0 rgba(255,255,255,.5);}
+@keyframes tp4twinkle{0%{opacity:.3;}100%{opacity:1;}}
+.tp4-emoji{font-size:2.5rem;position:relative;z-index:1;animation:tp4float 3s ease-in-out infinite;}
+@keyframes tp4float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.tp4-quote{font-family:"Playfair Display",serif;font-style:italic;font-size:12.5px;color:rgba(255,255,255,.85);text-align:center;line-height:1.6;position:relative;z-index:1;max-width:200px;}
+.tp4-tag{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);position:relative;z-index:1;}
+
+/* ===== PAGE TRANSITION ===== */
+.page-transition{position:fixed;inset:0;background:#1C1C1C;z-index:9999;pointer-events:none;transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.76,0,.24,1);}
+.page-transition.entering{transform:scaleY(1);transform-origin:bottom;}
+.page-transition.leaving{transform:scaleY(0);transform-origin:top;}
+
+/* ===== NAV LINK HOVER ANIMATION ===== */
+.nav-links a{position:relative;overflow:hidden;}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:.85rem;right:.85rem;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s cubic-bezier(.76,0,.24,1);}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
+
+/* ===== ANIMATED HEADINGS ===== */
+.anim-title{display:inline-block;}
+.anim-title .char{display:inline-block;opacity:0;transform:translateY(40px) rotate(4deg);animation:charIn .5s cubic-bezier(.34,1.56,.64,1) forwards;}
+.anim-title .char.space{display:inline-block;width:.3em;}
+
+/* Hero h1 special */
+.hero h1 .char{animation:charInHero .6s cubic-bezier(.34,1.56,.64,1) forwards;}
+@keyframes charInHero{0%{opacity:0;transform:translateY(50px) rotate(6deg) scale(.8);}100%{opacity:1;transform:none;}}
+@keyframes charIn{0%{opacity:0;transform:translateY(30px) rotate(3deg);}100%{opacity:1;transform:none;}}
+
+/* Section title wave */
+.sec-title .char{animation:charIn .45s cubic-bezier(.34,1.56,.64,1) forwards;}
+
+/* ===== NAV MOBILE SLIDE ===== */
+.mobile-nav{transform:translateY(-8px);opacity:0;transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
+.mobile-nav.open{transform:translateY(0);opacity:1;display:block;}
+
+/* ===== SECTION EYEBROW ANIMATE ===== */
+.eyebrow{overflow:hidden;}
+.eyebrow span{display:inline-block;transform:translateY(100%);animation:eyebrowIn .5s cubic-bezier(.34,1.56,.64,1) .1s forwards;}
+@keyframes eyebrowIn{to{transform:translateY(0);}}
+
 /* ===== TEXT SCRAMBLE / MORPH ANIMATIONS ===== */
 
 /* Gradient sweep on section titles */
@@ -415,6 +703,7 @@ footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(25
 </head>
 <body>
 <div class="page-transition" id="page-transition" aria-hidden="true"></div>
+<div id="scroll-bar" aria-hidden="true"></div>
 <a href="#main" class="skip">Skip to main content</a>
 
 <!-- NAV -->
@@ -1077,108 +1366,128 @@ document.querySelectorAll('.sec-title, .contact-title, h1#hero-heading').forEach
 });
 
 
+// ===== SCROLL PROGRESS BAR =====
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = (scrollTop / docHeight * 100) + '%';
+});
+
 // ===== TEXT SCRAMBLE ENGINE =====
 class TextScramble {
-  constructor(el){
+  constructor(el) {
     this.el = el;
     this.original = el.textContent;
-    this.chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*';
-    this.frame = 0;
-    this.queue = [];
-    this.resolve = null;
+    this.chars = '!<>-_\/[]{}—=+*^?#@ABCDEFabcdef0123456789';
+    this.frameReq = null;
   }
-  setText(newText){
+  setText(newText) {
     const old = this.el.textContent;
     const len = Math.max(old.length, newText.length);
     return new Promise(res => {
       this.resolve = res;
-      this.queue = [];
-      for(let i=0;i<len;i++){
-        const from = old[i]||'';
-        const to = newText[i]||'';
-        const start = Math.floor(Math.random()*10);
-        const end = start + Math.floor(Math.random()*15);
-        this.queue.push({from,to,start,end,char:''});
-      }
+      this.queue = Array.from({length: len}, (_, i) => ({
+        from: old[i] || '',
+        to: newText[i] || '',
+        start: Math.floor(Math.random() * 8),
+        end: Math.floor(Math.random() * 12) + 8,
+        char: ''
+      }));
       cancelAnimationFrame(this.frameReq);
       this.frame = 0;
       this.update();
     });
   }
-  update(){
-    let output='', complete=0;
-    this.queue.forEach((item,i)=>{
-      if(this.frame>=item.end){complete++;output+=item.to;}
-      else if(this.frame>=item.start){
-        item.char=this.chars[Math.floor(Math.random()*this.chars.length)];
-        output+=`<span style="color:var(--accent);opacity:.6">${item.char}</span>`;
-      } else {output+=item.from;}
+  update() {
+    let output = '', complete = 0;
+    this.queue.forEach(item => {
+      if (this.frame >= item.end) {
+        complete++;
+        output += item.to;
+      } else if (this.frame >= item.start) {
+        item.char = this.chars[Math.floor(Math.random() * this.chars.length)];
+        output += `<span style="color:var(--accent);opacity:.7;font-style:italic;">${item.char}</span>`;
+      } else {
+        output += item.from;
+      }
     });
-    this.el.innerHTML=output;
-    if(complete===this.queue.length){this.resolve();return;}
-    this.frameReq=requestAnimationFrame(()=>{this.frame++;this.update();});
+    this.el.innerHTML = output;
+    if (complete === this.queue.length) { this.resolve && this.resolve(); return; }
+    this.frameReq = requestAnimationFrame(() => { this.frame++; this.update(); });
   }
 }
 
-// Apply scramble to section eyebrows on hover
+// Scramble eyebrows on hover
 document.querySelectorAll('.eyebrow').forEach(el => {
-  const scrambler = new TextScramble(el);
-  const original = el.textContent;
-  el.addEventListener('mouseenter', () => {
-    scrambler.setText(original);
-  });
+  const sc = new TextScramble(el);
+  const orig = el.textContent;
+  el.addEventListener('mouseenter', () => sc.setText(orig));
+  el.addEventListener('mouseleave', () => { el.textContent = orig; });
 });
 
-// Apply scramble to pcard titles on card hover
+// Scramble project card titles on hover
 document.querySelectorAll('.pcard').forEach(card => {
   const title = card.querySelector('.pcard-title');
-  if(!title) return;
-  const scrambler = new TextScramble(title);
-  const original = title.textContent;
-  let timeout;
-  card.addEventListener('mouseenter', () => {
-    timeout = setTimeout(() => scrambler.setText(original), 80);
-  });
-  card.addEventListener('mouseleave', () => {
-    clearTimeout(timeout);
-    title.textContent = original;
-  });
+  if (!title) return;
+  const sc = new TextScramble(title);
+  const orig = title.textContent;
+  let t;
+  card.addEventListener('mouseenter', () => { t = setTimeout(() => sc.setText(orig), 60); });
+  card.addEventListener('mouseleave', () => { clearTimeout(t); title.textContent = orig; });
 });
 
-// Apply scramble to experience role titles on hover
+// Scramble experience role titles
 document.querySelectorAll('.ecard-role').forEach(el => {
-  const scrambler = new TextScramble(el);
-  const original = el.textContent;
-  el.addEventListener('mouseenter', () => scrambler.setText(original));
-  el.addEventListener('mouseleave', () => { el.textContent = original; });
+  const sc = new TextScramble(el);
+  const orig = el.textContent;
+  el.addEventListener('mouseenter', () => sc.setText(orig));
+  el.addEventListener('mouseleave', () => { el.textContent = orig; });
 });
 
-// Hero h1 morph words on hover
-const heroH1 = document.querySelector('h1#hero-heading');
-if(heroH1){
-  const scrambler = new TextScramble(heroH1.querySelector('em') || heroH1);
-  const emEl = heroH1.querySelector('em');
-  if(emEl){
-    const original = emEl.textContent;
-    heroH1.addEventListener('mouseenter', () => scrambler.setText(original));
-    heroH1.addEventListener('mouseleave', () => { emEl.textContent = original; });
-  }
+// Scramble hero name on hover
+const emEl = document.querySelector('h1#hero-heading em');
+if (emEl) {
+  const sc = new TextScramble(emEl);
+  const orig = emEl.textContent;
+  document.querySelector('h1#hero-heading').addEventListener('mouseenter', () => sc.setText(orig));
+  document.querySelector('h1#hero-heading').addEventListener('mouseleave', () => { emEl.textContent = orig; });
 }
 
-// Cursor blink on subtitle after 1.5s
-setTimeout(() => {
-  document.querySelectorAll('.sec-sub, .hero-sub').forEach(el => el.classList.add('cursor-done'));
-}, 1500);
+// Scramble section titles on scroll into view (once)
+const titleSc = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.scrambled) {
+      e.target.dataset.scrambled = '1';
+      const sc = new TextScramble(e.target);
+      sc.setText(e.target.textContent);
+    }
+  });
+}, {threshold: 0.4});
+document.querySelectorAll('.sec-title').forEach(el => titleSc.observe(el));
 
 // Eyebrow letter-spacing on scroll
 const eyebrowObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold: 0.5});
 document.querySelectorAll('.eyebrow').forEach(el => eyebrowObs.observe(el));
 
-// ===== PAGE TRANSITION ON NAV CLICKS =====
+// 3D tilt on skill group cards
+document.querySelectorAll('.sgroup, .acard').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(4px)`;
+    card.style.transition = 'transform .05s';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1)';
+  });
+});
+
+// ===== PAGE TRANSITION ON NAV CLICKS =====// ===== PAGE TRANSITION ON NAV CLICKS =====
 const overlay = document.getElementById('page-transition');
 function doTransition(href){
   if(!href || href.startsWith('#')) return;
