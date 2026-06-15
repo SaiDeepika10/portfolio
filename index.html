@@ -2,1532 +2,557 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Sai Deepika Thammireddy | Webmaster & Frontend Developer</title>
-<meta name="description" content="Webmaster and Frontend Web Developer specializing in accessible, WCAG 2.1 AA compliant, ADA-compliant digital portfolios for public sector organizations. Based in Denver, CO."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<meta name="description" content="Webmaster and Frontend Web Developer specializing in accessible, WCAG 2.1 AA compliant digital portfolios for public sector organizations. Based in Denver, CO."/>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --ink:#1a1a1a;
-  --muted:#5a5a5a;
-  --soft:#8a8a8a;
-  --bg:#faf9f7;
-  --white:#ffffff;
-  --border:#e8e5e0;
-  --accent:#2d6a4f;
-  --accent-light:#e8f4ee;
-  --amber:#c47d2e;
-  --r:12px;
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden;}
-img{max-width:100%;display:block;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:3px;}
-
-/* SKIP LINK */
-.skip{position:absolute;top:-60px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:999;transition:top .2s;}
-.skip:focus{top:0;}
-
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.visible{opacity:1;transform:none;}
-.delay-1{transition-delay:.1s!important;}
-.delay-2{transition-delay:.2s!important;}
-.delay-3{transition-delay:.3s!important;}
-
-/* NAV */
-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
-.nav-inner{max-width:1080px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);font-weight:700;letter-spacing:-.3px;}
-.nav-logo:hover{text-decoration:none;color:var(--ink);}
-.nav-links{display:flex;gap:.2rem;list-style:none;align-items:center;}
-.nav-links a{font-size:13.5px;font-weight:500;color:var(--muted);padding:.45rem .85rem;border-radius:8px;transition:color .15s,background .15s;}
-.nav-links a:hover{color:var(--ink);background:var(--bg);text-decoration:none;}
-.nav-hire{background:var(--ink)!important;color:var(--white)!important;border-radius:8px!important;}
-.nav-hire:hover{opacity:.85;color:var(--white)!important;}
-.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:.45rem .75rem;cursor:pointer;font-size:18px;color:var(--ink);}
-.mobile-nav{display:none;background:var(--white);border-top:1px solid var(--border);padding:.75rem 1.5rem 1rem;}
-.mobile-nav.open{display:block;}
-.mobile-nav a{display:block;padding:.6rem 0;font-size:15px;font-weight:500;color:var(--muted);border-bottom:1px solid var(--border);}
-.mobile-nav a:last-child{border:none;color:var(--accent);font-weight:600;}
-
-/* HERO */
-.hero{background:var(--white);padding:5rem 2rem 4rem;border-bottom:1px solid var(--border);}
-.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;}
-.hero-avail{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.4rem;}
-.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.6);}}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.5px;}
-.hero h1 em{font-style:italic;color:var(--accent);}
-.hero-role{font-size:14px;font-weight:500;color:var(--soft);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.4rem;}
-.hero-sub{font-size:15.5px;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:2rem;}
-.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
-.btn-primary{background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:.75rem 1.6rem;border-radius:10px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:opacity .15s,transform .15s;}
-.btn-primary:hover{opacity:.85;transform:translateY(-1px);text-decoration:none;color:#fff;}
-.btn-outline{background:transparent;color:var(--ink);font-size:14px;font-weight:600;padding:.75rem 1.6rem;border-radius:10px;border:1.5px solid var(--border);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:border-color .15s,background .15s;}
-.btn-outline:hover{border-color:var(--ink);background:var(--bg);text-decoration:none;color:var(--ink);}
-
-/* HERO CARD */
-.hero-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:1.75rem;position:relative;}
-.hc-avatar{width:64px;height:64px;border-radius:50%;background:var(--accent-light);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--accent);margin-bottom:1rem;}
-.hc-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:.15rem;}
-.hc-title{font-size:12px;color:var(--soft);margin-bottom:1rem;}
-.hc-divider{height:1px;background:var(--border);margin:.9rem 0;}
-.hc-row{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;}
-.hc-row svg{flex-shrink:0;color:var(--soft);}
-.hc-status{display:flex;align-items:center;gap:.5rem;font-size:13px;font-weight:600;color:var(--accent);margin-top:.6rem;}
-.sdot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
-.hc-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.85rem;}
-.hchip{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--muted);}
-
-/* SECTION WRAPPER */
-.sec{padding:5rem 2rem;}
-.sec-inner{max-width:1080px;margin:0 auto;}
-.sec-white{background:var(--white);}
-.sec-bg{background:var(--bg);}
-.sec-dark{background:var(--ink);}
-.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--soft);margin-bottom:.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:.5rem;letter-spacing:-.3px;}
-.sec-title-w{color:#fff;}
-.sec-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.75;}
-.sec-sub-w{color:rgba(255,255,255,.6);}
-.sec-head{margin-bottom:3rem;}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.about-body p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
-.about-body strong{color:var(--ink);}
-.about-sidebar{display:flex;flex-direction:column;gap:1rem;}
-.acard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.4rem;}
-.acard h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:.5rem;}
-.acard p,.acard li{font-size:13px;color:var(--muted);line-height:1.65;}
-.acard ul{list-style:none;display:flex;flex-direction:column;gap:.25rem;}
-.acard li::before{content:'→ ';color:var(--accent);font-weight:600;}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.sgroup{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;}
-.sgroup-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
-.sgroup-title .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-.pills{display:flex;flex-wrap:wrap;gap:.4rem;}
-.pill{font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
-
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:1.25rem;}
-.ecard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:grid;grid-template-columns:140px 1fr;gap:2rem;transition:box-shadow .2s;}
-.ecard:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
-.ecard-left{border-right:1px solid var(--border);padding-right:2rem;}
-.ecard-date{font-size:12px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;}
-.ecard-co{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
-.ecard-loc{font-size:12px;color:var(--soft);}
-.ecard-role{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:.85rem;}
-.ecard-bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;}
-.ecard-bullets li{font-size:14px;color:var(--muted);line-height:1.7;padding-left:1.1rem;position:relative;}
-.ecard-bullets li::before{content:'';position:absolute;left:0;top:.7rem;width:5px;height:5px;border-radius:50%;background:var(--border);}
-.etags{display:flex;flex-wrap:wrap;gap:.35rem;}
-.etag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;background:var(--bg);color:var(--soft);border:1px solid var(--border);}
-
-/* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-.pcard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;}
-.pcard:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px);}
-.pcard-img{height:160px;background:var(--bg);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.pcard-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
-.pcard-body{padding:1.35rem;flex:1;display:flex;flex-direction:column;}
-.pcard-eye{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--soft);margin-bottom:.4rem;}
-.pcard-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.35;}
-.pcard-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem;}
-.ptags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1rem;}
-.ptag{font-size:11px;font-weight:500;padding:3px 8px;border-radius:5px;background:var(--bg);color:var(--soft);border:1px solid var(--border);}
-.pcard-foot{border-top:1px solid var(--border);padding:1rem 1.35rem;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;}
-.plink{font-size:13px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.3rem;transition:gap .15s;}
-.plink:hover{gap:.5rem;text-decoration:none;}
-.plink-gh{color:var(--muted);}
-.plink-gh:hover{color:var(--ink);}
-.plink-sep{color:var(--border);font-size:12px;}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.contact-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.75rem;letter-spacing:-.3px;}
-.contact-title em{font-style:italic;color:rgba(255,255,255,.6);}
-.contact-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2rem;}
-.clinks{display:flex;flex-direction:column;gap:.6rem;}
-.clink{display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.85rem 1.2rem;color:rgba(255,255,255,.85);font-size:14px;font-weight:500;transition:background .15s;}
-.clink:hover{background:rgba(255,255,255,.13);text-decoration:none;color:#fff;}
-.clink svg{flex-shrink:0;opacity:.6;}
-.contact-card{background:var(--white);border-radius:14px;padding:2rem;}
-.contact-card h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;}
-.contact-card p{font-size:13px;color:var(--muted);margin-bottom:1.5rem;line-height:1.65;}
-.cta-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:.85rem 1.75rem;border-radius:10px;text-decoration:none;transition:opacity .15s;width:100%;}
-.cta-btn:hover{opacity:.85;text-decoration:none;color:#fff;}
-.cta-btn-out{background:transparent;color:var(--ink);border:1.5px solid var(--border);margin-top:.6rem;}
-.cta-btn-out:hover{border-color:var(--ink);color:var(--ink);}
-
-/* FOOTER */
-footer{background:var(--ink);padding:3rem 2rem 2rem;border-top:1px solid rgba(255,255,255,.08);}
-.foot-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
-.foot-brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700;}
-.foot-brand span{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,.4);margin-top:.2rem;}
-.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
-.foot-links a{font-size:13px;color:rgba(255,255,255,.5);transition:color .15s;}
-.foot-links a:hover{color:#fff;text-decoration:none;}
-.foot-bottom{max-width:1080px;margin:.85rem auto 0;padding-top:.85rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
-.foot-bottom p{font-size:12px;color:rgba(255,255,255,.3);}
-
-/* TICKER */
-.ticker-wrap{background:var(--accent);overflow:hidden;padding:.6rem 0;border-top:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.1);}
-.ticker-track{display:flex;width:max-content;animation:ticker 28s linear infinite;}
+body{font-family:'Inter',sans-serif;background:#FAF9F7;line-height:1.65;overflow-x:hidden;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.5);}}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.ticker-item{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);padding:0 2rem;white-space:nowrap;letter-spacing:.5px;}
-.ticker-item span{margin-right:2rem;opacity:.5;}
-@media(prefers-reduced-motion:reduce){.ticker-track{animation:none;}}
-
-/* WCAG badge strip */
-.badge-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
-.badge{font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;background:var(--accent-light);color:var(--accent);border:1px solid rgba(45,106,79,.2);}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;}.hero-card{display:none;}
-  .skills-grid{grid-template-columns:1fr 1fr;}
-  .proj-grid{grid-template-columns:1fr 1fr;}
-  .ecard{grid-template-columns:1fr;gap:1rem;}.ecard-left{border-right:none;padding-right:0;border-bottom:1px solid var(--border);padding-bottom:1rem;}
-}
-@media(max-width:768px){
-  .nav-links{display:none;}.hamburger{display:block;}
-  .about-grid{grid-template-columns:1fr;}
-  .contact-grid{grid-template-columns:1fr;}
-  .skills-grid{grid-template-columns:1fr;}
-  .proj-grid{grid-template-columns:1fr;}
-  .sec{padding:3.5rem 1.25rem;}
-  .hero{padding:3.5rem 1.25rem 3rem;}
-}
-@media(max-width:480px){
-  .proj-grid{grid-template-columns:1fr;}
-  .hero h1{font-size:2.2rem;}
-  .foot-inner{flex-direction:column;gap:1rem;}
-}
-
-/* ===== TOOL CARDS ===== */
-.tool-card{overflow:hidden;}
-.tool-preview{height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-
-/* Open button */
-.tool-open-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:700;padding:.6rem 1.25rem;border-radius:10px;margin-top:.85rem;text-decoration:none;transition:gap .2s,transform .15s,box-shadow .2s;background:#1C1C1C;color:#FAF8F5;border:none;cursor:pointer;}
-.tool-open-btn:hover{gap:.7rem;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);text-decoration:none;color:#fff;}
-.tool-open-btn .tool-arrow{font-size:15px;display:inline-block;transition:transform .2s;}
-.tool-open-btn:hover .tool-arrow{transform:translate(2px,-2px);}
-.tob-2{background:#1C1C1C;}
-.tob-3{background:#1C1C1C;}
-.tob-4{background:#1C1C1C;}
-
-/* TP1 - Contrast */
-.tp1{background:#1C1C1C;}
-.tp1-swatch-row{display:flex;align-items:center;gap:.75rem;}
-.tp1-swatch{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:monospace;transition:transform .3s;}
-.tool-card-1:hover .tp1-swatch{transform:scale(1.08);}
-.tp1-arrow{color:rgba(255,255,255,.4);font-size:22px;}
-.tp1-ratio{font-size:2rem;font-weight:700;color:#FAF8F5;font-family:monospace;line-height:1;animation:tp1pulse 2.5s ease-in-out infinite;}
-@keyframes tp1pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
-.tp1-badges{display:flex;gap:.5rem;}
-.tp1-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
-.tp1-badge.pass{background:rgba(255,255,255,.12);color:#FAF8F5;border:1px solid rgba(255,255,255,.2);}
-.tp1-bar-wrap{width:80%;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
-.tp1-bar{height:100%;background:linear-gradient(90deg,#22c55e,#2d6a4f);border-radius:99px;width:0%;animation:tp1bar 2s ease-out .3s forwards;}
-@keyframes tp1bar{to{width:95%;}}
-
-/* TP2 - Checklist */
-.tp2{background:#F5F0E8;flex-direction:row;gap:1.25rem;padding:1.5rem;}
-@keyframes tp2spin{0%{stroke-dashoffset:180;}100%{stroke-dashoffset:60;}}
-.tp2-progress-ring{position:relative;flex-shrink:0;}
-.tp2-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#1C1C1C;}
-.tp2-items{display:flex;flex-direction:column;gap:.4rem;}
-.tp2-item{display:flex;align-items:center;gap:.5rem;font-size:12px;color:rgba(28,28,28,.4);transition:color .3s;}
-.tp2-item.done{color:#1C1C1C;}
-.tp2-check{width:18px;height:18px;border-radius:4px;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;animation:checkpop .3s ease;}
-@keyframes checkpop{0%{transform:scale(0);}70%{transform:scale(1.2);}100%{transform:scale(1);}}
-.tp2-uncheck{width:18px;height:18px;border-radius:4px;border:1.5px solid rgba(28,28,28,.2);flex-shrink:0;}
-
-/* TP3 - Readability */
-.tp3{background:#FDFAF5;padding:1.5rem;border-bottom:1px solid var(--border);}
-.tp3-text-lines{width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;margin-bottom:.85rem;}
-.tp3-line{height:6px;border-radius:99px;background:rgba(28,28,28,.1);animation:tp3scan 2s ease-in-out infinite alternate;}
-@keyframes tp3scan{0%{background:rgba(28,28,28,.08);}100%{background:rgba(28,28,28,.25);}}
-.tp3-score-row{display:flex;gap:.5rem;}
-.tp3-score-box{background:rgba(28,28,28,.06);border:1px solid rgba(28,28,28,.1);border-radius:8px;padding:.4rem .75rem;text-align:center;display:flex;flex-direction:column;}
-.tp3-good{background:rgba(45,106,79,.1);border-color:rgba(45,106,79,.25);}
-.tp3-val{font-size:1.1rem;font-weight:700;color:#1C1C1C;line-height:1;}
-.tp3-lbl{font-size:10px;color:rgba(28,28,28,.4);margin-top:.15rem;}
-
-/* TP4 - Affirmation */
-.tp4{background:#1C1C1C;position:relative;}
-.tp4-stars{position:absolute;inset:0;}
-.tp4-stars::before,.tp4-stars::after{content:'';position:absolute;border-radius:50%;animation:tp4twinkle 1.8s ease-in-out infinite alternate;}
-.tp4-stars::before{width:3px;height:3px;background:#fff;top:20%;left:15%;box-shadow:40px 10px 0 rgba(255,255,255,.5),80px 30px 0 rgba(255,255,255,.3),20px 50px 0 rgba(255,255,255,.6),100px 15px 0 rgba(255,255,255,.4),130px 40px 0 rgba(255,255,255,.7),60px 60px 0 rgba(255,255,255,.3),150px 55px 0 rgba(255,255,255,.5);}
-@keyframes tp4twinkle{0%{opacity:.3;}100%{opacity:1;}}
-.tp4-emoji{font-size:2.5rem;position:relative;z-index:1;animation:tp4float 3s ease-in-out infinite;}
-@keyframes tp4float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-.tp4-quote{font-family:"Playfair Display",serif;font-style:italic;font-size:12.5px;color:rgba(255,255,255,.85);text-align:center;line-height:1.6;position:relative;z-index:1;max-width:200px;}
-.tp4-tag{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);position:relative;z-index:1;}
-
-/* ===== PAGE TRANSITION ===== */
-.page-transition{position:fixed;inset:0;background:#1C1C1C;z-index:9999;pointer-events:none;transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.76,0,.24,1);}
-.page-transition.entering{transform:scaleY(1);transform-origin:bottom;}
-.page-transition.leaving{transform:scaleY(0);transform-origin:top;}
-
-/* ===== NAV LINK HOVER ANIMATION ===== */
-.nav-links a{position:relative;overflow:hidden;}
-.nav-links a::after{content:'';position:absolute;bottom:4px;left:.85rem;right:.85rem;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s cubic-bezier(.76,0,.24,1);}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
-
-/* ===== ANIMATED HEADINGS ===== */
-.anim-title{display:inline-block;}
-.anim-title .char{display:inline-block;opacity:0;transform:translateY(40px) rotate(4deg);animation:charIn .5s cubic-bezier(.34,1.56,.64,1) forwards;}
-.anim-title .char.space{display:inline-block;width:.3em;}
-
-/* Hero h1 special */
-.hero h1 .char{animation:charInHero .6s cubic-bezier(.34,1.56,.64,1) forwards;}
-@keyframes charInHero{0%{opacity:0;transform:translateY(50px) rotate(6deg) scale(.8);}100%{opacity:1;transform:none;}}
-@keyframes charIn{0%{opacity:0;transform:translateY(30px) rotate(3deg);}100%{opacity:1;transform:none;}}
-
-/* Section title wave */
-.sec-title .char{animation:charIn .45s cubic-bezier(.34,1.56,.64,1) forwards;}
-
-/* ===== NAV MOBILE SLIDE ===== */
-.mobile-nav{transform:translateY(-8px);opacity:0;transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
-.mobile-nav.open{transform:translateY(0);opacity:1;display:block;}
-
-/* ===== SECTION EYEBROW ANIMATE ===== */
-.eyebrow{overflow:hidden;}
-.eyebrow span{display:inline-block;transform:translateY(100%);animation:eyebrowIn .5s cubic-bezier(.34,1.56,.64,1) .1s forwards;}
-@keyframes eyebrowIn{to{transform:translateY(0);}}
-
-/* ===== WILD TEXT & VISUAL ANIMATIONS ===== */
-
-/* ---- GRADIENT SWEEP on section titles ---- */
-.sec-title {
-  background: linear-gradient(100deg, var(--ink) 0%, #2d6a4f 30%, #c47d2e 55%, var(--ink) 80%);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: richSweep 5s linear infinite;
-}
-@keyframes richSweep {
-  0%   { background-position: 250% center; }
-  100% { background-position: -250% center; }
-}
-
-/* ---- HERO H1 big bounce-in ---- */
-.hero h1 { cursor: default; }
-.hero h1 em {
-  display: inline-block;
-  background: linear-gradient(135deg, #2d6a4f, #c47d2e 60%, #2d6a4f);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: heroGrad 4s ease-in-out infinite alternate;
-  transition: letter-spacing .5s cubic-bezier(.34,1.56,.64,1), filter .3s;
-}
-@keyframes heroGrad {
-  0%   { background-position: 0% 50%;   }
-  100% { background-position: 100% 50%; }
-}
-.hero h1:hover em {
-  letter-spacing: 5px;
-  filter: drop-shadow(0 0 18px rgba(45,106,79,.45));
-}
-
-/* ---- GLITCH on nav logo ---- */
-.nav-logo { position: relative; display: inline-block; }
-.nav-logo::before,
-.nav-logo::after {
-  content: attr(data-text);
-  position: absolute; left: 0; top: 0;
-  opacity: 0; transition: opacity .1s;
-}
-.nav-logo::before { color: #2d6a4f; clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); }
-.nav-logo::after  { color: #c47d2e; clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); }
-.nav-logo:hover::before { opacity: .9; animation: glitchA .25s steps(2) infinite; }
-.nav-logo:hover::after  { opacity: .9; animation: glitchB .25s steps(2) .04s infinite; }
-@keyframes glitchA { 0%{transform:translateX(-4px) skewX(-1deg)} 50%{transform:translateX(4px) skewX(1deg)} 100%{transform:translateX(-2px)} }
-@keyframes glitchB { 0%{transform:translateX(3px)}  50%{transform:translateX(-3px)} 100%{transform:translateX(2px)} }
-
-/* ---- NAV LINK magnetic underline ---- */
-.nav-links a { position: relative; overflow: hidden; }
-.nav-links a::after {
-  content: '';
-  position: absolute; bottom: 4px; left: .85rem; right: .85rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), #c47d2e);
-  transform: scaleX(0); transform-origin: right;
-  transition: transform .3s cubic-bezier(.76,0,.24,1);
-}
-.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-/* ---- EYEBROW expand on scroll ---- */
-.eyebrow { transition: letter-spacing .7s cubic-bezier(.34,1.56,.64,1), color .3s; }
-.eyebrow.visible { letter-spacing: 4px; }
-.eyebrow:hover { color: var(--accent); cursor: default; }
-
-/* ---- FLOATING STICKER badges in hero ---- */
-.badge-strip .badge {
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .3s;
-  animation: badgeFloat 3s ease-in-out infinite;
-}
-.badge-strip .badge:nth-child(1){animation-delay:0s;}
-.badge-strip .badge:nth-child(2){animation-delay:.3s;}
-.badge-strip .badge:nth-child(3){animation-delay:.6s;}
-.badge-strip .badge:nth-child(4){animation-delay:.9s;}
-.badge-strip .badge:nth-child(5){animation-delay:1.2s;}
-@keyframes badgeFloat {
-  0%,100%{transform:translateY(0) rotate(-1deg);}
-  50%{transform:translateY(-5px) rotate(1deg);}
-}
-.badge-strip .badge:hover {
-  transform: scale(1.12) rotate(-2deg) !important;
-  box-shadow: 0 6px 20px rgba(45,106,79,.25);
-  background: #2d6a4f; color: #fff;
-}
-
-/* ---- PCARD morph underline ---- */
-.pcard-title {
-  position: relative; display: inline-block;
-  background: linear-gradient(90deg, var(--ink), var(--ink)) no-repeat bottom left;
-  background-size: 0% 2px;
-  -webkit-background-clip: unset; background-clip: unset;
-  -webkit-text-fill-color: unset;
-  transition: background-size .35s cubic-bezier(.76,0,.24,1);
-}
-.pcard:hover .pcard-title { background-size: 100% 2px; }
-
-/* ---- CONTACT TITLE sweep ---- */
-.contact-title {
-  background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.45) 45%, #fff 80%);
-  background-size: 250% auto;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: richSweep 5s linear infinite;
-}
-.contact-title em {
-  background: linear-gradient(90deg, rgba(255,255,255,.3), #fff 50%, rgba(255,255,255,.3));
-  background-size: 200% auto;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: richSweep 3s linear infinite reverse;
-}
-
-/* ---- SKILL PILLS pop on hover ---- */
-.pill {
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .2s, color .2s, box-shadow .2s;
-  cursor: default;
-}
-.pill:hover {
-  transform: scale(1.12) rotate(-2deg);
-  background: var(--ink); color: #fff;
-  box-shadow: 0 4px 14px rgba(0,0,0,.15);
-}
-
-/* ---- ETAG pop ---- */
-.etag {
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .2s, color .2s;
-  cursor: default; display: inline-block;
-}
-.etag:hover { transform: scale(1.1) rotate(2deg); background: var(--accent); color: #fff; }
-
-/* ---- HERO ROLE typing cursor ---- */
-.hero-role::after {
-  content: '|';
-  display: inline-block;
-  margin-left: 2px;
-  color: var(--accent);
-  animation: blink .8s step-end infinite;
-}
-@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-
-/* ---- SCROLL progress bar ---- */
-#scroll-bar {
-  position: fixed; top: 0; left: 0; height: 3px; z-index: 9998; width: 0%;
-  background: linear-gradient(90deg, #2d6a4f, #c47d2e);
-  transition: width .1s linear;
-}
-
-/* ---- EXPERIENCE card tilt on hover ---- */
-.ecard {
-  transition: box-shadow .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
-  transform-style: preserve-3d;
-}
-.ecard:hover { transform: perspective(800px) rotateX(1.5deg) rotateY(-1deg) translateY(-4px); }
-
-/* ---- SECTION NUMBER float ---- */
-.eyebrow::before {
-  display: inline-block;
-  animation: numFloat 2s ease-in-out infinite;
-  margin-right: 2px;
-}
-@keyframes numFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-3px);} }
-
-/* ---- BTN shimmer ---- */
-.btn-primary {
-  position: relative; overflow: hidden;
-}
-.btn-primary::after {
-  content: '';
-  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-  animation: shimmer 2.5s ease-in-out infinite;
-}
-@keyframes shimmer { 0%{left:-100%;} 100%{left:200%;} }
-
-/* ---- HERO availability dot pulse ring ---- */
-.avail-dot::after {
-  content: '';
-  position: absolute;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: rgba(45,106,79,.3);
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  animation: ring 1.8s ease-out infinite;
-}
-.hero-avail { position: relative; }
-@keyframes ring { 0%{transform:translate(-50%,-50%) scale(1);opacity:.6;} 100%{transform:translate(-50%,-50%) scale(2.5);opacity:0;} }
-
-/* ---- MOBILE NAV slide ---- */
-.mobile-nav { transform: translateY(-8px); opacity: 0; transition: transform .28s cubic-bezier(.34,1.56,.64,1), opacity .22s; }
-.mobile-nav.open { transform: translateY(0); opacity: 1; display: block; }
-
-/* ===== TOOL CARDS ===== *//* ===== TOOL CARDS ===== */
-.tool-card{overflow:hidden;}
-.tool-preview{height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-
-/* Open button */
-.tool-open-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:700;padding:.6rem 1.25rem;border-radius:10px;margin-top:.85rem;text-decoration:none;transition:gap .2s,transform .15s,box-shadow .2s;background:#1C1C1C;color:#FAF8F5;border:none;cursor:pointer;}
-.tool-open-btn:hover{gap:.7rem;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);text-decoration:none;color:#fff;}
-.tool-open-btn .tool-arrow{font-size:15px;display:inline-block;transition:transform .2s;}
-.tool-open-btn:hover .tool-arrow{transform:translate(2px,-2px);}
-.tob-2{background:#1C1C1C;}
-.tob-3{background:#1C1C1C;}
-.tob-4{background:#1C1C1C;}
-
-/* TP1 - Contrast */
-.tp1{background:#1C1C1C;}
-.tp1-swatch-row{display:flex;align-items:center;gap:.75rem;}
-.tp1-swatch{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:monospace;transition:transform .3s;}
-.tool-card-1:hover .tp1-swatch{transform:scale(1.08);}
-.tp1-arrow{color:rgba(255,255,255,.4);font-size:22px;}
-.tp1-ratio{font-size:2rem;font-weight:700;color:#FAF8F5;font-family:monospace;line-height:1;animation:tp1pulse 2.5s ease-in-out infinite;}
-@keyframes tp1pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
-.tp1-badges{display:flex;gap:.5rem;}
-.tp1-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
-.tp1-badge.pass{background:rgba(255,255,255,.12);color:#FAF8F5;border:1px solid rgba(255,255,255,.2);}
-.tp1-bar-wrap{width:80%;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
-.tp1-bar{height:100%;background:linear-gradient(90deg,#22c55e,#2d6a4f);border-radius:99px;width:0%;animation:tp1bar 2s ease-out .3s forwards;}
-@keyframes tp1bar{to{width:95%;}}
-
-/* TP2 - Checklist */
-.tp2{background:#F5F0E8;flex-direction:row;gap:1.25rem;padding:1.5rem;}
-@keyframes tp2spin{0%{stroke-dashoffset:180;}100%{stroke-dashoffset:60;}}
-.tp2-progress-ring{position:relative;flex-shrink:0;}
-.tp2-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#1C1C1C;}
-.tp2-items{display:flex;flex-direction:column;gap:.4rem;}
-.tp2-item{display:flex;align-items:center;gap:.5rem;font-size:12px;color:rgba(28,28,28,.4);transition:color .3s;}
-.tp2-item.done{color:#1C1C1C;}
-.tp2-check{width:18px;height:18px;border-radius:4px;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;animation:checkpop .3s ease;}
-@keyframes checkpop{0%{transform:scale(0);}70%{transform:scale(1.2);}100%{transform:scale(1);}}
-.tp2-uncheck{width:18px;height:18px;border-radius:4px;border:1.5px solid rgba(28,28,28,.2);flex-shrink:0;}
-
-/* TP3 - Readability */
-.tp3{background:#FDFAF5;padding:1.5rem;border-bottom:1px solid var(--border);}
-.tp3-text-lines{width:100%;max-width:200px;display:flex;flex-direction:column;gap:.4rem;margin-bottom:.85rem;}
-.tp3-line{height:6px;border-radius:99px;background:rgba(28,28,28,.1);animation:tp3scan 2s ease-in-out infinite alternate;}
-@keyframes tp3scan{0%{background:rgba(28,28,28,.08);}100%{background:rgba(28,28,28,.25);}}
-.tp3-score-row{display:flex;gap:.5rem;}
-.tp3-score-box{background:rgba(28,28,28,.06);border:1px solid rgba(28,28,28,.1);border-radius:8px;padding:.4rem .75rem;text-align:center;display:flex;flex-direction:column;}
-.tp3-good{background:rgba(45,106,79,.1);border-color:rgba(45,106,79,.25);}
-.tp3-val{font-size:1.1rem;font-weight:700;color:#1C1C1C;line-height:1;}
-.tp3-lbl{font-size:10px;color:rgba(28,28,28,.4);margin-top:.15rem;}
-
-/* TP4 - Affirmation */
-.tp4{background:#1C1C1C;position:relative;}
-.tp4-stars{position:absolute;inset:0;}
-.tp4-stars::before,.tp4-stars::after{content:'';position:absolute;border-radius:50%;animation:tp4twinkle 1.8s ease-in-out infinite alternate;}
-.tp4-stars::before{width:3px;height:3px;background:#fff;top:20%;left:15%;box-shadow:40px 10px 0 rgba(255,255,255,.5),80px 30px 0 rgba(255,255,255,.3),20px 50px 0 rgba(255,255,255,.6),100px 15px 0 rgba(255,255,255,.4),130px 40px 0 rgba(255,255,255,.7),60px 60px 0 rgba(255,255,255,.3),150px 55px 0 rgba(255,255,255,.5);}
-@keyframes tp4twinkle{0%{opacity:.3;}100%{opacity:1;}}
-.tp4-emoji{font-size:2.5rem;position:relative;z-index:1;animation:tp4float 3s ease-in-out infinite;}
-@keyframes tp4float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-.tp4-quote{font-family:"Playfair Display",serif;font-style:italic;font-size:12.5px;color:rgba(255,255,255,.85);text-align:center;line-height:1.6;position:relative;z-index:1;max-width:200px;}
-.tp4-tag{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);position:relative;z-index:1;}
-
-/* ===== PAGE TRANSITION ===== */
-.page-transition{position:fixed;inset:0;background:#1C1C1C;z-index:9999;pointer-events:none;transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.76,0,.24,1);}
-.page-transition.entering{transform:scaleY(1);transform-origin:bottom;}
-.page-transition.leaving{transform:scaleY(0);transform-origin:top;}
-
-/* ===== NAV LINK HOVER ANIMATION ===== */
-.nav-links a{position:relative;overflow:hidden;}
-.nav-links a::after{content:'';position:absolute;bottom:4px;left:.85rem;right:.85rem;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s cubic-bezier(.76,0,.24,1);}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
-
-/* ===== ANIMATED HEADINGS ===== */
-.anim-title{display:inline-block;}
-.anim-title .char{display:inline-block;opacity:0;transform:translateY(40px) rotate(4deg);animation:charIn .5s cubic-bezier(.34,1.56,.64,1) forwards;}
-.anim-title .char.space{display:inline-block;width:.3em;}
-
-/* Hero h1 special */
-.hero h1 .char{animation:charInHero .6s cubic-bezier(.34,1.56,.64,1) forwards;}
-@keyframes charInHero{0%{opacity:0;transform:translateY(50px) rotate(6deg) scale(.8);}100%{opacity:1;transform:none;}}
-@keyframes charIn{0%{opacity:0;transform:translateY(30px) rotate(3deg);}100%{opacity:1;transform:none;}}
-
-/* Section title wave */
-.sec-title .char{animation:charIn .45s cubic-bezier(.34,1.56,.64,1) forwards;}
-
-/* ===== NAV MOBILE SLIDE ===== */
-.mobile-nav{transform:translateY(-8px);opacity:0;transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
-.mobile-nav.open{transform:translateY(0);opacity:1;display:block;}
-
-/* ===== SECTION EYEBROW ANIMATE ===== */
-.eyebrow{overflow:hidden;}
-.eyebrow span{display:inline-block;transform:translateY(100%);animation:eyebrowIn .5s cubic-bezier(.34,1.56,.64,1) .1s forwards;}
-@keyframes eyebrowIn{to{transform:translateY(0);}}
-
-/* ===== TEXT SCRAMBLE / MORPH ANIMATIONS ===== */
-
-/* Gradient sweep on section titles */
-.sec-title{
-  background: linear-gradient(90deg, var(--ink) 0%, var(--accent) 50%, var(--ink) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: titleSweep 4s linear infinite;
-}
-@keyframes titleSweep{
-  0%{background-position:200% center;}
-  100%{background-position:-200% center;}
-}
-
-/* Hero h1 — morphing italic on hover */
-.hero h1{cursor:default;}
-.hero h1 em{
-  display:inline-block;
-  transition:letter-spacing .4s cubic-bezier(.34,1.56,.64,1),
-             color .3s,
-             text-shadow .3s;
-}
-.hero h1:hover em{
-  letter-spacing:4px;
-  text-shadow:0 0 30px rgba(45,106,79,.4);
-}
-
-/* Scramble target class */
-.scramble{display:inline-block;cursor:default;}
-
-/* Glitch effect for nav logo */
-.nav-logo{position:relative;display:inline-block;}
-.nav-logo::before,.nav-logo::after{
-  content:attr(data-text);
-  position:absolute;
-  left:0;top:0;
-  opacity:0;
-  transition:opacity .1s;
-}
-.nav-logo::before{color:#2d6a4f;clip-path:polygon(0 30%,100% 30%,100% 50%,0 50%);}
-.nav-logo::after{color:#c47d2e;clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%);}
-.nav-logo:hover::before{opacity:.8;animation:glitchA .3s steps(2) infinite;}
-.nav-logo:hover::after{opacity:.8;animation:glitchB .3s steps(2) .05s infinite;}
-@keyframes glitchA{0%{transform:translateX(-3px);}50%{transform:translateX(3px);}100%{transform:translateX(-1px);}}
-@keyframes glitchB{0%{transform:translateX(2px);}50%{transform:translateX(-2px);}100%{transform:translateX(1px);}}
-
-/* Eyebrow letter spacing morph on section enter */
-.eyebrow{transition:letter-spacing .6s cubic-bezier(.34,1.56,.64,1);}
-.eyebrow.visible{letter-spacing:4px;}
-
-/* Section sub — typewriter cursor blink */
-.sec-sub::after,.hero-sub::after{
-  content:'';
-  display:inline-block;
-  width:2px;height:1em;
-  background:var(--accent);
-  margin-left:3px;
-  vertical-align:middle;
-  animation:blink .9s step-end infinite;
-  opacity:0;
-}
-.sec-sub.cursor-done::after,.hero-sub.cursor-done::after{opacity:1;}
+@keyframes heroGrad{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+@keyframes gradSweep{0%{background-position:250% center;}100%{background-position:-250% center;}}
+@keyframes badgeFloat{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-5px) rotate(1deg);}}
+@keyframes shimmer{0%{left:-100%;}100%{left:200%;}}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-
-/* Morphing underline on pcard-title hover */
-.pcard-title{
-  background:linear-gradient(90deg,var(--ink),var(--ink)) no-repeat bottom left;
-  background-size:0% 2px;
-  transition:background-size .35s cubic-bezier(.76,0,.24,1);
-  -webkit-background-clip:unset;
-  background-clip:unset;
-  -webkit-text-fill-color:unset;
-}
-.pcard:hover .pcard-title{background-size:100% 2px;}
-
-/* Contact title gradient */
-.contact-title{
-  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.5) 50%,#fff 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:titleSweep 5s linear infinite;
-}
-.contact-title em{
-  background:linear-gradient(90deg,rgba(255,255,255,.4) 0%,#fff 50%,rgba(255,255,255,.4) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:titleSweep 3s linear infinite reverse;
-}
-
-/* Scramble hover on experience role titles */
-.ecard-role{cursor:default;transition:color .2s;}
-.ecard-role:hover{color:var(--accent);}
-
-/* Bouncy nav hire button text */
-.nav-hire{overflow:hidden;position:relative;}
-.nav-hire span{display:inline-block;transition:transform .2s cubic-bezier(.34,1.56,.64,1);}
-.nav-hire:hover span{transform:scale(1.08);}
+@keyframes glitchA{0%{transform:translateX(-4px);}50%{transform:translateX(4px);}100%{transform:translateX(-2px);}}
+@keyframes glitchB{0%{transform:translateX(3px);}50%{transform:translateX(-3px);}100%{transform:translateX(2px);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+body{animation:pageIn .5s ease forwards;}
+.skip-link{position:absolute;top:-60px;left:1rem;background:#2D6A4F;color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:9999;transition:top .2s;text-decoration:none;}
+.skip-link:focus{top:0;}
 </style>
 </head>
 <body>
-<div class="page-transition" id="page-transition" aria-hidden="true"></div>
-<div id="scroll-bar" aria-hidden="true"></div>
-<a href="#main" class="skip">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect,useRef,useCallback}=React;
+const C={ink:"#1C1C1C",bg:"#FAF9F7",white:"#FFFFFF",border:"#E8E5E0",accent:"#2D6A4F",accentL:"#E8F4EE",amber:"#C47D2E",muted:"#5A5A5A",soft:"#8A8A8A"};
+const CHARS="!<>-_\\/[]{}=+*^?#ABCDEFabcdef0123";
 
-<!-- NAV -->
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo" data-text="Sai Deepika" aria-label="Sai Deepika home">Sai Deepika</a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Portfolio</a></li>
-      <li><a href="#contact" class="nav-hire"><span>Hire Me</span></a></li>
-    </ul>
-    <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" id="hamburger" onclick="toggleNav()">&#9776;</button>
-  </div>
-  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <a href="#about" onclick="closeNav()">About</a>
-    <a href="#skills" onclick="closeNav()">Skills</a>
-    <a href="#experience" onclick="closeNav()">Experience</a>
-    <a href="#projects" onclick="closeNav()">Portfolio</a>
-    <a href="#contact" onclick="closeNav()">Hire Me →</a>
-  </div>
-</nav>
+function useInView(th=0.15){
+  const ref=useRef(null);
+  const[v,setV]=useState(false);
+  useEffect(()=>{
+    const o=new IntersectionObserver(([e])=>{if(e.isIntersecting){setV(true);o.disconnect();}},{threshold:th});
+    if(ref.current)o.observe(ref.current);
+    return()=>o.disconnect();
+  },[]);
+  return[ref,v];
+}
 
-<!-- SKILLS TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">HTML5 <span>·</span></span>
-    <span class="ticker-item">CSS3 <span>·</span></span>
-    <span class="ticker-item">JavaScript <span>·</span></span>
-    <span class="ticker-item">React <span>·</span></span>
-    <span class="ticker-item">WCAG 2.1 AA <span>·</span></span>
-    <span class="ticker-item">ADA Compliance <span>·</span></span>
-    <span class="ticker-item">USWDS <span>·</span></span>
-    <span class="ticker-item">WordPress <span>·</span></span>
-    <span class="ticker-item">Drupal <span>·</span></span>
-    <span class="ticker-item">Agile / Scrum <span>·</span></span>
-    <span class="ticker-item">JIRA <span>·</span></span>
-    <span class="ticker-item">CI/CD <span>·</span></span>
-    <span class="ticker-item">Green Digital <span>·</span></span>
-    <span class="ticker-item">SSO Integration <span>·</span></span>
-    <span class="ticker-item">HTML5 <span>·</span></span>
-    <span class="ticker-item">CSS3 <span>·</span></span>
-    <span class="ticker-item">JavaScript <span>·</span></span>
-    <span class="ticker-item">React <span>·</span></span>
-    <span class="ticker-item">WCAG 2.1 AA <span>·</span></span>
-    <span class="ticker-item">ADA Compliance <span>·</span></span>
-    <span class="ticker-item">USWDS <span>·</span></span>
-    <span class="ticker-item">WordPress <span>·</span></span>
-    <span class="ticker-item">Drupal <span>·</span></span>
-    <span class="ticker-item">Agile / Scrum <span>·</span></span>
-    <span class="ticker-item">JIRA <span>·</span></span>
-    <span class="ticker-item">CI/CD <span>·</span></span>
-    <span class="ticker-item">Green Digital <span>·</span></span>
-    <span class="ticker-item">SSO Integration <span>·</span></span>
-  </div>
-</div>
+function FadeIn({children,delay=0,y=22,style={}}){
+  const[ref,v]=useInView();
+  return<div ref={ref} style={{opacity:v?1:0,transform:v?"none":`translateY(${y}px)`,transition:`opacity .6s ease ${delay}ms,transform .6s ease ${delay}ms`,...style}}>{children}</div>;
+}
 
-<!-- HERO -->
-<section class="hero" id="home" aria-labelledby="hero-heading">
-  <div class="hero-inner">
-    <div class="reveal">
-      <div class="hero-avail" role="status" aria-live="polite">
-        <span class="avail-dot" aria-hidden="true"></span>
-        Available for work · Denver, CO
+function ScrambleText({text,as:As="span",style={},className=""}){
+  const[d,setD]=useState(text);
+  const raf=useRef(null);
+  const go=()=>{
+    let f=0;
+    const q=[...text].map(ch=>({to:ch,s:Math.floor(Math.random()*5),e:Math.floor(Math.random()*8)+5,c:""}));
+    const tick=()=>{
+      let out="",done=0;
+      q.forEach(x=>{
+        if(f>=x.e){done++;out+=x.to;}
+        else if(f>=x.s){x.c=CHARS[Math.floor(Math.random()*CHARS.length)];out+=`<span style="color:#2D6A4F;font-style:italic;opacity:.8">${x.c}</span>`;}
+        else out+=x.to;
+      });
+      setD(out);
+      if(done<q.length)raf.current=requestAnimationFrame(()=>{f++;tick();});
+      else setD(text);
+    };
+    cancelAnimationFrame(raf.current);tick();
+  };
+  const reset=()=>{cancelAnimationFrame(raf.current);setD(text);};
+  return<As style={style} className={className} onMouseEnter={go} onMouseLeave={reset} dangerouslySetInnerHTML={{__html:d}}/>;
+}
+
+function TiltCard({children,style={},className=""}){
+  const ref=useRef(null);
+  return<div ref={ref} className={className}
+    onMouseMove={e=>{const r=ref.current.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ref.current.style.transform=`perspective(600px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateZ(4px)`;ref.current.style.transition="transform .05s";}}
+    onMouseLeave={()=>{ref.current.style.transform="";ref.current.style.transition="transform .5s cubic-bezier(.34,1.56,.64,1)";}}
+    style={style}>{children}</div>;
+}
+
+function GradText({children}){
+  return<span style={{background:`linear-gradient(100deg,${C.ink} 0%,${C.accent} 35%,${C.amber} 60%,${C.ink} 85%)`,backgroundSize:"250% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",animation:"gradSweep 5s linear infinite"}}>{children}</span>;
+}
+
+const TICKER=["HTML5","CSS3","React","JavaScript","TypeScript","WCAG 2.1 AA","ADA Compliance","USWDS","WordPress","Drupal","Agile / Scrum","JIRA","CI/CD","Green Digital","SSO Integration","Figma","Lighthouse","axe DevTools"];
+
+function Nav(){
+  const[sc,setSc]=useState(false);
+  const[mo,setMo]=useState(false);
+  const[gl,setGl]=useState(false);
+  useEffect(()=>{const h=()=>setSc(window.scrollY>10);window.addEventListener("scroll",h);return()=>window.removeEventListener("scroll",h);},[]);
+  const go=id=>{document.getElementById(id)?.scrollIntoView({behavior:"smooth"});setMo(false);};
+  const links=["About","Skills","Experience","Portfolio"];
+  return(
+    <nav role="navigation" aria-label="Main navigation" style={{background:sc?"#FAF8F5":C.white,borderBottom:`1px solid ${C.border}`,position:"sticky",top:0,zIndex:100,boxShadow:sc?"0 2px 20px rgba(0,0,0,.07)":"none",transition:"background .3s,box-shadow .3s"}}>
+      <div style={{maxWidth:1080,margin:"0 auto",padding:"0 2rem",display:"flex",alignItems:"center",justifyContent:"space-between",height:64}}>
+        <button onClick={()=>go("home")} aria-label="Go to home" style={{fontFamily:"Playfair Display,serif",fontSize:"1.15rem",fontWeight:700,color:C.ink,cursor:"pointer",position:"relative",display:"inline-block",background:"none",border:"none",padding:0}}
+          onMouseEnter={()=>setGl(true)} onMouseLeave={()=>setGl(false)}>
+          <span style={{position:"relative",zIndex:1}}>Sai Deepika</span>
+          {gl&&<>
+            <span aria-hidden style={{position:"absolute",left:0,top:0,color:C.accent,clipPath:"polygon(0 20%,100% 20%,100% 45%,0 45%)",animation:"glitchA .2s steps(2) infinite",zIndex:2,fontFamily:"Playfair Display,serif",fontWeight:700,fontSize:"1.15rem"}}>Sai Deepika</span>
+            <span aria-hidden style={{position:"absolute",left:0,top:0,color:C.amber,clipPath:"polygon(0 60%,100% 60%,100% 75%,0 75%)",animation:"glitchB .2s steps(2) .04s infinite",zIndex:2,fontFamily:"Playfair Display,serif",fontWeight:700,fontSize:"1.15rem"}}>Sai Deepika</span>
+          </>}
+        </button>
+        <ul style={{display:"flex",gap:4,listStyle:"none",alignItems:"center",margin:0,padding:0}} className="nav-desktop">
+          {links.map(l=>(
+            <li key={l}><button onClick={()=>go(l.toLowerCase())} style={{fontSize:13.5,fontWeight:500,color:C.muted,padding:".45rem .85rem",borderRadius:8,background:"none",border:"none",cursor:"pointer",fontFamily:"inherit",transition:"color .15s,background .15s"}}
+              onMouseEnter={e=>{e.target.style.color=C.ink;e.target.style.background=C.bg;}}
+              onMouseLeave={e=>{e.target.style.color=C.muted;e.target.style.background="none";}}>{l}</button></li>
+          ))}
+          <li><button onClick={()=>go("contact")} style={{fontSize:13.5,fontWeight:600,color:"#fff",background:C.ink,padding:".45rem .9rem",borderRadius:8,border:"none",cursor:"pointer",fontFamily:"inherit",transition:"opacity .15s,transform .2s cubic-bezier(.34,1.56,.64,1)"}}
+            onMouseEnter={e=>{e.target.style.opacity=".85";e.target.style.transform="scale(1.06)";}}
+            onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="";}}>Hire Me</button></li>
+        </ul>
+        <button className="nav-mobile" onClick={()=>setMo(o=>!o)} aria-label="Toggle navigation menu" aria-expanded={mo} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:8,padding:".45rem .75rem",cursor:"pointer",fontSize:18,color:C.ink}}>☰</button>
       </div>
-      <h1 id="hero-heading">Hi, I'm<br><em>Sai Deepika.</em></h1>
-      <p class="hero-role">Webmaster &amp; Frontend Web Developer</p>
-      <p class="hero-sub">I build accessible, ADA/WCAG-compliant web experiences for public-facing digital portfolios, making sure every user, regardless of ability, device, or background, can navigate and use the web the way it was meant to be used.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Hire Me ✉</a>
-        <a href="#projects" class="btn-outline">See my work →</a>
-      </div>
-      <div class="badge-strip" aria-label="Key specializations">
-        <span class="badge">WCAG 2.1 AA</span>
-        <span class="badge">ADA Compliance</span>
-        <span class="badge">USWDS</span>
-        <span class="badge">Government / Public Sector</span>
-        <span class="badge">MS · University of Denver</span>
-      </div>
-    </div>
-    <div class="hero-card reveal delay-2" aria-label="Profile summary card">
-      <div class="hc-avatar" aria-hidden="true">SD</div>
-      <p class="hc-name">Sai Deepika Thammireddy</p>
-      <p class="hc-title">Webmaster · Frontend Web Developer</p>
-      <div class="hc-row">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Denver, Colorado
-      </div>
-      <div class="hc-row">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 014.5 14.1 2 2 0 016.1 12H9a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L10.09 19a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0124 22.5v3z"/></svg>
-        (720) 421-6387
-      </div>
-      <div class="hc-row">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        saideepika.thammireddy@du.edu
-      </div>
-      <div class="hc-divider"></div>
-      <div class="hc-status">
-        <span class="sdot" aria-hidden="true"></span>
-        Open to work
-      </div>
-      <div class="hc-chips" aria-label="Core skills">
-        <span class="hchip">WCAG 2.1</span>
-        <span class="hchip">React</span>
-        <span class="hchip">USWDS</span>
-        <span class="hchip">WordPress</span>
-        <span class="hchip">Agile</span>
-        <span class="hchip">ADA</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="sec sec-bg" id="about" aria-labelledby="about-heading">
-  <div class="sec-inner">
-    <div class="sec-head reveal">
-      <p class="eyebrow">01 About</p>
-      <h2 class="sec-title" id="about-heading">Front-end developer &amp;<br>accessibility advocate</h2>
-      <p class="sec-sub">Building digital portfolios that serve everyone</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-body reveal">
-        <p>I'm a frontend web developer and webmaster with experience maintaining accessible, responsive digital portfolios for diverse end users. My work spans WCAG compliance, CMS operations, Agile web workflows, and mobile-first design, all focused on keeping web experiences available, navigable, and inclusive for every person who needs them.</p>
-        <p>Whether it's remediating a site for WCAG 2.1 AA compliance, consolidating a multi-site digital portfolio, or building a dashboard that works on any device. <strong>that's where I do my best work.</strong></p>
-        <p>I'm actively looking for <strong>Webmaster</strong> and <strong>Frontend Web Developer</strong> roles in government and public sector organizations, where my skills in accessibility, USWDS, and Agile delivery make an immediate impact.</p>
-      </div>
-      <div class="about-sidebar reveal delay-1">
-        <div class="acard">
-          <h3>Education</h3>
-          <p><strong>MS, Information Technology</strong><br>University of Denver, 2025<br>Website Design &amp; Management · GPA 3.6</p>
-          <br>
-          <p><strong>BS, Computer Science</strong><br>Sri Padmavathi Women's University</p>
-        </div>
-        <div class="acard">
-          <h3>Looking for</h3>
-          <ul>
-            <li>Webmaster roles</li>
-            <li>Government / Public Sector</li>
-            <li>Frontend Web Developer</li>
-            <li>Digital Content Specialist</li>
-          </ul>
-        </div>
-        <div class="acard">
-          <h3>Based in</h3>
-          <p>Denver, Colorado · Colorado Resident</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="sec sec-white" id="skills" aria-labelledby="skills-heading">
-  <div class="sec-inner">
-    <div class="sec-head reveal">
-      <p class="eyebrow">02 Skills</p>
-      <h2 class="sec-title" id="skills-heading">Technologies &amp; tools</h2>
-      <p class="sec-sub">Everything I work with to build great web experiences</p>
-    </div>
-    <div class="skills-grid">
-      <div class="sgroup reveal">
-        <p class="sgroup-title"><span class="dot"></span>Front-End Development</p>
-        <div class="pills">
-          <span class="pill">HTML5</span><span class="pill">CSS3 / SCSS</span><span class="pill">JavaScript ES6+</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">Responsive Design</span><span class="pill">Mobile-First</span>
-        </div>
-      </div>
-      <div class="sgroup reveal delay-1">
-        <p class="sgroup-title"><span class="dot"></span>Accessibility &amp; Compliance</p>
-        <div class="pills">
-          <span class="pill">WCAG 2.1 AA</span><span class="pill">ADA Compliance</span><span class="pill">USWDS</span><span class="pill">ARIA</span><span class="pill">Keyboard Navigation</span><span class="pill">Screen Reader Testing</span><span class="pill">Lighthouse / axe</span>
-        </div>
-      </div>
-      <div class="sgroup reveal delay-2">
-        <p class="sgroup-title"><span class="dot"></span>CMS &amp; Platforms</p>
-        <div class="pills">
-          <span class="pill">WordPress</span><span class="pill">Drupal</span><span class="pill">Google Sites</span><span class="pill">Squarespace</span><span class="pill">Salesforce</span><span class="pill">LMS / CRM / HCM</span>
-        </div>
-      </div>
-      <div class="sgroup reveal">
-        <p class="sgroup-title"><span class="dot"></span>Tools &amp; DevOps</p>
-        <div class="pills">
-          <span class="pill">Git / GitHub</span><span class="pill">CI/CD Pipelines</span><span class="pill">JIRA</span><span class="pill">Confluence</span><span class="pill">npm / Webpack / Vite</span><span class="pill">Google Analytics</span>
-        </div>
-      </div>
-      <div class="sgroup reveal delay-1">
-        <p class="sgroup-title"><span class="dot"></span>Practices</p>
-        <div class="pills">
-          <span class="pill">Agile / Scrum</span><span class="pill">Sprint Planning</span><span class="pill">Backlog Management</span><span class="pill">PI Planning</span><span class="pill">Green Digital Design</span><span class="pill">SSO Integration</span>
-        </div>
-      </div>
-      <div class="sgroup reveal delay-2">
-        <p class="sgroup-title"><span class="dot"></span>Design &amp; Analytics</p>
-        <div class="pills">
-          <span class="pill">Figma</span><span class="pill">UI/UX Metrics</span><span class="pill">Core Web Vitals</span><span class="pill">Stakeholder Reporting</span><span class="pill">Mobile-First</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="sec sec-bg" id="experience" aria-labelledby="exp-heading">
-  <div class="sec-inner">
-    <div class="sec-head reveal">
-      <p class="eyebrow">03 Experience</p>
-      <h2 class="sec-title" id="exp-heading">Where I've built things</h2>
-      <p class="sec-sub">Professional experience in web operations and accessibility</p>
-    </div>
-    <div class="exp-list">
-      <article class="ecard reveal" aria-label="Sodexo at University of Denver, Campus Web Intern">
-        <div class="ecard-left">
-          <p class="ecard-date">Jan 2024 – Present</p>
-          <p class="ecard-co">University of Denver</p>
-          <p class="ecard-loc">Denver, CO · Sodexo</p>
-        </div>
-        <div>
-          <p class="ecard-role">Campus Web &amp; Digital Systems Intern</p>
-          <ul class="ecard-bullets">
-            <li>Maintain and enhance multiple content-rich websites ensuring WCAG 2.1 / ADA compliance across all digital assets.</li>
-            <li>Remediate existing content to meet ADA and WCAG 2.1 standards: heading structure, color contrast, ARIA labels, alt text, keyboard navigation.</li>
-            <li>Monitor UI/UX web metrics including uptime and engagement; identify performance issues and implement fixes.</li>
-            <li>Participate in Agile ceremonies including sprint planning, backlog grooming, daily scrums, and PI planning; author and distribute release notes.</li>
-            <li>Collaborate with UX designers, backend engineers, and product teams to deliver mobile-first, device-responsive interfaces aligned with USWDS principles.</li>
-          </ul>
-          <div class="etags">
-            <span class="etag">WordPress</span><span class="etag">React</span><span class="etag">WCAG 2.1</span><span class="etag">USWDS</span><span class="etag">Agile / JIRA</span><span class="etag">CI/CD</span>
-          </div>
-        </div>
-      </article>
-      <article class="ecard reveal delay-1" aria-label="CEMS Web Developer Intern">
-        <div class="ecard-left">
-          <p class="ecard-date">Sep 2022 – May 2023</p>
-          <p class="ecard-co">CEMS</p>
-          <p class="ecard-loc">Remote · India</p>
-        </div>
-        <div>
-          <p class="ecard-role">Web Developer Intern</p>
-          <ul class="ecard-bullets">
-            <li>Developed and maintained mobile-forward, responsive web interfaces using HTML, CSS, JavaScript, and PHP for internal enterprise applications.</li>
-            <li>Managed deployments using Git and CI/CD pipelines in collaboration with cross-functional development and QA teams.</li>
-            <li>Maintained a web backlog using user stories, resolving issues iteratively to meet operational requirements.</li>
-          </ul>
-          <div class="etags">
-            <span class="etag">HTML / CSS / JS</span><span class="etag">PHP</span><span class="etag">WordPress</span><span class="etag">Git</span><span class="etag">CI/CD</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS / PORTFOLIO -->
-<section class="sec sec-white" id="projects" aria-labelledby="proj-heading">
-  <div class="sec-inner">
-    <div class="sec-head reveal">
-      <p class="eyebrow">04 Portfolio</p>
-      <h2 class="sec-title" id="proj-heading">Selected work</h2>
-      <p class="sec-sub">Five examples featuring WCAG, USWDS, mobile-first, green digital, and responsive design</p>
-    </div>
-    <div class="proj-grid">
-
-      <!-- Project 1 -->
-      <article class="pcard reveal" aria-label="Campus Dining Portal WCAG Remediation project">
-        <div class="pcard-img" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="18" width="60" height="44" rx="6" stroke="#2d6a4f" stroke-width="2" fill="#e8f4ee"/>
-            <path d="M10 28h60" stroke="#2d6a4f" stroke-width="1.5"/>
-            <rect x="18" y="35" width="18" height="12" rx="3" fill="#2d6a4f" opacity=".3"/>
-            <rect x="42" y="35" width="20" height="4" rx="2" fill="#2d6a4f" opacity=".3"/>
-            <rect x="42" y="43" width="14" height="4" rx="2" fill="#2d6a4f" opacity=".2"/>
-            <circle cx="60" cy="56" r="10" fill="#2d6a4f"/>
-            <path d="M55 56l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">WCAG + USWDS · Accessibility</p>
-          <h3 class="pcard-title">Campus Dining Portal: WCAG 2.1 AA Remediation</h3>
-          <p class="pcard-desc">Led a full WCAG 2.1 AA audit of the campus dining web portal. Identified and remediated 38 violations: ARIA labels, color contrast, keyboard navigation, and non-descriptive link text. Rebuilt non-compliant UI components in React using USWDS-aligned patterns. Validated with NVDA and VoiceOver. Lighthouse score: 61 → 100.</p>
-          <div class="ptags">
-            <span class="ptag">React</span><span class="ptag">WCAG 2.1 AA</span><span class="ptag">USWDS</span><span class="ptag">ARIA</span><span class="ptag">JIRA</span>
-          </div>
-        </div>
-        <div class="pcard-foot">
-          <a href="https://github.com/SaiDeepika10/campus-dining-wcag-remediation" target="_blank" rel="noopener" class="plink plink-gh" aria-label="View Campus Dining WCAG project on GitHub">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            View on GitHub ↗
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 2 -->
-      <article class="pcard reveal delay-1" aria-label="Multi-Site Portfolio Unification project">
-        <div class="pcard-img" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="24" width="28" height="20" rx="4" stroke="#2d6a4f" stroke-width="1.5" fill="#e8f4ee"/>
-            <rect x="44" y="24" width="28" height="20" rx="4" stroke="#2d6a4f" stroke-width="1.5" fill="#e8f4ee"/>
-            <rect x="26" y="48" width="28" height="20" rx="4" stroke="#2d6a4f" stroke-width="2" fill="#2d6a4f" opacity=".15"/>
-            <path d="M22 34h8M36 34h8M22 50v-6M58 44v6" stroke="#2d6a4f" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="40" cy="50" r="4" fill="#2d6a4f"/>
-          </svg>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Green Digital · Lightweight</p>
-          <h3 class="pcard-title">Multi-Site Web Portfolio Unification</h3>
-          <p class="pcard-desc">Consolidated three campus web properties (WordPress, Google Sites, legacy static site) into a unified, standards-aligned digital portfolio. Applied green digital design principles, reducing redundant page assets 40%, optimized image weight, improved Core Web Vitals (LCP, CLS). Maintained a Confluence backlog throughout.</p>
-          <div class="ptags">
-            <span class="ptag">WordPress</span><span class="ptag">Google Sites</span><span class="ptag">Green Digital</span><span class="ptag">Core Web Vitals</span>
-          </div>
-        </div>
-        <div class="pcard-foot">
-          <a href="https://github.com/SaiDeepika10/multi-site-portfolio-unification" target="_blank" rel="noopener" class="plink plink-gh" aria-label="View Multi-Site Unification project on GitHub">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            View on GitHub ↗
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 3 -->
-      <article class="pcard reveal delay-2" aria-label="Internal Operations Dashboard project">
-        <div class="pcard-img" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="14" width="64" height="52" rx="6" stroke="#2d6a4f" stroke-width="2" fill="#e8f4ee"/>
-            <path d="M8 24h64" stroke="#2d6a4f" stroke-width="1.5"/>
-            <rect x="16" y="31" width="20" height="14" rx="3" fill="#2d6a4f" opacity=".25"/>
-            <rect x="42" y="31" width="22" height="6" rx="2" fill="#2d6a4f" opacity=".25"/>
-            <rect x="42" y="41" width="16" height="4" rx="2" fill="#2d6a4f" opacity=".18"/>
-            <path d="M16 52l6-6 5 4 5-8 5 3 5-5" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Mobile-First · Responsive</p>
-          <h3 class="pcard-title">Internal Operations Web Dashboard</h3>
-          <p class="pcard-desc">Built a responsive internal web dashboard in JavaScript, HTML5, and CSS3 with interactive charts, filterable tables, and real-time status indicators. Designed mobile-first so non-technical staff could access operational data on any device. Integrated with internal REST APIs.</p>
-          <div class="ptags">
-            <span class="ptag">JavaScript ES6+</span><span class="ptag">Mobile-First</span><span class="ptag">REST API</span><span class="ptag">CI/CD</span>
-          </div>
-        </div>
-        <div class="pcard-foot">
-          <a href="https://github.com/SaiDeepika10/internal-operations-dashboard" target="_blank" rel="noopener" class="plink plink-gh" aria-label="View Internal Dashboard project on GitHub">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            View on GitHub ↗
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 4 -->
-      <article class="pcard reveal" aria-label="Higher Education Website Redesign project">
-        <div class="pcard-img" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="16" width="56" height="48" rx="6" stroke="#2d6a4f" stroke-width="2" fill="#e8f4ee"/>
-            <path d="M12 30h56" stroke="#2d6a4f" stroke-width="1.5"/>
-            <rect x="20" y="36" width="40" height="4" rx="2" fill="#2d6a4f" opacity=".3"/>
-            <rect x="20" y="44" width="30" height="4" rx="2" fill="#2d6a4f" opacity=".2"/>
-            <rect x="20" y="52" width="20" height="4" rx="2" fill="#2d6a4f" opacity=".15"/>
-            <circle cx="18" cy="22" r="3" fill="#2d6a4f" opacity=".5"/>
-            <circle cx="26" cy="22" r="3" fill="#2d6a4f" opacity=".3"/>
-            <circle cx="34" cy="22" r="3" fill="#2d6a4f" opacity=".2"/>
-          </svg>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Responsive · ADA</p>
-          <h3 class="pcard-title">Higher Education Website Redesign</h3>
-          <p class="pcard-desc">Redesigned and maintained 15+ content-heavy academic web pages to improve usability, accessibility, and visual consistency. Applied WCAG 2.1 and ADA-compliant design practices, improving keyboard navigation, color contrast, heading structure, and screen reader support throughout.</p>
-          <div class="ptags">
-            <span class="ptag">WordPress</span><span class="ptag">WCAG 2.1</span><span class="ptag">ADA</span><span class="ptag">Figma</span>
-          </div>
-        </div>
-        <div class="pcard-foot">
-          <a href="https://github.com/SaiDeepika10/higher-education-website-redesign" target="_blank" rel="noopener" class="plink plink-gh" aria-label="View Higher Education Redesign project on GitHub">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            View on GitHub ↗
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 5 -->
-      <article class="pcard reveal delay-1" aria-label="Content Audit and Accessibility Remediation project">
-        <div class="pcard-img" aria-hidden="true">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="14" y="12" width="38" height="50" rx="5" stroke="#2d6a4f" stroke-width="2" fill="#e8f4ee"/>
-            <rect x="20" y="22" width="26" height="3" rx="1.5" fill="#2d6a4f" opacity=".3"/>
-            <rect x="20" y="29" width="20" height="3" rx="1.5" fill="#2d6a4f" opacity=".2"/>
-            <rect x="20" y="36" width="24" height="3" rx="1.5" fill="#2d6a4f" opacity=".2"/>
-            <rect x="20" y="43" width="18" height="3" rx="1.5" fill="#2d6a4f" opacity=".15"/>
-            <circle cx="56" cy="54" r="12" fill="#2d6a4f"/>
-            <path d="M50 54l4 4 8-8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">WCAG · Content Governance</p>
-          <h3 class="pcard-title">Content Audit &amp; Accessibility Remediation</h3>
-          <p class="pcard-desc">Audited a 50+ page university site for WCAG 2.1 violations across color contrast, heading structure, link text, alt attributes, and keyboard accessibility. Remediated issues in HTML and CMS, validated with Lighthouse and axe DevTools, then delivered a training guide for campus content creators.</p>
-          <div class="ptags">
-            <span class="ptag">WCAG 2.1</span><span class="ptag">Lighthouse</span><span class="ptag">axe DevTools</span><span class="ptag">CMS</span>
-          </div>
-        </div>
-        <div class="pcard-foot">
-          <a href="https://github.com/SaiDeepika10/content-audit-accessibility-remediation" target="_blank" rel="noopener" class="plink plink-gh" aria-label="View Content Audit project on GitHub">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            View on GitHub ↗
-          </a>
-        </div>
-      </article>
-
-      <!-- Tool 1: Color Contrast Checker -->
-      <article class="pcard tool-card tool-card-1 reveal" aria-label="WCAG Color Contrast Checker tool">
-        <div class="tool-preview tp1" aria-hidden="true">
-          <div class="tp1-swatch-row">
-            <div class="tp1-swatch" style="background:#1a1a1a;color:#fff;" data-label="#000">#000</div>
-            <div class="tp1-arrow">&#8596;</div>
-            <div class="tp1-swatch" style="background:#ffffff;color:#1a1a1a;border:2px solid rgba(255,255,255,.3);" data-label="#FFF">#FFF</div>
-          </div>
-          <div class="tp1-ratio">21:1</div>
-          <div class="tp1-badges">
-            <span class="tp1-badge pass">AA Pass</span>
-            <span class="tp1-badge pass">AAA Pass</span>
-          </div>
-          <div class="tp1-bar-wrap">
-            <div class="tp1-bar"></div>
-          </div>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Live Tool &middot; WCAG 2.1</p>
-          <h3 class="pcard-title">WCAG Color Contrast Checker</h3>
-          <p class="pcard-desc">Real-time contrast ratio calculator. Instantly shows AA and AAA pass/fail for text and background color combinations.</p>
-          <div class="ptags"><span class="ptag">WCAG 2.1</span><span class="ptag">JavaScript</span><span class="ptag">Accessibility</span></div>
-          <a href="tools/contrast-checker.html" class="tool-open-btn" aria-label="Open Color Contrast Checker">Open Tool <span class="tool-arrow">&#8599;</span></a>
-        </div>
-      </article>
-
-      <!-- Tool 2: WCAG Checklist -->
-      <article class="pcard tool-card tool-card-2 reveal delay-1" aria-label="WCAG 2.1 AA Compliance Checklist tool">
-        <div class="tool-preview tp2" aria-hidden="true">
-          <div class="tp2-progress-ring">
-            <svg width="90" height="90" viewBox="0 0 90 90">
-              <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
-              <circle cx="45" cy="45" r="36" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round"
-                stroke-dasharray="226.2" stroke-dashoffset="113" style="transform:rotate(-90deg);transform-origin:50% 50%;animation:tp2spin 3s ease-in-out infinite alternate;"/>
-            </svg>
-            <div class="tp2-ring-label">50%</div>
-          </div>
-          <div class="tp2-items">
-            <div class="tp2-item done"><span class="tp2-check">&#10003;</span>Alt text</div>
-            <div class="tp2-item done"><span class="tp2-check">&#10003;</span>Contrast</div>
-            <div class="tp2-item"><span class="tp2-uncheck"></span>Keyboard nav</div>
-            <div class="tp2-item"><span class="tp2-uncheck"></span>Focus visible</div>
-          </div>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Live Tool &middot; WCAG 2.1 AA</p>
-          <h3 class="pcard-title">WCAG 2.1 AA Compliance Checklist</h3>
-          <p class="pcard-desc">Work through 24 key WCAG 2.1 AA criteria. Check items off as you audit and watch your compliance score update live.</p>
-          <div class="ptags"><span class="ptag">WCAG 2.1 AA</span><span class="ptag">Audit</span><span class="ptag">24 Criteria</span></div>
-          <a href="tools/wcag-checklist.html" class="tool-open-btn tob-2" aria-label="Open WCAG Checklist">Open Tool <span class="tool-arrow">&#8599;</span></a>
-        </div>
-      </article>
-
-      <!-- Tool 3: Readability Checker -->
-      <article class="pcard tool-card tool-card-3 reveal delay-2" aria-label="Web Copy Readability Checker tool">
-        <div class="tool-preview tp3" aria-hidden="true">
-          <div class="tp3-text-lines">
-            <div class="tp3-line" style="width:90%;animation-delay:0s;"></div>
-            <div class="tp3-line" style="width:75%;animation-delay:.15s;"></div>
-            <div class="tp3-line" style="width:85%;animation-delay:.3s;"></div>
-            <div class="tp3-line" style="width:60%;animation-delay:.45s;"></div>
-          </div>
-          <div class="tp3-score-row">
-            <div class="tp3-score-box"><span class="tp3-val">G5</span><span class="tp3-lbl">Grade</span></div>
-            <div class="tp3-score-box tp3-good"><span class="tp3-val" style="color:#22c55e;">&#10003;</span><span class="tp3-lbl">Excellent</span></div>
-            <div class="tp3-score-box"><span class="tp3-val">42</span><span class="tp3-lbl">Words</span></div>
-          </div>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Live Tool &middot; Content Accessibility</p>
-          <h3 class="pcard-title">Web Copy Readability Checker</h3>
-          <p class="pcard-desc">Paste any web copy to instantly get a Flesch-Kincaid grade level and WCAG 3.1.5 readability guidance.</p>
-          <div class="ptags"><span class="ptag">WCAG 3.1.5</span><span class="ptag">Plain Language</span><span class="ptag">JavaScript</span></div>
-          <a href="tools/readability-checker.html" class="tool-open-btn tob-3" aria-label="Open Readability Checker">Open Tool <span class="tool-arrow">&#8599;</span></a>
-        </div>
-      </article>
-
-      <!-- Tool 4: Daily Web Affirmation -->
-      <article class="pcard tool-card tool-card-4 reveal" aria-label="Daily Web Affirmation tool">
-        <div class="tool-preview tp4" aria-hidden="true">
-          <div class="tp4-stars"></div>
-          <div class="tp4-emoji">&#127760;</div>
-          <p class="tp4-quote">&ldquo;WCAG-compliant and<br>absolutely thriving.&rdquo;</p>
-          <span class="tp4-tag">#AccessibilityFirst</span>
-        </div>
-        <div class="pcard-body">
-          <p class="pcard-eye">Just for Fun &middot; Daily Dose</p>
-          <h3 class="pcard-title">Daily Web Affirmation</h3>
-          <p class="pcard-desc">Because every developer needs encouragement. Click for a fresh affirmation to fuel your coding day.</p>
-          <div class="ptags"><span class="ptag">Good Vibes</span><span class="ptag">Fun</span><span class="ptag">15 Affirmations</span></div>
-          <a href="tools/affirmation.html" class="tool-open-btn tob-4" aria-label="Open Daily Web Affirmation">Open Tool <span class="tool-arrow">&#8599;</span></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="sec sec-dark" id="contact" aria-labelledby="contact-heading">
-  <div class="sec-inner">
-    <div class="contact-grid">
-      <div class="reveal">
-        <p class="eyebrow" style="color:rgba(255,255,255,.4);">05 Contact</p>
-        <h2 class="contact-title" id="contact-heading">Ready to build something <em>great?</em></h2>
-        <p class="contact-sub">I'm actively looking for Webmaster and Frontend Web Developer roles in government and public sector. Drop me a line. I'd love to chat.</p>
-        <div class="clinks">
-          <a href="mailto:saideepika.thammireddy@du.edu" class="clink">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            saideepika.thammireddy@du.edu
-          </a>
-          <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener" class="clink">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            linkedin.com/in/saideepikathammireddy
-          </a>
-          <a href="https://github.com/SaiDeepika10" target="_blank" rel="noopener" class="clink">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            github.com/SaiDeepika10
-          </a>
-        </div>
-      </div>
-      <div class="reveal delay-1">
-        <div class="contact-card">
-          <h3>Get in touch</h3>
-          <p>I'm open to full-time roles, hybrid positions, and government / public sector opportunities in Colorado.</p>
-          <a href="mailto:saideepika.thammireddy@du.edu" class="cta-btn">✉ Send me an email</a>
-          <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener" class="cta-btn cta-btn-out">Connect on LinkedIn ↗</a>
-          <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:12px;color:var(--soft);">
-            <strong style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:.3rem;">Portfolio URL</strong>
-            saideepika10.github.io/portfolio
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-inner">
-    <div class="foot-brand">
-      Sai Deepika Thammireddy
-      <span>Webmaster &amp; Frontend Web Developer · Denver, CO · 2025</span>
-    </div>
-    <nav class="foot-links" aria-label="Footer navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Portfolio</a>
-      <a href="mailto:saideepika.thammireddy@du.edu">Email</a>
-      <a href="https://linkedin.com/in/saideepikathammireddy" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/SaiDeepika10" target="_blank" rel="noopener">GitHub</a>
+      {mo&&<div style={{background:C.white,borderTop:`1px solid ${C.border}`,padding:".75rem 2rem 1rem",animation:"slideDown .25s ease"}}>
+        {[...links,"Contact"].map(l=>(
+          <button key={l} onClick={()=>go(l.toLowerCase())} style={{display:"block",width:"100%",textAlign:"left",padding:".6rem 0",fontSize:15,fontWeight:500,color:l==="Contact"?C.accent:C.muted,border:"none",borderBottom:l!=="Contact"?`1px solid ${C.border}`:"none",background:"none",cursor:"pointer",fontFamily:"inherit"}}>{l}</button>
+        ))}
+      </div>}
     </nav>
-  </div>
-  <div class="foot-bottom">
-    <p>© 2025 Sai Deepika Thammireddy · All rights reserved</p>
-    <p>Built with HTML · CSS · JavaScript · WCAG 2.1 AA compliant</p>
-  </div>
-</footer>
-
-<script>
-// Nav scroll background
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 10) {
-    nav.style.background = '#FAF8F5';
-    nav.style.boxShadow = '0 2px 16px rgba(0,0,0,.07)';
-  } else {
-    nav.style.background = '#ffffff';
-    nav.style.boxShadow = 'none';
-  }
-});
-
-// Mobile nav toggle
-function toggleNav(){
-  const nav=document.getElementById('mobile-nav');
-  const btn=document.getElementById('hamburger');
-  const open=nav.classList.toggle('open');
-  btn.setAttribute('aria-expanded',open);
-  nav.setAttribute('aria-hidden',!open);
-}
-function closeNav(){
-  const nav=document.getElementById('mobile-nav');
-  const btn=document.getElementById('hamburger');
-  nav.classList.remove('open');
-  btn.setAttribute('aria-expanded','false');
-  nav.setAttribute('aria-hidden','true');
+  );
 }
 
-// Scroll reveal
-const revealEls=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-},{threshold:0.12});
-revealEls.forEach(el=>observer.observe(el));
-
-// Active nav link
-const sections=document.querySelectorAll('section[id],div[id]');
-const navLinks=document.querySelectorAll('.nav-links a');
-const navObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      navLinks.forEach(a=>a.classList.remove('active'));
-      const link=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
-      if(link)link.classList.add('active');
-    }
-  });
-},{rootMargin:'-40% 0px -55% 0px'});
-sections.forEach(s=>navObserver.observe(s));
-
-// ===== CHAR ANIMATION HELPER =====
-function animateTitle(el, baseDelay=0, stagger=40){
-  if(!el || el.dataset.animated) return;
-  el.dataset.animated = '1';
-  el.classList.add('anim-title');
-  const text = el.innerHTML;
-  // Only split text nodes, preserve HTML tags
-  const parts = [];
-  let i = 0, delay = baseDelay;
-  const chars = [...el.textContent];
-  el.innerHTML = '';
-  chars.forEach((ch, idx) => {
-    if(ch === ' '){
-      const sp = document.createElement('span');
-      sp.className = 'char space';
-      sp.style.animationDelay = delay+'ms';
-      sp.innerHTML = '&nbsp;';
-      el.appendChild(sp);
-    } else {
-      const sp = document.createElement('span');
-      sp.className = 'char';
-      sp.style.animationDelay = delay+'ms';
-      sp.textContent = ch;
-      el.appendChild(sp);
-    }
-    delay += stagger;
-  });
+function Ticker(){
+  const items=[...TICKER,...TICKER];
+  return(
+    <div role="marquee" aria-label="Skills ticker" style={{background:C.accent,overflow:"hidden",padding:".6rem 0",borderTop:"1px solid rgba(0,0,0,.1)",borderBottom:"1px solid rgba(0,0,0,.1)"}}>
+      <div style={{display:"flex",width:"max-content",animation:"ticker 32s linear infinite"}}>
+        {items.map((t,i)=><span key={i} style={{fontSize:12,fontWeight:600,color:"rgba(255,255,255,.85)",padding:"0 1.75rem",whiteSpace:"nowrap",letterSpacing:".5px"}}>{t}<span style={{opacity:.4}}> ·</span></span>)}
+      </div>
+    </div>
+  );
 }
 
-// Animate headings on scroll into view
-const titleObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      const el = e.target;
-      const isHero = el.closest('.hero');
-      animateTitle(el, isHero ? 200 : 0, isHero ? 55 : 40);
-      titleObserver.unobserve(el);
-    }
-  });
-}, {threshold: 0.3});
-
-document.querySelectorAll('.sec-title, .contact-title, h1#hero-heading').forEach(el => {
-  titleObserver.observe(el);
-});
-
-
-// ===== SCROLL PROGRESS BAR =====
-const scrollBar = document.getElementById('scroll-bar');
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  scrollBar.style.width = (scrollTop / docHeight * 100) + '%';
-});
-
-// ===== TEXT SCRAMBLE ENGINE =====
-class TextScramble {
-  constructor(el) {
-    this.el = el;
-    this.original = el.textContent;
-    this.chars = '!<>-_\/[]{}—=+*^?#@ABCDEFabcdef0123456789';
-    this.frameReq = null;
-  }
-  setText(newText) {
-    const old = this.el.textContent;
-    const len = Math.max(old.length, newText.length);
-    return new Promise(res => {
-      this.resolve = res;
-      this.queue = Array.from({length: len}, (_, i) => ({
-        from: old[i] || '',
-        to: newText[i] || '',
-        start: Math.floor(Math.random() * 8),
-        end: Math.floor(Math.random() * 12) + 8,
-        char: ''
-      }));
-      cancelAnimationFrame(this.frameReq);
-      this.frame = 0;
-      this.update();
-    });
-  }
-  update() {
-    let output = '', complete = 0;
-    this.queue.forEach(item => {
-      if (this.frame >= item.end) {
-        complete++;
-        output += item.to;
-      } else if (this.frame >= item.start) {
-        item.char = this.chars[Math.floor(Math.random() * this.chars.length)];
-        output += `<span style="color:var(--accent);opacity:.7;font-style:italic;">${item.char}</span>`;
-      } else {
-        output += item.from;
-      }
-    });
-    this.el.innerHTML = output;
-    if (complete === this.queue.length) { this.resolve && this.resolve(); return; }
-    this.frameReq = requestAnimationFrame(() => { this.frame++; this.update(); });
-  }
+function Hero(){
+  const[nh,setNh]=useState(false);
+  const badges=["WCAG 2.1 AA","ADA Compliance","USWDS","Public Sector","MS · Univ. of Denver"];
+  return(
+    <section id="home" aria-labelledby="hero-heading" style={{background:C.white,padding:"5rem 2rem 4rem",borderBottom:`1px solid ${C.border}`}}>
+      <div style={{maxWidth:1080,margin:"0 auto",display:"grid",gap:"4rem",alignItems:"center"}} className="hero-grid">
+        <FadeIn>
+          <div style={{display:"inline-flex",alignItems:"center",gap:".5rem",background:C.accentL,color:C.accent,fontSize:12,fontWeight:600,padding:".35rem .9rem",borderRadius:20,marginBottom:"1.4rem"}}>
+            <span aria-hidden style={{width:7,height:7,borderRadius:"50%",background:C.accent,animation:"pulse 2s infinite",display:"inline-block"}}/>
+            Available for work · Denver, CO
+          </div>
+          <h1 id="hero-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(2.4rem,5vw,3.8rem)",fontWeight:700,lineHeight:1.1,color:C.ink,marginBottom:".3rem",letterSpacing:"-.5px"}}>
+            Hi, I'm<br/>
+            <em aria-label="Sai Deepika" style={{fontStyle:"italic",background:`linear-gradient(135deg,${C.accent},${C.amber} 60%,${C.accent})`,backgroundSize:"200% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",animation:"heroGrad 4s ease-in-out infinite alternate",display:"inline-block",transition:"letter-spacing .5s cubic-bezier(.34,1.56,.64,1)",letterSpacing:nh?"5px":"normal",cursor:"default"}}
+              onMouseEnter={()=>setNh(true)} onMouseLeave={()=>setNh(false)}>Sai Deepika.</em>
+          </h1>
+          <p style={{fontSize:14,fontWeight:500,color:C.soft,textTransform:"uppercase",letterSpacing:"1.5px",marginBottom:"1.4rem"}}>
+            Webmaster &amp; Frontend Web Developer
+            <span aria-hidden style={{display:"inline-block",marginLeft:2,color:C.accent,animation:"blink .8s step-end infinite"}}>|</span>
+          </p>
+          <p style={{fontSize:15.5,color:C.muted,maxWidth:480,lineHeight:1.8,marginBottom:"2rem"}}>
+            I build accessible, ADA/WCAG-compliant web experiences for public-facing digital portfolios, making sure every user, regardless of ability, device, or background, can navigate the web the way it was meant to be used.
+          </p>
+          <div style={{display:"flex",gap:".75rem",flexWrap:"wrap",marginBottom:"1.5rem"}}>
+            <button onClick={()=>document.getElementById("contact")?.scrollIntoView({behavior:"smooth"})} style={{background:C.ink,color:"#fff",fontSize:14,fontWeight:600,padding:".75rem 1.6rem",borderRadius:10,border:"none",cursor:"pointer",display:"inline-flex",alignItems:"center",gap:".5rem",position:"relative",overflow:"hidden",fontFamily:"inherit",transition:"opacity .15s,transform .15s"}}
+              onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.opacity=".85";}}
+              onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.opacity="1";}}>
+              Hire Me ✉
+              <span aria-hidden style={{position:"absolute",top:0,left:"-100%",width:"60%",height:"100%",background:"linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)",animation:"shimmer 2.5s ease-in-out infinite"}}/>
+            </button>
+            <button onClick={()=>document.getElementById("portfolio")?.scrollIntoView({behavior:"smooth"})} style={{background:"transparent",color:C.ink,fontSize:14,fontWeight:600,padding:".75rem 1.6rem",borderRadius:10,border:`1.5px solid ${C.border}`,cursor:"pointer",fontFamily:"inherit",transition:"border-color .15s,background .15s"}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=C.ink;e.currentTarget.style.background=C.bg;}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=C.border;e.currentTarget.style.background="transparent";}}>See my work →</button>
+          </div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:".5rem"}} role="list" aria-label="Specializations">
+            {badges.map((b,i)=>(
+              <span key={b} role="listitem" style={{fontSize:11,fontWeight:600,padding:"5px 12px",borderRadius:6,background:C.accentL,color:C.accent,border:"1px solid rgba(45,106,79,.2)",animation:`badgeFloat 3s ease-in-out ${i*.3}s infinite`,cursor:"default",display:"inline-block",transition:"transform .3s cubic-bezier(.34,1.56,.64,1),background .2s,color .2s"}}
+                onMouseEnter={e=>{e.target.style.transform="scale(1.12) rotate(-2deg)";e.target.style.background=C.accent;e.target.style.color="#fff";}}
+                onMouseLeave={e=>{e.target.style.transform="";e.target.style.background=C.accentL;e.target.style.color=C.accent;}}>{b}</span>
+            ))}
+          </div>
+        </FadeIn>
+        <FadeIn delay={200} className="hero-card-wrap">
+          <TiltCard style={{background:C.bg,border:`1px solid ${C.border}`,borderRadius:16,padding:"1.75rem"}}>
+            <div aria-hidden style={{width:64,height:64,borderRadius:"50%",background:C.accentL,border:`2px solid ${C.border}`,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"Playfair Display,serif",fontSize:"1.4rem",fontWeight:700,color:C.accent,marginBottom:"1rem"}}>SD</div>
+            <p style={{fontSize:15,fontWeight:600,color:C.ink,marginBottom:".15rem"}}>Sai Deepika Thammireddy</p>
+            <p style={{fontSize:12,color:C.soft,marginBottom:"1rem"}}>Webmaster · Frontend Web Developer</p>
+            {[["📍","Denver, Colorado"],["📞","(720) 421-6387"],["✉","saideepika.thammireddy@du.edu"]].map(([ic,tx])=>(
+              <div key={tx} style={{fontSize:13,color:C.muted,display:"flex",alignItems:"center",gap:".5rem",marginBottom:".4rem"}}><span aria-hidden>{ic}</span>{tx}</div>
+            ))}
+            <div aria-hidden style={{height:1,background:C.border,margin:".9rem 0"}}/>
+            <div style={{display:"flex",alignItems:"center",gap:".5rem",fontSize:13,fontWeight:600,color:C.accent}}>
+              <span aria-hidden style={{width:8,height:8,borderRadius:"50%",background:"#22C55E",animation:"pulse 2s infinite",display:"inline-block"}}/>
+              Open to work
+            </div>
+            <div style={{display:"flex",flexWrap:"wrap",gap:".35rem",marginTop:".85rem"}} aria-label="Core skills">
+              {["WCAG 2.1","React","USWDS","WordPress","Agile","ADA"].map(c=>(
+                <span key={c} style={{fontSize:11,fontWeight:500,padding:"3px 10px",borderRadius:20,background:C.white,border:`1px solid ${C.border}`,color:C.muted}}>{c}</span>
+              ))}
+            </div>
+          </TiltCard>
+        </FadeIn>
+      </div>
+    </section>
+  );
 }
 
-// Scramble eyebrows on hover
-document.querySelectorAll('.eyebrow').forEach(el => {
-  const sc = new TextScramble(el);
-  const orig = el.textContent;
-  el.addEventListener('mouseenter', () => sc.setText(orig));
-  el.addEventListener('mouseleave', () => { el.textContent = orig; });
-});
-
-// Scramble project card titles on hover
-document.querySelectorAll('.pcard').forEach(card => {
-  const title = card.querySelector('.pcard-title');
-  if (!title) return;
-  const sc = new TextScramble(title);
-  const orig = title.textContent;
-  let t;
-  card.addEventListener('mouseenter', () => { t = setTimeout(() => sc.setText(orig), 60); });
-  card.addEventListener('mouseleave', () => { clearTimeout(t); title.textContent = orig; });
-});
-
-// Scramble experience role titles
-document.querySelectorAll('.ecard-role').forEach(el => {
-  const sc = new TextScramble(el);
-  const orig = el.textContent;
-  el.addEventListener('mouseenter', () => sc.setText(orig));
-  el.addEventListener('mouseleave', () => { el.textContent = orig; });
-});
-
-// Scramble hero name on hover
-const emEl = document.querySelector('h1#hero-heading em');
-if (emEl) {
-  const sc = new TextScramble(emEl);
-  const orig = emEl.textContent;
-  document.querySelector('h1#hero-heading').addEventListener('mouseenter', () => sc.setText(orig));
-  document.querySelector('h1#hero-heading').addEventListener('mouseleave', () => { emEl.textContent = orig; });
+function About(){
+  return(
+    <section id="about" aria-labelledby="about-heading" style={{background:C.bg,padding:"5rem 2rem"}}>
+      <div style={{maxWidth:1080,margin:"0 auto"}}>
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:C.soft,marginBottom:".6rem"}}>About</p>
+          <h2 id="about-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.8rem,4vw,2.6rem)",fontWeight:700,lineHeight:1.15,marginBottom:".5rem",letterSpacing:"-.3px"}}><GradText>Front-end developer &amp; accessibility advocate</GradText></h2>
+          <p style={{fontSize:15,color:C.muted,maxWidth:520,lineHeight:1.75,marginBottom:"3rem"}}>Building digital portfolios that serve everyone</p>
+        </FadeIn>
+        <div style={{display:"grid",gap:"4rem",alignItems:"start"}} className="about-grid">
+          <FadeIn>
+            <div>
+              {["I'm a frontend web developer and webmaster with experience maintaining accessible, responsive digital portfolios for diverse end users. My work spans WCAG compliance, CMS operations, Agile web workflows, and mobile-first design, all focused on keeping web experiences available, navigable, and inclusive for every person who needs them.",
+                "Whether remediating a site for WCAG 2.1 AA compliance, consolidating a multi-site digital portfolio, or building a dashboard that works on any device. That's where I do my best work.",
+                "I'm actively looking for Webmaster and Frontend Web Developer roles in government and public sector organizations, where my skills in accessibility, USWDS, and Agile delivery make an immediate impact."].map((p,i)=>(
+                <p key={i} style={{fontSize:15,color:C.muted,lineHeight:1.85,marginBottom:"1rem"}}>{p}</p>
+              ))}
+            </div>
+          </FadeIn>
+          <FadeIn delay={150}>
+            <div style={{display:"flex",flexDirection:"column",gap:"1rem"}}>
+              {[
+                {title:"Education",body:"MS, Information Technology\nUniversity of Denver, 2025\n\nBS, Computer Science\nSri Padmavathi Women's University"},
+                {title:"Looking for",items:["Webmaster roles","Government / Public Sector","Frontend Web Developer","Digital Content Specialist"]},
+                {title:"Based in",body:"Denver, Colorado · Colorado Resident"},
+              ].map(c=>(
+                <TiltCard key={c.title} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"1.25rem 1.4rem"}}>
+                  <p style={{fontSize:13,fontWeight:600,color:C.ink,marginBottom:".5rem"}}>{c.title}</p>
+                  {c.body&&c.body.split("\n").map((l,i)=><p key={i} style={{fontSize:13,color:C.muted,lineHeight:1.65,marginBottom:l?"0":".4rem"}}>{l}</p>)}
+                  {c.items&&<ul style={{listStyle:"none",padding:0}}>{c.items.map(it=><li key={it} style={{fontSize:13,color:C.muted,lineHeight:1.65,marginBottom:".25rem"}}><span style={{color:C.accent,fontWeight:600}}>→ </span>{it}</li>)}</ul>}
+                </TiltCard>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-// Scramble section titles on scroll into view (once)
-const titleSc = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !e.target.dataset.scrambled) {
-      e.target.dataset.scrambled = '1';
-      const sc = new TextScramble(e.target);
-      sc.setText(e.target.textContent);
-    }
-  });
-}, {threshold: 0.4});
-document.querySelectorAll('.sec-title').forEach(el => titleSc.observe(el));
+const SKILLS_DATA=[
+  {t:"Front-End Development",p:["HTML5","CSS3 / SCSS","JavaScript ES6+","React","TypeScript","Responsive Design","Mobile-First"]},
+  {t:"Accessibility & Compliance",p:["WCAG 2.1 AA","ADA Compliance","USWDS","ARIA","Keyboard Navigation","Screen Reader Testing","Lighthouse / axe"]},
+  {t:"CMS & Platforms",p:["WordPress","Drupal","Google Sites","Squarespace","Salesforce","LMS / CRM / HCM"]},
+  {t:"Tools & DevOps",p:["Git / GitHub","CI/CD Pipelines","JIRA","Confluence","npm / Vite","Google Analytics"]},
+  {t:"Practices",p:["Agile / Scrum","Sprint Planning","Backlog Mgmt","PI Planning","Green Digital","SSO Integration"]},
+  {t:"Design & Analytics",p:["Figma","UI/UX Metrics","Core Web Vitals","Stakeholder Reporting","Mobile-First"]},
+];
 
-// Eyebrow letter-spacing on scroll
-const eyebrowObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.5});
-document.querySelectorAll('.eyebrow').forEach(el => eyebrowObs.observe(el));
-
-// 3D tilt on skill group cards
-document.querySelectorAll('.sgroup, .acard').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(4px)`;
-    card.style.transition = 'transform .05s';
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1)';
-  });
-});
-
-// ===== PAGE TRANSITION ON NAV CLICKS =====// ===== PAGE TRANSITION ON NAV CLICKS =====
-const overlay = document.getElementById('page-transition');
-function doTransition(href){
-  if(!href || href.startsWith('#')) return;
-  overlay.classList.add('entering');
-  setTimeout(() => {
-    window.location.href = href;
-  }, 480);
+function Skills(){
+  return(
+    <section id="skills" aria-labelledby="skills-heading" style={{background:C.white,padding:"5rem 2rem"}}>
+      <div style={{maxWidth:1080,margin:"0 auto"}}>
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:C.soft,marginBottom:".6rem"}}>Skills</p>
+          <h2 id="skills-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.8rem,4vw,2.6rem)",fontWeight:700,lineHeight:1.15,marginBottom:".5rem",letterSpacing:"-.3px"}}><GradText>Technologies &amp; tools</GradText></h2>
+          <p style={{fontSize:15,color:C.muted,maxWidth:520,lineHeight:1.75,marginBottom:"3rem"}}>Everything I work with to build great web experiences</p>
+        </FadeIn>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"1rem"}} className="skills-grid">
+          {SKILLS_DATA.map((g,i)=>(
+            <FadeIn key={g.t} delay={i*80}>
+              <TiltCard style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"1.4rem",height:"100%"}}>
+                <div style={{display:"flex",alignItems:"center",gap:".5rem",marginBottom:"1rem"}}>
+                  <span aria-hidden style={{width:7,height:7,borderRadius:"50%",background:C.accent,flexShrink:0}}/>
+                  <ScrambleText text={g.t} style={{fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:".8px",color:C.ink,cursor:"default"}}/>
+                </div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:".4rem"}}>
+                  {g.p.map(p=>(
+                    <span key={p} style={{fontSize:12,fontWeight:500,padding:"4px 12px",borderRadius:20,background:C.bg,border:`1px solid ${C.border}`,color:C.muted,cursor:"default",display:"inline-block",transition:"transform .25s cubic-bezier(.34,1.56,.64,1),background .2s,color .2s,box-shadow .2s"}}
+                      onMouseEnter={e=>{e.target.style.transform="scale(1.12) rotate(-2deg)";e.target.style.background=C.ink;e.target.style.color="#fff";e.target.style.boxShadow="0 4px 14px rgba(0,0,0,.15)";}}
+                      onMouseLeave={e=>{e.target.style.transform="";e.target.style.background=C.bg;e.target.style.color=C.muted;e.target.style.boxShadow="none";}}>{p}</span>
+                  ))}
+                </div>
+              </TiltCard>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
-// Intercept internal nav link clicks (non-hash)
-document.querySelectorAll('nav a, .btn-primary, .btn-outline, .plink, .tool-open-btn, .cta-btn, .foot-links a').forEach(a => {
-  const href = a.getAttribute('href');
-  if(href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto')){
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      doTransition(href);
-    });
-  }
-});
+const EXP=[
+  {date:"Jan 2024 – Present",co:"University of Denver",sub:"Sodexo · Denver, CO",role:"Campus Web & Digital Systems Intern",
+   bullets:["Maintain and enhance multiple websites ensuring WCAG 2.1 and ADA compliance across all digital assets.","Run full WCAG 2.1 AA audits: heading structure, color contrast, ARIA labels, alt text, keyboard navigation.","Monitor UI/UX web metrics including uptime and engagement; identify and debug front-end performance issues.","Participate in Agile ceremonies including sprint planning, backlog grooming, daily scrums, and PI planning.","Collaborate with UX designers and product teams to deliver mobile-first, device-responsive interfaces aligned with USWDS."],
+   tags:["WordPress","React","WCAG 2.1","USWDS","Agile / JIRA","CI/CD"]},
+  {date:"Jan 2022 – Jun 2023",co:"CEMS",sub:"Remote · India",role:"Web Developer Intern",
+   bullets:["Developed and maintained mobile-forward, responsive web interfaces using HTML, CSS, and JavaScript.","Managed deployments using Git and CI/CD pipelines in collaboration with cross-functional development and QA teams.","Maintained a web backlog using user stories, resolving issues iteratively to meet operational requirements."],
+   tags:["HTML / CSS / JS","PHP","WordPress","Git","CI/CD"]},
+];
 
-// On page load, animate overlay out
-window.addEventListener('pageshow', () => {
-  overlay.classList.remove('entering');
-  overlay.classList.add('leaving');
-  setTimeout(() => overlay.classList.remove('leaving'), 520);
-});
+function Experience(){
+  return(
+    <section id="experience" aria-labelledby="exp-heading" style={{background:C.bg,padding:"5rem 2rem"}}>
+      <div style={{maxWidth:1080,margin:"0 auto"}}>
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:C.soft,marginBottom:".6rem"}}>Experience</p>
+          <h2 id="exp-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.8rem,4vw,2.6rem)",fontWeight:700,lineHeight:1.15,marginBottom:"3rem",letterSpacing:"-.3px"}}><GradText>Where I've built things</GradText></h2>
+        </FadeIn>
+        <div style={{display:"flex",flexDirection:"column",gap:"1.25rem"}}>
+          {EXP.map((e,i)=>(
+            <FadeIn key={e.co} delay={i*100}>
+              <article style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"2rem",display:"grid",gap:"2rem",transition:"box-shadow .2s,transform .3s cubic-bezier(.34,1.56,.64,1)"}} className="exp-card"
+                onMouseEnter={el=>{el.currentTarget.style.boxShadow="0 4px 24px rgba(0,0,0,.08)";el.currentTarget.style.transform="perspective(800px) rotateX(1deg) rotateY(-.5deg) translateY(-3px)";}}
+                onMouseLeave={el=>{el.currentTarget.style.boxShadow="none";el.currentTarget.style.transform="";}}>
+                <div style={{borderRight:`1px solid ${C.border}`,paddingRight:"2rem"}} className="exp-left">
+                  <p style={{fontSize:12,fontWeight:600,color:C.soft,textTransform:"uppercase",letterSpacing:".5px",marginBottom:".4rem"}}>{e.date}</p>
+                  <p style={{fontSize:14,fontWeight:700,color:C.ink,marginBottom:".25rem"}}>{e.co}</p>
+                  <p style={{fontSize:12,color:C.soft}}>{e.sub}</p>
+                </div>
+                <div>
+                  <ScrambleText text={e.role} as="p" style={{fontSize:16,fontWeight:600,color:C.ink,marginBottom:".85rem",cursor:"default",display:"block"}}/>
+                  <ul style={{listStyle:"none",padding:0,marginBottom:"1rem"}}>
+                    {e.bullets.map((b,bi)=>(
+                      <li key={bi} style={{fontSize:14,color:C.muted,lineHeight:1.7,paddingLeft:"1.1rem",position:"relative",marginBottom:".4rem"}}>
+                        <span aria-hidden style={{position:"absolute",left:0,top:".7rem",width:5,height:5,borderRadius:"50%",background:C.border,display:"inline-block"}}/>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{display:"flex",flexWrap:"wrap",gap:".35rem"}}>
+                    {e.tags.map(t=>(
+                      <span key={t} style={{fontSize:11,fontWeight:500,padding:"3px 9px",borderRadius:6,background:C.bg,color:C.soft,border:`1px solid ${C.border}`,cursor:"default",display:"inline-block",transition:"transform .25s cubic-bezier(.34,1.56,.64,1),background .2s,color .2s"}}
+                        onMouseEnter={x=>{x.target.style.transform="scale(1.1) rotate(2deg)";x.target.style.background=C.accent;x.target.style.color="#fff";}}
+                        onMouseLeave={x=>{x.target.style.transform="";x.target.style.background=C.bg;x.target.style.color=C.soft;}}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-// Smooth section scroll for hash links with visual feedback
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if(!target) return;
-    e.preventDefault();
-    // Flash the nav link
-    a.style.color = 'var(--accent)';
-    setTimeout(() => a.style.color = '', 400);
-    target.scrollIntoView({behavior: 'smooth', block: 'start'});
-  });
-});
+const PROJS=[
+  {eye:"WCAG + USWDS · Accessibility",title:"Campus Dining Portal: WCAG 2.1 AA Remediation",desc:"Led a full WCAG 2.1 AA audit of the campus dining portal. Identified and remediated 38 violations — ARIA labels, color contrast, keyboard navigation, and non-descriptive link text. Lighthouse score: 61 to 100.",tags:["React","WCAG 2.1 AA","USWDS","ARIA","JIRA"],gh:"https://github.com/SaiDeepika10/campus-dining-wcag-remediation",bg:"#2D6A4F",em:"✓"},
+  {eye:"Green Digital · Lightweight",title:"Multi-Site Web Portfolio Unification",desc:"Consolidated three campus web properties into a unified, standards-aligned portfolio. Applied green digital design principles, reducing redundant page assets 40% and improving Core Web Vitals.",tags:["WordPress","Google Sites","Green Digital","Core Web Vitals"],gh:"https://github.com/SaiDeepika10/multi-site-portfolio-unification",bg:"#C47D2E",em:"⬡"},
+  {eye:"Mobile-First · Responsive",title:"Internal Operations Web Dashboard",desc:"Built a responsive internal dashboard in JavaScript, HTML5, and CSS3 with interactive charts, filterable tables, and real-time status indicators. Designed mobile-first for all devices.",tags:["JavaScript ES6+","Mobile-First","REST API","CI/CD"],gh:"https://github.com/SaiDeepika10/internal-operations-dashboard",bg:"#7C3AED",em:"⬢"},
+  {eye:"Responsive · ADA",title:"Higher Education Website Redesign",desc:"Redesigned and maintained 15 academic web pages. Applied WCAG 2.1 and ADA-compliant practices, improving keyboard navigation, color contrast, heading structure, and screen reader support.",tags:["WordPress","WCAG 2.1","ADA","Figma"],gh:"https://github.com/SaiDeepika10/higher-education-website-redesign",bg:"#1E3A5F",em:"◈"},
+  {eye:"WCAG · Content Governance",title:"Content Audit & Accessibility Remediation",desc:"Audited a 50+ page university site for WCAG 2.1 violations. Remediated issues in HTML and CMS, validated with Lighthouse and axe DevTools, then delivered a training guide for campus content creators.",tags:["WCAG 2.1","Lighthouse","axe DevTools","CMS"],gh:"https://github.com/SaiDeepika10/content-audit-accessibility-remediation",bg:"#5B21B6",em:"◉"},
+];
 
+const TOOLS=[
+  {title:"WCAG Color Contrast Checker",eye:"Live Tool · WCAG 2.1",desc:"Real-time AA/AAA contrast ratio calculator with full WCAG breakdown and color swatches.",href:"tools/contrast-checker.html",em:"🎨",bg:"#1C1C1C"},
+  {title:"WCAG 2.1 AA Compliance Checklist",eye:"Live Tool · 24 Criteria",desc:"Work through 24 WCAG 2.1 AA criteria with a live circular progress score.",href:"tools/wcag-checklist.html",em:"✅",bg:"#1E3A5F"},
+  {title:"Web Copy Readability Checker",eye:"Live Tool · WCAG 3.1.5",desc:"Paste web copy to get Flesch-Kincaid grade level and plain language guidance.",href:"tools/readability-checker.html",em:"📖",bg:"#2E1065"},
+  {title:"Daily Web Affirmation",eye:"Just for Fun · 15 Cards",desc:"Because every developer needs encouragement. Animated stars, rotating affirmations.",href:"tools/affirmation.html",em:"✨",bg:"#1C1C1C"},
+];
+
+function PCard({p,i}){
+  const[h,setH]=useState(false);
+  const[td,setTd]=useState(p.title);
+  const raf=useRef(null);
+  const sc=t=>{let f=0;const q=[...t].map(ch=>({to:ch,s:Math.floor(Math.random()*4),e:Math.floor(Math.random()*7)+4,c:""}));const tick=()=>{let out="",done=0;q.forEach(x=>{if(f>=x.e){done++;out+=x.to;}else if(f>=x.s){x.c=CHARS[Math.floor(Math.random()*CHARS.length)];out+=x.c;}else out+=x.to;});setTd(out);if(done<q.length)raf.current=requestAnimationFrame(()=>{f++;tick();});else setTd(t);};cancelAnimationFrame(raf.current);tick();};
+  return(
+    <FadeIn delay={i*80}>
+      <article style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,overflow:"hidden",display:"flex",flexDirection:"column",transition:"box-shadow .2s,transform .2s",boxShadow:h?"0 8px 32px rgba(0,0,0,.1)":"none",transform:h?"translateY(-4px)":"none"}}
+        onMouseEnter={()=>{setH(true);sc(p.title);}} onMouseLeave={()=>{setH(false);setTd(p.title);cancelAnimationFrame(raf.current);}}>
+        <div aria-hidden style={{height:120,background:p.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"3rem",borderBottom:`1px solid ${C.border}`,transition:"transform .3s",transform:h?"scale(1.05)":"scale(1)"}}>{p.em}</div>
+        <div style={{padding:"1.35rem",flex:1,display:"flex",flexDirection:"column"}}>
+          <p style={{fontSize:10,fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:C.soft,marginBottom:".4rem"}}>{p.eye}</p>
+          <h3 style={{fontSize:15,fontWeight:600,color:C.ink,marginBottom:".5rem",lineHeight:1.35}}>{td}</h3>
+          <p style={{fontSize:13,color:C.muted,lineHeight:1.7,flex:1,marginBottom:"1rem"}}>{p.desc}</p>
+          <div style={{display:"flex",flexWrap:"wrap",gap:".3rem",marginBottom:"1rem"}}>
+            {p.tags.map(t=><span key={t} style={{fontSize:11,fontWeight:500,padding:"3px 8px",borderRadius:5,background:C.bg,color:C.soft,border:`1px solid ${C.border}`}}>{t}</span>)}
+          </div>
+        </div>
+        <div style={{borderTop:`1px solid ${C.border}`,padding:"1rem 1.35rem"}}>
+          <a href={p.gh} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.title} on GitHub`} style={{fontSize:13,fontWeight:600,color:C.accent,display:"inline-flex",alignItems:"center",gap:".3rem",textDecoration:"none",transition:"gap .2s"}}
+            onMouseEnter={e=>e.currentTarget.style.gap=".6rem"} onMouseLeave={e=>e.currentTarget.style.gap=".3rem"}>
+            View on GitHub ↗
+          </a>
+        </div>
+      </article>
+    </FadeIn>
+  );
+}
+
+function TCard({t,i}){
+  const[h,setH]=useState(false);
+  return(
+    <FadeIn delay={i*80}>
+      <article style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,overflow:"hidden",display:"flex",flexDirection:"column",transition:"box-shadow .2s,transform .2s",boxShadow:h?"0 8px 32px rgba(0,0,0,.1)":"none",transform:h?"translateY(-4px)":"none"}}
+        onMouseEnter={()=>setH(true)} onMouseLeave={()=>setH(false)}>
+        <div aria-hidden style={{height:120,background:t.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"3rem",borderBottom:`1px solid ${C.border}`,transition:"transform .3s",transform:h?"scale(1.05)":"scale(1)"}}>
+          <span style={{animation:"float 3s ease-in-out infinite"}}>{t.em}</span>
+        </div>
+        <div style={{padding:"1.35rem",flex:1,display:"flex",flexDirection:"column"}}>
+          <p style={{fontSize:10,fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:C.soft,marginBottom:".4rem"}}>{t.eye}</p>
+          <h3 style={{fontSize:15,fontWeight:600,color:C.ink,marginBottom:".5rem",lineHeight:1.35}}>{t.title}</h3>
+          <p style={{fontSize:13,color:C.muted,lineHeight:1.7,flex:1,marginBottom:".85rem"}}>{t.desc}</p>
+          <a href={t.href} aria-label={`Open ${t.title} tool`} style={{display:"inline-flex",alignItems:"center",gap:".4rem",fontSize:13,fontWeight:700,padding:".6rem 1.25rem",borderRadius:10,background:C.ink,color:"#fff",textDecoration:"none",transition:"gap .2s,transform .15s,box-shadow .2s",alignSelf:"flex-start",transform:h?"translateY(-2px)":"none",boxShadow:h?"0 6px 20px rgba(0,0,0,.18)":"none"}}>
+            Open Tool <span aria-hidden style={{fontSize:15,display:"inline-block",transform:h?"translate(2px,-2px)":"none",transition:"transform .2s"}}>↗</span>
+          </a>
+        </div>
+      </article>
+    </FadeIn>
+  );
+}
+
+function Portfolio(){
+  return(
+    <section id="portfolio" aria-labelledby="portfolio-heading" style={{background:C.white,padding:"5rem 2rem"}}>
+      <div style={{maxWidth:1080,margin:"0 auto"}}>
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:C.soft,marginBottom:".6rem"}}>Portfolio</p>
+          <h2 id="portfolio-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.8rem,4vw,2.6rem)",fontWeight:700,lineHeight:1.15,marginBottom:".5rem",letterSpacing:"-.3px"}}><GradText>Selected work</GradText></h2>
+          <p style={{fontSize:15,color:C.muted,maxWidth:520,lineHeight:1.75,marginBottom:"3rem"}}>Five case studies featuring WCAG, USWDS, mobile-first, green digital, and responsive design</p>
+        </FadeIn>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"1.25rem",marginBottom:"3rem"}} className="proj-grid">
+          {PROJS.map((p,i)=><PCard key={p.title} p={p} i={i}/>)}
+        </div>
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:C.soft,marginBottom:".6rem",marginTop:"1rem"}}>Live Tools</p>
+          <h3 style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:700,lineHeight:1.15,marginBottom:"1.5rem",letterSpacing:"-.3px",color:C.ink}}>Interactive accessibility tools</h3>
+        </FadeIn>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"1.25rem"}} className="tools-grid">
+          {TOOLS.map((t,i)=><TCard key={t.title} t={t} i={i}/>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact(){
+  return(
+    <section id="contact" aria-labelledby="contact-heading" style={{background:C.ink,padding:"5rem 2rem"}}>
+      <div style={{maxWidth:1080,margin:"0 auto",display:"grid",gap:"4rem",alignItems:"start"}} className="contact-grid">
+        <FadeIn>
+          <p style={{fontSize:11,fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",color:"rgba(255,255,255,.4)",marginBottom:".6rem"}}>Contact</p>
+          <h2 id="contact-heading" style={{fontFamily:"Playfair Display,serif",fontSize:"clamp(1.8rem,4vw,2.6rem)",fontWeight:700,color:"#fff",lineHeight:1.15,marginBottom:".75rem",letterSpacing:"-.3px",background:"linear-gradient(90deg,#fff 0%,rgba(255,255,255,.45) 45%,#fff 80%)",backgroundSize:"250% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",animation:"gradSweep 5s linear infinite"}}>
+            Ready to build something great?
+          </h2>
+          <p style={{fontSize:15,color:"rgba(255,255,255,.6)",lineHeight:1.75,marginBottom:"2rem"}}>Actively looking for Webmaster and Frontend Web Developer roles in government and public sector. Drop me a line.</p>
+          <div style={{display:"flex",flexDirection:"column",gap:".6rem"}}>
+            {[
+              {ic:"✉",l:"saideepika.thammireddy@du.edu",h:"mailto:saideepika.thammireddy@du.edu"},
+              {ic:"in",l:"linkedin.com/in/saideepikathammireddy",h:"https://linkedin.com/in/saideepikathammireddy"},
+              {ic:"gh",l:"github.com/SaiDeepika10",h:"https://github.com/SaiDeepika10"},
+            ].map(c=>(
+              <a key={c.l} href={c.h} target={c.h.startsWith("http")?"_blank":undefined} rel="noopener noreferrer" style={{display:"flex",alignItems:"center",gap:".75rem",background:"rgba(255,255,255,.08)",border:"1px solid rgba(255,255,255,.12)",borderRadius:10,padding:".85rem 1.2rem",color:"rgba(255,255,255,.85)",fontSize:14,fontWeight:500,textDecoration:"none",transition:"background .15s,color .15s"}}
+                onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,255,255,.14)";e.currentTarget.style.color="#fff";}}
+                onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,.08)";e.currentTarget.style.color="rgba(255,255,255,.85)";}}>
+                <span aria-hidden style={{fontSize:11,fontWeight:700,opacity:.6}}>{c.ic}</span>{c.l}
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div style={{background:C.white,borderRadius:14,padding:"2rem"}}>
+            <h3 style={{fontSize:"1rem",fontWeight:600,color:C.ink,marginBottom:".25rem"}}>Get in touch</h3>
+            <p style={{fontSize:13,color:C.muted,marginBottom:"1.5rem",lineHeight:1.65}}>Open to full-time roles, hybrid positions, and government / public sector opportunities in Colorado.</p>
+            {[
+              {l:"✉ Send me an email",h:"mailto:saideepika.thammireddy@du.edu",primary:true},
+              {l:"Connect on LinkedIn ↗",h:"https://linkedin.com/in/saideepikathammireddy",primary:false},
+            ].map(b=>(
+              <a key={b.l} href={b.h} target={b.primary?undefined:"_blank"} rel="noopener noreferrer" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:".5rem",background:b.primary?C.ink:"transparent",color:b.primary?"#fff":C.ink,fontSize:14,fontWeight:600,padding:".85rem 1.75rem",borderRadius:10,textDecoration:"none",transition:"opacity .15s",width:"100%",marginBottom:".6rem",border:b.primary?"none":`1.5px solid ${C.border}`}}
+                onMouseEnter={e=>e.currentTarget.style.opacity=".8"} onMouseLeave={e=>e.currentTarget.style.opacity="1"}>{b.l}</a>
+            ))}
+            <div style={{marginTop:"1.25rem",paddingTop:"1.25rem",borderTop:`1px solid ${C.border}`}}>
+              <p style={{fontSize:11,textTransform:"uppercase",letterSpacing:".5px",color:C.soft,fontWeight:600,marginBottom:".3rem"}}>Portfolio URL</p>
+              <p style={{fontSize:13,color:C.muted}}>saideepika10.github.io/portfolio</p>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function ScrollBar(){
+  const[p,setP]=useState(0);
+  useEffect(()=>{const h=()=>{const t=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;setP(d?t/d*100:0);};window.addEventListener("scroll",h);return()=>window.removeEventListener("scroll",h);},[]);
+  return<div aria-hidden role="presentation" style={{position:"fixed",top:0,left:0,height:3,zIndex:9998,width:`${p}%`,background:`linear-gradient(90deg,#2D6A4F,#C47D2E)`,transition:"width .1s linear",pointerEvents:"none"}}/>;
+}
+
+function App(){
+  return(
+    <>
+      <style>{`
+        .hero-grid{grid-template-columns:1fr 340px;}
+        .about-grid{grid-template-columns:1fr 1fr;}
+        .skills-grid{grid-template-columns:repeat(3,1fr)!important;}
+        .proj-grid{grid-template-columns:repeat(3,1fr)!important;}
+        .tools-grid{grid-template-columns:repeat(4,1fr)!important;}
+        .contact-grid{grid-template-columns:1fr 1fr;}
+        .exp-card{grid-template-columns:140px 1fr;}
+        .exp-left{border-right:1px solid #E8E5E0;padding-right:2rem;}
+        .nav-desktop{display:flex!important;}
+        .nav-mobile{display:none!important;}
+        @media(max-width:900px){
+          .hero-grid{grid-template-columns:1fr!important;}
+          .hero-card-wrap{display:none;}
+          .skills-grid{grid-template-columns:1fr 1fr!important;}
+          .proj-grid{grid-template-columns:1fr 1fr!important;}
+          .tools-grid{grid-template-columns:1fr 1fr!important;}
+        }
+        @media(max-width:768px){
+          .nav-desktop{display:none!important;}
+          .nav-mobile{display:block!important;}
+          .about-grid,.contact-grid{grid-template-columns:1fr!important;}
+          .skills-grid,.proj-grid,.tools-grid{grid-template-columns:1fr!important;}
+          .exp-card{grid-template-columns:1fr!important;}
+          .exp-left{border-right:none!important;padding-right:0!important;border-bottom:1px solid #E8E5E0;padding-bottom:1rem;}
+        }
+        a:focus-visible,button:focus-visible{outline:3px solid #C47D2E;outline-offset:3px;border-radius:3px;}
+      `}</style>
+      <ScrollBar/>
+      <Nav/>
+      <Ticker/>
+      <main id="main">
+        <Hero/>
+        <About/>
+        <Skills/>
+        <Experience/>
+        <Portfolio/>
+        <Contact/>
+      </main>
+      <footer style={{background:C.ink,padding:"3rem 2rem 2rem",borderTop:"1px solid rgba(255,255,255,.08)"}}>
+        <div style={{maxWidth:1080,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"1.5rem"}}>
+          <div>
+            <p style={{fontFamily:"Playfair Display,serif",fontSize:"1.1rem",color:"#fff",fontWeight:700}}>Sai Deepika Thammireddy</p>
+            <p style={{fontSize:12,color:"rgba(255,255,255,.4)",marginTop:".2rem"}}>Webmaster &amp; Frontend Web Developer · Denver, CO · 2025</p>
+          </div>
+          <nav aria-label="Footer navigation" style={{display:"flex",gap:"1.5rem",flexWrap:"wrap"}}>
+            {["About","Skills","Experience","Portfolio","Contact"].map(l=>(
+              <button key={l} onClick={()=>document.getElementById(l.toLowerCase())?.scrollIntoView({behavior:"smooth"})} style={{fontSize:13,color:"rgba(255,255,255,.5)",background:"none",border:"none",cursor:"pointer",fontFamily:"inherit",transition:"color .15s"}}
+                onMouseEnter={e=>e.target.style.color="#fff"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.5)"}>{l}</button>
+            ))}
+          </nav>
+        </div>
+        <div style={{maxWidth:1080,margin:".85rem auto 0",paddingTop:".85rem",borderTop:"1px solid rgba(255,255,255,.07)",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:".5rem"}}>
+          <p style={{fontSize:12,color:"rgba(255,255,255,.3)"}}>© 2025 Sai Deepika Thammireddy · All rights reserved</p>
+          <p style={{fontSize:12,color:"rgba(255,255,255,.3)"}}>Built with React · JavaScript · WCAG 2.1 AA compliant</p>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
