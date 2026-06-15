@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Web Copy Readability Checker | Sai Deepika</title>
+<meta name="description" content="Free web copy readability checker tool by Sai Deepika Thammireddy."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#1a1a1a;--muted:#5a5a5a;--soft:#8a8a8a;--bg:#faf9f7;--white:#ffffff;--border:#e8e5e0;--accent:#2d6a4f;--accent-light:#e8f4ee;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid #c47d2e;outline-offset:3px;border-radius:3px;}
+.skip{position:absolute;top:-60px;left:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 8px;font-weight:600;font-size:14px;z-index:999;transition:top .2s;}
+.skip:focus{top:0;}
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none;}
+.nav-back{font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s;}
+.nav-back:hover{color:var(--ink);border-color:var(--ink);}
+.tool-hero{background:var(--white);border-bottom:1px solid var(--border);padding:3rem 2rem 2.5rem;}
+.tool-hero-inner{max-width:900px;margin:0 auto;}
+.tool-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:.3rem .85rem;border-radius:20px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--ink);margin-bottom:.5rem;}
+.tool-hero p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.75;}
+main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.75rem;}
+.card h2{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:1rem;}
+textarea{width:100%;min-height:260px;padding:.85rem 1rem;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);resize:vertical;line-height:1.7;background:var(--bg);}
+textarea:focus{background:var(--white);}
+.char-count{font-size:11px;color:var(--soft);text-align:right;margin-top:.4rem;}
+.btn-clear{font-size:12px;font-weight:600;color:var(--muted);background:none;border:1px solid var(--border);border-radius:8px;padding:.35rem .85rem;cursor:pointer;margin-top:.6rem;font-family:inherit;}
+.btn-clear:hover{color:var(--ink);border-color:var(--ink);}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem;}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;}
+.stat-val{font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1;}
+.stat-label{font-size:11px;color:var(--soft);margin-top:.25rem;}
+.grade-bar{margin-bottom:1.25rem;}
+.grade-bar h3{font-size:12px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.6rem;}
+.grade-track{height:12px;background:var(--bg);border-radius:99px;overflow:hidden;border:1px solid var(--border);position:relative;}
+.grade-fill{height:100%;border-radius:99px;transition:width .5s ease,background .5s ease;width:0%;}
+.grade-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--soft);margin-top:.3rem;}
+.verdict{border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;border:1px solid;}
+.verdict-title{font-size:14px;font-weight:600;margin-bottom:.3rem;}
+.verdict-desc{font-size:13px;line-height:1.65;}
+.tips-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.tips-list li{font-size:13px;color:var(--muted);padding-left:1.1rem;position:relative;line-height:1.6;}
+.tips-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+.sample-btns{display:flex;flex-direction:column;gap:.4rem;margin-top:.85rem;}
+.sample-btn{font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-light);border:1px solid rgba(45,106,79,.2);border-radius:7px;padding:.4rem .85rem;cursor:pointer;font-family:inherit;text-align:left;}
+.sample-btn:hover{background:#d4eee0;}
+@media(max-width:700px){.grid{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Sai Deepika</a>
+    <a href="../index.html#projects" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <div class="tool-badge">Accessibility Tool</div>
+    <h1>Readability Checker</h1>
+    <p>Paste any web copy to get an instant Flesch-Kincaid grade level, readability score, and WCAG 3.1.5 guidance. Help make your content accessible to everyone.</p>
+  </div>
+</div>
+<main id="main">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Paste your web copy</h2>
+        <textarea id="rb-text" aria-label="Web copy to analyse" placeholder="Paste your web copy here — page content, button labels, error messages, form instructions, or any text users will read on your website..." oninput="analyse()"></textarea>
+        <div class="char-count" aria-live="polite" id="char-count">0 characters</div>
+        <button class="btn-clear" onclick="clearText()" aria-label="Clear text">Clear</button>
+        <div class="sample-btns" aria-label="Load sample text">
+          <p style="font-size:11px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.2rem;">Try a sample:</p>
+          <button class="sample-btn" onclick="loadSample(0)">Complex legal text</button>
+          <button class="sample-btn" onclick="loadSample(1)">Good web copy</button>
+          <button class="sample-btn" onclick="loadSample(2)">Government notice</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h2>Readability results</h2>
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-val" id="res-words" aria-live="polite">0</div><div class="stat-label">Words</div></div>
+          <div class="stat"><div class="stat-val" id="res-sentences" aria-live="polite">0</div><div class="stat-label">Sentences</div></div>
+          <div class="stat"><div class="stat-val" id="res-grade" aria-live="polite">--</div><div class="stat-label">Grade level</div></div>
+          <div class="stat"><div class="stat-val" id="res-time" aria-live="polite">--</div><div class="stat-label">Read time</div></div>
+        </div>
+        <div class="grade-bar">
+          <h3>Complexity scale</h3>
+          <div class="grade-track"><div class="grade-fill" id="grade-fill"></div></div>
+          <div class="grade-labels"><span>Simple</span><span>Average</span><span>Complex</span></div>
+        </div>
+        <div class="verdict" id="verdict" style="background:var(--bg);border-color:var(--border);">
+          <div class="verdict-title" id="verdict-title" style="color:var(--soft);">Paste text to see results</div>
+          <div class="verdict-desc" id="verdict-desc" style="color:var(--soft);">Results will appear here as you type.</div>
+        </div>
+        <ul class="tips-list" id="tips-list"></ul>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+const samples = [
+  "The utilization of aforementioned methodological frameworks necessitates the comprehensive reconceptualization of institutional paradigms, whereby stakeholders must facilitate the implementation of evidence-based pedagogical interventions to maximize the efficacy of organizational transformation initiatives.",
+  "We make websites that work for everyone. Our team builds fast, accessible pages that are easy to use on any device. If you have a question, just send us a message and we will get back to you the same day.",
+  "Pursuant to Section 4(b)(ii) of the aforementioned regulatory framework, all entities subject to the jurisdiction of this administration are hereby required to submit documentation substantiating compliance with the applicable statutory requirements within the prescribed timeframe."
+];
+
+function loadSample(i){document.getElementById('rb-text').value=samples[i];analyse();}
+function clearText(){document.getElementById('rb-text').value='';analyse();}
+
+function countSyllables(word){
+  word=word.toLowerCase().replace(/[^a-z]/g,'');
+  if(!word)return 0;
+  let s=word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/,'').match(/[aeiouy]{1,2}/g);
+  return Math.max(1,s?s.length:1);
+}
+
+function analyse(){
+  const text=document.getElementById('rb-text').value.trim();
+  document.getElementById('char-count').textContent=document.getElementById('rb-text').value.length+' characters';
+  if(!text||text.split(/\s+/).filter(w=>w).length<5){
+    document.getElementById('res-words').textContent='0';
+    document.getElementById('res-sentences').textContent='0';
+    document.getElementById('res-grade').textContent='--';
+    document.getElementById('res-time').textContent='--';
+    document.getElementById('grade-fill').style.width='0%';
+    document.getElementById('verdict-title').textContent='Paste text to see results';
+    document.getElementById('verdict-desc').textContent='Results will appear here as you type.';
+    document.getElementById('verdict').style.background='var(--bg)';
+    document.getElementById('verdict').style.borderColor='var(--border)';
+    document.getElementById('verdict-title').style.color='var(--soft)';
+    document.getElementById('verdict-desc').style.color='var(--soft)';
+    document.getElementById('tips-list').innerHTML='';
+    return;
+  }
+  const words=text.split(/\s+/).filter(w=>w.length>0);
+  const wc=words.length;
+  const sentences=Math.max(1,text.split(/[.!?]+/).filter(s=>s.trim().length>0).length);
+  const syllables=words.reduce((s,w)=>s+countSyllables(w),0);
+  const fk=.39*(wc/sentences)+11.8*(syllables/wc)-15.59;
+  const grade=Math.max(1,Math.min(18,Math.round(fk)));
+  const mins=Math.max(1,Math.round(wc/200));
+
+  document.getElementById('res-words').textContent=wc;
+  document.getElementById('res-sentences').textContent=sentences;
+  document.getElementById('res-grade').textContent='G'+grade;
+  document.getElementById('res-time').textContent=mins+'m';
+  document.getElementById('grade-fill').style.width=Math.min(100,grade/18*100)+'%';
+
+  let bg,bc,tc,title,desc,tips,fillColor;
+  if(grade<=6){
+    bg='#dcfce7';bc='#86efac';tc='#15803d';
+    title='Excellent — Very easy to read';
+    desc='Grade '+grade+'. Accessible to virtually all readers. Meets WCAG 3.1.5 best practice. Perfect for public-facing web copy.';
+    tips=['Keep sentences short like this throughout','Great for government and public sector sites','Suitable for users with cognitive disabilities'];
+    fillColor='#15803d';
+  } else if(grade<=8){
+    bg='#e8f4ee';bc='#86efac';tc='#2d6a4f';
+    title='Good — Easy to read';
+    desc='Grade '+grade+'. Readable for most general audiences. Aligns with plain language guidelines for web content.';
+    tips=['Consider simplifying a few longer sentences','Avoid jargon where possible','Good for most public-facing pages'];
+    fillColor='#2d6a4f';
+  } else if(grade<=10){
+    bg='#fef9c3';bc='#fde68a';tc='#854d0e';
+    title='Moderate — Some complexity';
+    desc='Grade '+grade+'. May be difficult for some users. Consider simplifying for better accessibility compliance.';
+    tips=['Break long sentences into shorter ones','Replace complex words with simpler alternatives','Aim for grade 8 or below for public web copy'];
+    fillColor='#c47d2e';
+  } else {
+    bg='#fee2e2';bc='#fca5a5';tc='#dc2626';
+    title='Complex — Hard to read';
+    desc='Grade '+grade+'. This text may exclude users with lower literacy levels or cognitive disabilities. Significant simplification recommended.';
+    tips=['Aim for sentences under 20 words on average','Replace multi-syllable words with simpler alternatives','Use active voice instead of passive','Break content into shorter paragraphs','Consider plain language rewriting'];
+    fillColor='#dc2626';
+  }
+
+  const v=document.getElementById('verdict');
+  v.style.background=bg; v.style.borderColor=bc;
+  document.getElementById('verdict-title').style.color=tc;
+  document.getElementById('verdict-title').textContent=title;
+  document.getElementById('verdict-desc').style.color=tc.replace('d','9');
+  document.getElementById('verdict-desc').textContent=desc;
+  document.getElementById('grade-fill').style.background=fillColor;
+  document.getElementById('tips-list').innerHTML=tips.map(t=>`<li>${t}</li>`).join('');
+}
+</script>
+</body>
+</html>
